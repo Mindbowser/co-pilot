@@ -1,5 +1,5 @@
 import { SerializedContinueConfig } from "../";
-import { DEFAULT_CHAT_MODEL_CONFIG } from "./default";
+import { DEFAULT_AUTOCOMPLETE_MODEL_CONFIG, DEFAULT_CHAT_MODEL_CONFIG } from "./default";
 
 export const TRIAL_FIM_MODEL = "codestral-latest";
 export const ONBOARDING_LOCAL_MODEL_TITLE = "Ollama";
@@ -53,17 +53,7 @@ export function setupQuickstartConfig(
     models: [
       ...DEFAULT_CHAT_MODEL_CONFIG,
     ],
-    tabAutocompleteModel: {
-      title: "Tab Autocomplete",
-      provider: "free-trial",
-      model: TRIAL_FIM_MODEL,
-    },
-    embeddingsProvider: {
-      provider: "free-trial",
-    },
-    reranker: {
-      name: "free-trial",
-    },
+    tabAutocompleteModel: DEFAULT_AUTOCOMPLETE_MODEL_CONFIG,
   };
 }
 

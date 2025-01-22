@@ -82,7 +82,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
   >();
   private _uriHandler = new UriEventHandler();
 
-  private static EXPIRATION_TIME_MS = 1000 * 60 * 15; // 15 minutes
+  private static EXPIRATION_TIME_MS = 60*60*1000; // 60 minutes
 
   private secretStorage: SecretStorage;
 
@@ -115,7 +115,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
   }
 
   private createExpirationTimeMs(): number {
-    return (new Date()).getTime() + 60*60*1000;
+    return (new Date()).getTime() + WorkOsAuthProvider.EXPIRATION_TIME_MS;
   }
 
   private jwtIsExpiredOrInvalid(jwt: string): boolean {
@@ -211,6 +211,9 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
       } catch (e: any) {
         // If the refresh token doesn't work, we just drop the session
         console.debug(`Error refreshing session token: ${e.message}`);
+        const devDataDir = devDataPath();
+        const sessionPath = path.join(devDataDir, "session.jsonl");
+        fs.unlinkSync(sessionPath);
         await this.debugAccessTokenValidity(
           session.accessToken,
           session.refreshToken,
@@ -252,7 +255,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
 
     this.callRefreshTokenTimeout = setTimeout(
       () => this._refreshSessions(),
-      60*1000,
+      WorkOsAuthProvider.EXPIRATION_TIME_MS,
     );
 
     return {
@@ -314,7 +317,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
 
       this.callRefreshTokenTimeout = setTimeout(
         () => this._refreshSessions(),
-        60*1000,
+        WorkOsAuthProvider.EXPIRATION_TIME_MS,
       );
 
       return session;

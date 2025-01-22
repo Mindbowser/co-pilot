@@ -63,7 +63,7 @@ class CustomCodebaseContextProvider extends BaseContextProvider {
     if (uri && AWS_SECRET_KEY && AWS_ACCESS_KEY_ID) {
       const lanceDb = await lance.connect({
         uri,
-        awsRegion: "ap-south-1",
+        awsRegion: "us-east-1",
         awsCredentials: {
           accessKeyId: AWS_ACCESS_KEY_ID,
           secretKey: AWS_SECRET_KEY,

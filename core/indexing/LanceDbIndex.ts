@@ -47,8 +47,8 @@ export class LanceDbIndex implements CodebaseIndex {
 
   constructor(
     private readonly embeddingsProvider: ILLM,
-    private readonly readFile: (filepath: string) => Promise<string>,
-    private readonly pathSep: string,
+    private readonly readFile?: (filepath: string) => Promise<string>,
+    private readonly pathSep?: string,
     private readonly continueServerClient?: IContinueServerClient,
   ) {}
 
@@ -450,7 +450,7 @@ export class LanceDbIndex implements CodebaseIndex {
       lanceDbPath = getRemoteLanceDbPath(); 
       db = await lance.connect({
         uri: lanceDbPath,
-        awsRegion: "ap-south-1",
+        awsRegion: "us-east-1",
         awsCredentials: {
           accessKeyId:AWS_ACCESS_KEY_ID,
           secretKey: AWS_SECRET_KEY,

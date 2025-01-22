@@ -32,7 +32,7 @@ export class ContinueCompletionProvider
   implements vscode.InlineCompletionItemProvider
 {
   private onError(e: any) {
-    const options = ["Documentation"];
+    const options = ["Login with Epico"];
     if (e.message.includes("https://ollama.ai")) {
       options.push("Download Ollama");
     }
@@ -48,12 +48,8 @@ export class ContinueCompletionProvider
       return;
     }
     vscode.window.showErrorMessage(e.message, ...options).then((val) => {
-      if (val === "Documentation") {
-        vscode.env.openExternal(
-          vscode.Uri.parse(
-            "https://docs.continue.dev/features/tab-autocomplete",
-          ),
-        );
+      if (val === "Login with Epico") {
+        vscode.commands.executeCommand("epico-pilot.continueGUIView.focus");
       } else if (val === "Download Ollama") {
         vscode.env.openExternal(vscode.Uri.parse("https://ollama.ai/download"));
       }

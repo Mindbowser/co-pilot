@@ -234,16 +234,25 @@ const Layout = () => {
           return;
         }
       }
+      dispatch(setAccount({
+        accountEmail: "",
+        accountName: "",
+      }));
       isNewUserOnboarding();
       onboardingCard.open("Quickstart");
       navigate("/");
     }
-    if (!accountEmail || accountEmail === "") {
+
+    setTimeout(() =>{
       getAuthSession();
-    } else  {
-      // pass
-    }
-  }, [accountEmail, dispatch]);
+    }, 100);
+    
+    const authSessionInterval = setInterval(() =>{
+      getAuthSession();
+    }, 60*1000);
+
+    return () => clearInterval(authSessionInterval);
+  }, []);
 
   return (
     <AuthProvider>

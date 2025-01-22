@@ -386,20 +386,11 @@ export abstract class BaseLLM implements ILLM {
           ) {
             text =
               "You may need to add pre-paid credits before using the OpenAI API.";
-          } else if (
-            resp.status === 401 &&
-            (resp.url.includes("api.mistral.ai") ||
-              resp.url.includes("codestral.mistral.ai"))
-          ) {
-            if (resp.url.includes("codestral.mistral.ai")) {
-              throw new Error(
-                "You are using a Mistral API key, which is not compatible with the Codestral API. Please either obtain a Codestral API key, or use the Mistral API by setting 'apiBase' to 'https://api.mistral.ai/v1' in config.json.",
-              );
-            } else {
-              throw new Error(
-                "You are using a Codestral API key, which is not compatible with the Mistral API. Please either obtain a Mistral API key, or use the the Codestral API by setting 'apiBase' to 'https://codestral.mistral.ai/v1' in config.json.",
-              );
-            }
+          } else if (resp.status === 400 && text.includes("Error parsing JWT token")) {
+            throw new Error("Session expired, please log in"); 
+          }
+          else if (resp.status === 401) {
+            throw new Error("token expired, refresh token..."); 
           }
           throw new Error(
             `HTTP ${resp.status} ${resp.statusText} from ${resp.url}\n\n${text}`,
@@ -668,6 +659,16 @@ export abstract class BaseLLM implements ILLM {
     return completion;
   }
 
+  handleDefaultBehavior(input: string) {
+    const defaultResponses: { [key:string]: string } = {
+      "hi": "Hello! How can I assist you today?",
+      "hello": "Hi there! What can I help you with?",
+      "thanks": "You're welcome! Let me know if you have more questions.",
+      "goodbye": "Goodbye! Have a great day!"
+    };
+    return defaultResponses[input.toLowerCase()] || "I'm here to help!";
+  }
+
   async chat(
     messages: ChatMessage[],
     signal: AbortSignal,
@@ -695,7 +696,7 @@ export abstract class BaseLLM implements ILLM {
       this._parseCompletionOptions(options);
 
     const messages = this._compileChatMessages(completionOptions, _messages);
-
+    
     const prompt = this.templateMessages
       ? this.templateMessages(messages)
       : this._formatChatMessages(messages);
@@ -707,51 +708,57 @@ export abstract class BaseLLM implements ILLM {
         this.llmRequestHook(completionOptions.model, prompt);
       }
     }
-
+    
     let completion = "";
-
-    try {
-      if (this.templateMessages) {
-        for await (const chunk of this._streamComplete(
-          prompt,
-          signal,
-          completionOptions,
-        )) {
-          completion += chunk;
-          yield { role: "assistant", content: chunk };
-        }
-      } else {
-        if (this.shouldUseOpenAIAdapter("streamChat") && this.openaiAdapter) {
-          let body = toChatBody(messages, completionOptions);
-          body = this.modifyChatBody(body);
-          const stream = this.openaiAdapter.chatCompletionStream(
-            {
-              ...body,
-              stream: true,
-            },
-            signal,
-          );
-          for await (const chunk of stream) {
-            const result = fromChatCompletionChunk(chunk);
-            if (result) {
-              yield result;
-            }
-          }
-        } else {
-          for await (const chunk of this._streamChat(
-            messages,
+    const lowContextInputs = ["hi", "hello", "how are you", "thanks", "goodbye"];
+    const message = messages?.[messages?.length - 1]?.content as string;
+    if (lowContextInputs.includes(message.toLowerCase())) {
+      yield { role: "assistant", content: this.handleDefaultBehavior(message) };
+    } else {
+      try {
+        if (this.templateMessages) {
+          for await (const chunk of this._streamComplete(
+            prompt,
             signal,
             completionOptions,
           )) {
-            completion += chunk.content;
-            yield chunk;
+            completion += chunk;
+            yield { role: "assistant", content: chunk };
+          }
+        } else {
+          if (this.shouldUseOpenAIAdapter("streamChat") && this.openaiAdapter) {
+            let body = toChatBody(messages, completionOptions);
+            body = this.modifyChatBody(body);
+            const stream = this.openaiAdapter.chatCompletionStream(
+              {
+                ...body,
+                stream: true,
+              },
+              signal,
+            );
+            for await (const chunk of stream) {
+              const result = fromChatCompletionChunk(chunk);
+              if (result) {
+                yield result;
+              }
+            }
+          } else {
+            for await (const chunk of this._streamChat(
+              messages,
+              signal,
+              completionOptions,
+            )) {
+              completion += chunk.content;
+              yield chunk;
+            }
           }
         }
+      } catch (error) {
+        console.log(error);
+        throw error;
       }
-    } catch (error) {
-      console.log(error);
-      throw error;
     }
+
 
     this._logTokensGenerated(completionOptions.model, prompt, completion);
 
@@ -765,6 +772,7 @@ export abstract class BaseLLM implements ILLM {
       completion,
       completionOptions,
     };
+
   }
 
   getBatchedChunks(chunks: string[]): string[][] {

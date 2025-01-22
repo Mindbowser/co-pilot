@@ -161,18 +161,11 @@ export class VsCodeWebviewProtocol
               .showErrorMessage(
                 message.split("\n\n")[0],
                 "Show Logs",
-                "Troubleshooting",
               )
               .then((selection) => {
                 if (selection === "Show Logs") {
                   vscode.commands.executeCommand(
                     "workbench.action.toggleDevTools",
-                  );
-                } else if (selection === "Troubleshooting") {
-                  vscode.env.openExternal(
-                    vscode.Uri.parse(
-                      "https://docs.continue.dev/troubleshooting",
-                    ),
                   );
                 }
               });

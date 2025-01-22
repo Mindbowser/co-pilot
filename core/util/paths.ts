@@ -14,7 +14,7 @@ dotenv.config();
 const CONTINUE_GLOBAL_DIR =
   process.env.CONTINUE_GLOBAL_DIR ?? path.join(os.homedir(), ".epico-pilot");
 
-const REMOTE_LANCE_DB_URL = process.env.REMOTE_LANCE_DB_URL ?? "s3://epico-pilot-lance-db/lancedb/";
+const REMOTE_LANCE_DB_URL = process.env.REMOTE_LANCE_DB_URL ?? "s3://pilot-indexing/lancedb/";
 
 // export const DEFAULT_CONFIG_TS_CONTENTS = `import { Config } from "./types"\n\nexport function modifyConfig(config: Config): Config {
 //   return config;
