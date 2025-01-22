@@ -1,13 +1,16 @@
+import fs from "node:fs";
+import path from "path";
+
 import { FromWebviewProtocol, ToWebviewProtocol } from "core/protocol";
 import { WebviewMessengerResult } from "core/protocol/util";
 import { extractMinimalStackTraceInfo } from "core/util/extractMinimalStackTraceInfo";
-import { Message } from "core/util/messenger";
+import { Message } from "core/protocol/messenger";
 import { Telemetry } from "core/util/posthog";
-import fs from "node:fs";
-import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import * as vscode from "vscode";
-import { IMessenger } from "../../../core/util/messenger";
+
+import { IMessenger } from "../../../core/protocol/messenger";
+
 import { showFreeTrialLoginMessage } from "./util/messages";
 import { getExtensionUri } from "./util/vscode";
 
@@ -158,18 +161,11 @@ export class VsCodeWebviewProtocol
               .showErrorMessage(
                 message.split("\n\n")[0],
                 "Show Logs",
-                "Troubleshooting",
               )
               .then((selection) => {
                 if (selection === "Show Logs") {
                   vscode.commands.executeCommand(
                     "workbench.action.toggleDevTools",
-                  );
-                } else if (selection === "Troubleshooting") {
-                  vscode.env.openExternal(
-                    vscode.Uri.parse(
-                      "https://docs.continue.dev/troubleshooting",
-                    ),
                   );
                 }
               });
