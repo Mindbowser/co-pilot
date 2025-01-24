@@ -26,7 +26,6 @@ import RepoMapContextProvider from "./RepoMapContextProvider";
 import SearchContextProvider from "./SearchContextProvider";
 import TerminalContextProvider from "./TerminalContextProvider";
 import URLContextProvider from "./URLContextProvider";
-import CustomCodebaseContextProvider from "./CustomCodebaseContextProvider";
 import RemoteCodebaseContextProvider from "./RemoteCodebaseContextProvider";
 import WebContextProvider from "./WebContextProvider";
 
@@ -62,7 +61,6 @@ export const Providers: (typeof BaseContextProvider)[] = [
   RepoMapContextProvider,
   DiscordContextProvider,
   GreptileContextProvider,
-  CustomCodebaseContextProvider,
   RemoteCodebaseContextProvider,
   WebContextProvider,
   MCPContextProvider,
