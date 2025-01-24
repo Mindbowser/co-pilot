@@ -7,6 +7,7 @@ import { ChatHistoryItem } from "core";
 import { useState, useContext } from "react";
 import { IdeMessengerContext } from "../../context/IdeMessenger";
 import { useAppSelector } from "../../redux/hooks";
+import { usePostHog } from "posthog-js/react";
 
 export interface FeedbackButtonsProps {
   item: ChatHistoryItem;
@@ -16,9 +17,15 @@ export default function FeedbackButtons({ item }: FeedbackButtonsProps) {
   const [feedback, setFeedback] = useState<boolean | undefined>(undefined);
   const ideMessenger = useContext(IdeMessengerContext);
   const sessionId = useAppSelector((store) => store.session.id);
+  const posthog = usePostHog()
 
   const sendFeedback = (feedback: boolean) => {
     setFeedback(feedback);
+    posthog?.capture("user_feedback", {
+      isHelpful: feedback,
+      tableName: "chat",
+      data: { ...item, feedback, sessionId },
+    });
     if (item.promptLogs?.length) {
       for (const promptLog of item.promptLogs) {
         ideMessenger.post("devdata/log", {
