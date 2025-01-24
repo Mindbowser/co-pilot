@@ -278,7 +278,7 @@ export function Chat() {
       const currentCount = getLocalStorage("mainTextEntryCounter");
       if (currentCount) {
         setLocalStorage("mainTextEntryCounter", currentCount + 1);
-        if (currentCount === 300) {
+        if (currentCount === 10) {
           dispatch(setDialogMessage(<FeedbackDialog />));
           dispatch(setDialogEntryOn(false));
           dispatch(setShowDialog(true));
