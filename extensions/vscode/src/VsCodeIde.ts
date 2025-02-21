@@ -197,9 +197,14 @@ class VsCodeIde implements IDE {
 
     switch (type) {
       case "error":
-        return showErrorMessage(message, "Show logs").then((selection) => {
+        const buttons = ["Show logs"];
+        if (message.includes("Session expired")) buttons.push("Login with Epico");
+        return showErrorMessage(message, ...buttons).then((selection) => {
           if (selection === "Show logs") {
             vscode.commands.executeCommand("workbench.action.toggleDevTools");
+          }
+          if (selection === "Login with Epico") {
+            vscode.commands.executeCommand("epico-pilot.continueGUIView.focus");
           }
         });
       case "info":

@@ -202,12 +202,6 @@ function ModelOption({
               )}
             </span>
           </div>
-          <div className="ml-5 flex items-center">
-            <StyledCog6ToothIcon $hovered={hovered} onClick={onClickGear} />
-            {showDelete && (
-              <StyledTrashIcon $hovered={hovered} onClick={onClickDelete} />
-            )}
-          </div>
         </div>
       </div>
     </StyledListboxOption>
@@ -312,6 +306,23 @@ function ModelSelect() {
       onChange={async (val: string) => {
         if (val === defaultModel?.title) return;
         dispatch(setDefaultModel({ title: val }));
+        const updateAutocompleteModel = async (model) => {
+          const autocompleteModelConfig = {
+            title: "Tab Autocomplete Model",
+            provider: "ollama",
+            model,
+            apiKey: "https://pilot.epico.ai/",
+          };
+          await ideMessenger.request("addAutocompleteModel", {
+            model: autocompleteModelConfig,
+          });
+        }
+        const model = allModels.find(
+          (model) => model.title === val,
+        );
+        if (model) {   
+          updateAutocompleteModel(model.model);
+        }
       }}
     >
       <div className="relative">

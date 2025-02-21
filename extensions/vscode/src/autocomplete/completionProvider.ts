@@ -32,10 +32,7 @@ export class ContinueCompletionProvider
   implements vscode.InlineCompletionItemProvider
 {
   private onError(e: any) {
-    const options = ["Login with Epico"];
-    if (e.message.includes("https://ollama.ai")) {
-      options.push("Download Ollama");
-    }
+    const options = [];
 
     if (e.message.includes("Please sign in with GitHub")) {
       showFreeTrialLoginMessage(
@@ -47,11 +44,10 @@ export class ContinueCompletionProvider
       );
       return;
     }
+    if (e.message.includes("Session expired")) options.push("Login with Epico");
     vscode.window.showErrorMessage(e.message, ...options).then((val) => {
       if (val === "Login with Epico") {
         vscode.commands.executeCommand("epico-pilot.continueGUIView.focus");
-      } else if (val === "Download Ollama") {
-        vscode.env.openExternal(vscode.Uri.parse("https://ollama.ai/download"));
       }
     });
   }

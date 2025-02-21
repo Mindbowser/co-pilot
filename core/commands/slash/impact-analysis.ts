@@ -37,10 +37,15 @@ const MAX_EXPLORE_DEPTH = 2;
 const ImpactAnalysisSlashCommand: SlashCommand = {
   name: "impact-analysis",
   description: "Generate a real-time impact analysis report",
-  run: async function* ({ llm, ide }) {
-    const [workspaceDir] = await ide.getWorkspaceDirs();
+  run: async function* ({ llm, ide, params }) {
+    const includeUnstaged = params?.includeUnstaged ?? false;
+    const diff = await ide.getDiff(includeUnstaged);
 
-    const context = await gatherProjectContext(workspaceDir, ide);
+    if (diff.length === 0) {
+      yield "No changes detected. Make sure you are in a git repository with current changes.";
+      return;
+    }
+    const context = `${diff.join("\n")}`;
     const prompt = createOnboardingPrompt(context);
 
     for await (const chunk of llm.streamChat(
@@ -115,8 +120,20 @@ async function gatherProjectContext(
 
 function createOnboardingPrompt(context: string): string {
   return `
-  Generate a real-time impact analysis report for the project, highlighting dependencies and their potential impact on the codebase. Provide details on any changes that may affect interconnected components or systems. Additionally, include a 'quick ramp-up' section with documentation links directly associated with each impacted component for a faster understanding of its role and dependencies.
+  I have staged some code changes in Git, and I need a detailed analysis of the impact these changes will make. Please analyze the changes for:
+
+  1. Code Quality & Standards: Are the changes following best practices in terms of readability, maintainability, and proper coding conventions?
+  2. Variable Naming & Consistency: Are variable names meaningful, descriptive, and consistent?
+  3. Indentation & Formatting: Are the changes properly indented and formatted according to standard style guides (e.g., PEP8 for Python, Prettier for JavaScript, etc.)?
+  4. Potential Bugs & Issues: Are there any logical errors, edge cases, or performance concerns?
+  5. Security Concerns: Are there any security vulnerabilities, such as SQL injections, hardcoded credentials, or unsafe user inputs?
+  6. Impact Analysis: What effect do these changes have on the overall codebase? Are there potential breaking changes?
+  7. Best Practices & Suggestions: How can these changes be improved further?
+
+  Here is the git difference of my staged changes:
   ${context}
+
+  Please analyze it based on the above criteria and give a structured response.
   `;
 }
 

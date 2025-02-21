@@ -10,8 +10,14 @@ export const DEFAULT_CHAT_MODEL_CONFIG: ModelDescription[] = [
     "model": "codellama-7b",
     "provider": "ollama",
     "apiBase": "https://pilot.epico.ai/",
-    "title": "Epico Pilot"
-  }
+    "title": "Ollama Epico Pilot"
+  },
+  {
+    "model": "deepseek-coder:6.7b",
+    "provider": "ollama",
+    "apiBase": "https://pilot.epico.ai/",
+    "title": "DeepSeek Epico Pilot"
+  },
 ];
 
 export const DEFAULT_AUTOCOMPLETE_MODEL_CONFIG: ModelDescription = {
@@ -91,8 +97,44 @@ export const defaultSlashCommandsVscode: SlashCommandDescription[] = [
     description: "Generate a git commit message",
   },
   {
-    name: "review",
-    description: "Review code and give feedback",
+    name: "review:help",
+    description: "List all the available review commands with description",
+  },
+  {
+    name: "review:codebase",
+    description: "Review entire codebase and give feedback",
+  },
+  {
+    name: "review:stage",
+    description: "Review stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:naming-convention",
+    description: "Review naming convention in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:duplications",
+    description: "Review duplications in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:comments",
+    description: "Review comments in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:memory-leaks",
+    description: "Review memory leaks in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:compliance",
+    description: "Review compliance in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:logging",
+    description: "Review logging in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:refactoring",
+    description: "Review refactoring in stage difference code and give feedback",
   },
   {
     name: "onboard",

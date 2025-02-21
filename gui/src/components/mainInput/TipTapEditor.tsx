@@ -361,7 +361,12 @@ function TipTapEditor(props: TipTapEditorProps) {
                 return false;
               }
 
-              const commandsWithCodebase = ["/review", "/impact-analysis", "/onboard", "/project-flow", "/create-readme", "/code-stats"]
+              const commandsWithCodebase = [
+                "/onboard", 
+                "/project-flow", 
+                "/create-readme", 
+                "/code-stats"
+              ];
 
               const text = this.editor.getText();
 

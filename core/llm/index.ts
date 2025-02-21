@@ -387,10 +387,10 @@ export abstract class BaseLLM implements ILLM {
             text =
               "You may need to add pre-paid credits before using the OpenAI API.";
           } else if (resp.status === 400 && text.includes("Error parsing JWT token")) {
-            throw new Error("Session expired, please log in"); 
+            throw new Error("Session expired, please log in."); 
           }
           else if (resp.status === 401) {
-            throw new Error("token expired, refresh token..."); 
+            throw new Error("Session expired, please log in."); 
           }
           throw new Error(
             `HTTP ${resp.status} ${resp.statusText} from ${resp.url}\n\n${text}`,
@@ -411,14 +411,6 @@ export abstract class BaseLLM implements ILLM {
             // Don't pollute console with abort errors. Check on name instead of instanceof, to avoid importing node-fetch here
             console.debug(
               `${e.message}\n\nCode: ${e.code}\nError number: ${e.errno}\nSyscall: ${e.erroredSysCall}\nType: ${e.type}\n\n${e.stack}`,
-            );
-          }
-          if (
-            e.code === "ECONNREFUSED" &&
-            e.message.includes("http://127.0.0.1:11434")
-          ) {
-            throw new Error(
-              "Failed to connect to local Ollama instance, please ensure Ollama is both installed and running. You can download Ollama from https://ollama.ai.",
             );
           }
         }

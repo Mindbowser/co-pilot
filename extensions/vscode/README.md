@@ -1,6 +1,6 @@
 <div align="center">
 
-![Epico-Pilot logo](./media/Logo-Epico-Pilot.png)
+![Epico-Pilot logo](./docs/static/img/Logo-Epico-Pilot.png)
 
 </div>
 
