@@ -47,7 +47,8 @@ export class Telemetry {
         ideName: Telemetry.ideInfo?.name,
         ideType: Telemetry.ideInfo?.ideType,
         accountName: Telemetry.personName,
-        accountEmail: Telemetry.personEmail
+        accountEmail: Telemetry.personEmail,
+        lastSeen: new Date().toISOString(),
       };
       const payload = {
         distinctId: Telemetry.uniqueId,
