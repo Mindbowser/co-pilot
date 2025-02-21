@@ -82,7 +82,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
   >();
   private _uriHandler = new UriEventHandler();
 
-  private static EXPIRATION_TIME_MS = 60*60*1000; // 60 minutes
+  private static EXPIRATION_TIME_MS = 4.5 * 60 * 60 * 1000; // 4.5 hrs
 
   private secretStorage: SecretStorage;
 
@@ -213,7 +213,8 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
         console.debug(`Error refreshing session token: ${e.message}`);
         const devDataDir = devDataPath();
         const sessionPath = path.join(devDataDir, "session.jsonl");
-        fs.unlinkSync(sessionPath);
+        // for now, donot delete the session file if we get an error
+        // fs.unlinkSync(sessionPath);
         await this.debugAccessTokenValidity(
           session.accessToken,
           session.refreshToken,
