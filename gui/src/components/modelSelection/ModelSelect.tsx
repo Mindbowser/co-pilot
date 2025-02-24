@@ -311,7 +311,7 @@ function ModelSelect() {
             title: "Tab Autocomplete Model",
             provider: "ollama",
             model,
-            apiKey: "https://pilot.epico.ai/",
+            apiBase: "https://pilot.epico.ai/",
           };
           await ideMessenger.request("addAutocompleteModel", {
             model: autocompleteModelConfig,
