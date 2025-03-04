@@ -934,9 +934,9 @@ const getCommandsMap: (
         {
           label: "$(gear) Configure autocomplete options",
         },
-        {
-          label: "$(feedback) Give feedback",
-        },
+        // {
+        //   label: "$(feedback) Give feedback",
+        // },
         {
           kind: vscode.QuickPickItemKind.Separator,
           label: "Switch model",

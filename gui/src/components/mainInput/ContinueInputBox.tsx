@@ -53,9 +53,8 @@ const GradientBorder = styled.div<{
   border-radius: ${(props) => props.borderRadius || "0"};
   padding: 1px;
   background: ${(props) =>
-    props.borderColor
-      ? props.borderColor
-      : `repeating-linear-gradient(
+    props.loading
+      ? `repeating-linear-gradient(
       101.79deg,
       #1BBE84 0%,
       #331BBE 16%,
@@ -64,7 +63,7 @@ const GradientBorder = styled.div<{
       #BE1B55 67%,
       #331BBE 85%,
       #1BBE84 99%
-    )`};
+    )` : props.borderColor};
   animation: ${(props) => (props.loading ? gradient : "")} 6s linear infinite;
   background-size: 200% 200%;
   width: 100%;

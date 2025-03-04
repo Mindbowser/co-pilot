@@ -275,17 +275,18 @@ export function Chat() {
       editor.commands.clearContent(true);
 
       // Increment localstorage counter for popup
-      const currentCount = getLocalStorage("mainTextEntryCounter");
-      if (currentCount) {
-        setLocalStorage("mainTextEntryCounter", currentCount + 1);
-        if (currentCount === 10) {
-          dispatch(setDialogMessage(<FeedbackDialog />));
-          dispatch(setDialogEntryOn(false));
-          dispatch(setShowDialog(true));
-        }
-      } else {
-        setLocalStorage("mainTextEntryCounter", 1);
-      }
+      // For now, do not show the feedback dialog
+      // const currentCount = getLocalStorage("mainTextEntryCounter");
+      // if (currentCount) {
+      //   setLocalStorage("mainTextEntryCounter", currentCount + 1);
+      //   if (currentCount === 10) {
+      //     dispatch(setDialogMessage(<FeedbackDialog />));
+      //     dispatch(setDialogEntryOn(false));
+      //     dispatch(setShowDialog(true));
+      //   }
+      // } else {
+      //   setLocalStorage("mainTextEntryCounter", 1);
+      // }
     },
     [
       history,

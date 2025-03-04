@@ -27,82 +27,110 @@ const ReviewStageDifferenceComplianceCommand: SlashCommand = {
 
 function createReviewPrompt(context: string): string {
   return `
-    ### Context
-    ${context}
+### Context
+${context}
 
-    ### Question
-    You are a code review assistant. Analyze the provided context and generate a detailed review covering the following aspects. Your output must always follow the exact JSON structure specified below, and the entire JSON output must be enclosed in a code block using triple backticks. Do not output any text outside of the code block.
+### Question
+You are a specialized compliance code review assistant. Analyze the provided git diff and generate a detailed compliance review. Your output must follow the exact JSON structure specified below, enclosed in a code block using triple backticks.
 
-    Note: The following code context is provided as a git diff in unified format. In this format:
-    - The header line starting with "diff --git" indicates the file paths (e.g., "a/file" and "b/file").
-    - The "index" line shows the commit hashes.
-    - The lines starting with "---" and "+++" indicate the original and updated files, respectively.
-    - Hunk headers beginning with "@@" provide line number information in the format "@@ -<start line>,<number of lines> +<start line>,<number of lines> @@". For example, "@@ -34,6 +34,16 @@" means the changes in the original file start at line 34 and span 6 lines, while in the updated file they start at line 34 and span 16 lines.
-    - Lines prefixed with '-' indicate removals, '+' indicate additions, and lines without a prefix are context lines.
+Note: The context contains a git diff in unified format where:
+- Lines with "diff --git" show file paths
+- Lines with "---" and "+++" indicate original and updated files
+- Hunk headers "@@" show line numbers in format "@@ -<start>,<lines> +<start>,<lines> @@"
+- Lines prefixed with '-' are removals, '+' are additions, and unprefixed lines are context
 
-    Please parse the diff accordingly to extract file names and line number details when generating your analysis.
+## Review Guidelines
 
-    For each review category:
-    - List all the issues and prioritized by severity (High, Medium, Low)
-    - Each issue must include a detailed description with specific instructions such as file name, line number, variable names, and any other specific details.
-    - Each issue must also include a "Severity" field (possible values: "High", "Medium", "Low").
-    - Similarly, provide detailed recommendations that include specific instructions (file name, line number, variable names, etc.) along with a "Severity" field if applicable.
+For HIPAA and GDPR compliance, look specifically for:
 
-    The review must cover the following sections:
+**HIPAA Concerns:**
+- Protected Health Information (PHI) exposure
+- Authentication and access control issues
+- Logging and audit trail problems
+- Data encryption gaps
+- Security vulnerabilities affecting patient data
+- Breach notification mechanisms
 
-    **HIPAA/GDPR Compliance**  
-      - Evaluate the code for compliance with HIPAA and GDPR regulations.
-      - Provide separate detailed findings and recommendations for HIPAA and GDPR compliance.
+**GDPR Concerns:**
+- Personal data collection, processing, or storage issues
+- Cross-border data transfers
+- Data subject rights implementation
+- Consent management problems
+- Data retention policy issues
+- Data minimization violations
+- Right to be forgotten implementation issues
 
-    Your output must strictly adhere to the JSON structure provided below, including all specified keys. Do not output any text besides the JSON in a single code block.
+For each identified issue:
+1. Use precise references (file name, line numbers, code snippets)
+2. Assign appropriate severity:
+   - High: Direct violation causing immediate compliance risk
+   - Medium: Potential violation requiring attention
+   - Low: Best practice recommendation
+3. Provide actionable recommendations with specific code suggestions
 
-    **Output JSON Structure:**
+If no issues are found in a category, include an empty array for that category.
 
-    \`\`\`
-    {
-      "Compliance": {
-        "HIPAA": {
-          "Issues": [
-            {
-              "Description": "Detailed description of HIPAA compliance issues with specific references (file name, line number, etc.).",
-              "File": "File name",
-              "Line": "Line number(s)",
-              "Severity": "High/Medium/Low"
-            }
-          ],
-          "Recommendations": [
-            {
-              "Description": "Detailed recommendation to address HIPAA compliance issues with specific instructions.",
-              "File": "Relevant file name",
-              "Line": "Line number(s)",
-              "Severity": "High/Medium/Low"
-            }
-          ]
-        },
-        "GDPR": {
-          "Issues": [
-            {
-              "Description": "Detailed description of GDPR compliance issues with specific references (file name, line number, etc.).",
-              "File": "File name",
-              "Line": "Line number(s)",
-              "Severity": "High/Medium/Low"
-            }
-          ],
-          "Recommendations": [
-            {
-              "Description": "Detailed recommendation to address GDPR compliance issues with specific instructions.",
-              "File": "Relevant file name",
-              "Line": "Line number(s)",
-              "Severity": "High/Medium/Low"
-            }
-          ]
+**Output JSON Structure:**
+
+\`\`\`
+{
+  "Compliance": {
+    "HIPAA": {
+      "Issues": [
+        {
+          "Description": "Detailed description of HIPAA compliance issue",
+          "File": "Specific file name",
+          "Line": "Specific line number(s)",
+          "Code": "Relevant code snippet",
+          "Severity": "High/Medium/Low"
         }
-      }
+      ],
+      "Recommendations": [
+        {
+          "Description": "Detailed recommendation with specific instructions",
+          "File": "Relevant file name",
+          "Line": "Specific line number(s)",
+          "SuggestedCode": "Suggested code implementation",
+          "Severity": "High/Medium/Low"
+        }
+      ]
+    },
+    "GDPR": {
+      "Issues": [
+        {
+          "Description": "Detailed description of GDPR compliance issue",
+          "File": "Specific file name",
+          "Line": "Specific line number(s)",
+          "Code": "Relevant code snippet",
+          "Severity": "High/Medium/Low"
+        }
+      ],
+      "Recommendations": [
+        {
+          "Description": "Detailed recommendation with specific instructions",
+          "File": "Relevant file name",
+          "Line": "Specific line number(s)",
+          "SuggestedCode": "Suggested code implementation",
+          "Severity": "High/Medium/Low"
+        }
+      ]
     }
-    \`\`\`
+  },
+  "Summary": {
+    "HighPriorityIssues": 0,
+    "MediumPriorityIssues": 0,
+    "LowPriorityIssues": 0,
+    "OverallCompliance": "High/Medium/Low"
+  }
+}
+\`\`\`
 
-    Please generate the review following the above structure. Do not output the prompt text or any translations—only produce the JSON review with your findings based on the code, and ensure that your entire output is enclosed within a code block using triple backticks.
+Analyze the provided diff thoroughly and identify only genuine duplications. For severity ratings:
+- High: Exact duplicated functions/logic blocks across multiple files
+- Medium: Similar implementations with minor variations
+- Low: Possible abstractions that could reduce future duplication
 
+Please generate the review following the above structure. Do not output the prompt text or any comments—only produce the JSON review with your findings based on the code, and ensure that your entire output is enclosed within a code block using triple backticks.
   `;
 }
 

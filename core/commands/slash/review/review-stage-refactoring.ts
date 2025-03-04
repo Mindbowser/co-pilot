@@ -27,63 +27,86 @@ const ReviewStageDifferenceRefactoringCommand: SlashCommand = {
 
 function createReviewPrompt(context: string): string {
   return `
-    ### Context
-    ${context}
+### Context
+${context}
 
-    ### Question
-    You are a code review assistant. Analyze the provided context and generate a detailed review covering the following aspects. Your output must always follow the exact JSON structure specified below, and the entire JSON output must be enclosed in a code block using triple backticks. Do not output any text outside of the code block.
+### Question
+You are a code refactoring specialist. Analyze the provided git diff and generate detailed refactoring recommendations. Your output must follow the exact JSON structure specified below, enclosed in a code block using triple backticks.
 
-    Note: The following code context is provided as a git diff in unified format. In this format:
-    - The header line starting with "diff --git" indicates the file paths (e.g., "a/file" and "b/file").
-    - The "index" line shows the commit hashes.
-    - The lines starting with "---" and "+++" indicate the original and updated files, respectively.
-    - Hunk headers beginning with "@@" provide line number information in the format "@@ -<start line>,<number of lines> +<start line>,<number of lines> @@". For example, "@@ -34,6 +34,16 @@" means the changes in the original file start at line 34 and span 6 lines, while in the updated file they start at line 34 and span 16 lines.
-    - Lines prefixed with '-' indicate removals, '+' indicate additions, and lines without a prefix are context lines.
+Note: The context contains a git diff in unified format where:
+- Lines with "diff --git" show file paths
+- Lines with "---" and "+++" indicate original and updated files
+- Hunk headers "@@" show line numbers in format "@@ -<start>,<lines> +<start>,<lines> @@"
+- Lines prefixed with '-' are removals, '+' are additions, and unprefixed lines are context
 
-    Please parse the diff accordingly to extract file names and line number details when generating your analysis.
+## Review Guidelines
 
-    For each review category:
-    - List all the issues and prioritized by severity (High, Medium, Low)
-    - Each issue must include a detailed description with specific instructions such as file name, line number, variable names, and any other specific details.
-    - Each issue must also include a "Severity" field (possible values: "High", "Medium", "Low").
-    - Similarly, provide detailed recommendations that include specific instructions (file name, line number, variable names, etc.) along with a "Severity" field if applicable.
+When evaluating code for refactoring opportunities, look specifically for:
 
-    The review must cover the following sections:
+**Code Quality Issues:**
+- Duplicated code or logic
+- Overly complex methods (high cyclomatic complexity)
+- Methods or classes that violate Single Responsibility Principle
+- Excessive nesting or conditionals
+- Long method bodies (exceeding 30-40 lines)
+- Unclear naming conventions
+- Poor code organization
+- Tight coupling between components
+- Magic numbers or hardcoded values
+- Inconsistent code style
+- Deprecated API usage
 
-    **Refactoring**  
-      - Provide overall recommendations to improve code structure, readability, and maintainability.
-      - Identify areas where refactoring would significantly improve the code.
-      - Provide detailed issues and recommendations.
+**Performance Concerns:**
+- Inefficient algorithms or data structures
+- Redundant computations
+- Resource leaks
+- Inefficient database queries or operations
+- Unnecessary memory usage
 
-    Your output must strictly adhere to the JSON structure provided below, including all specified keys. Do not output any text besides the JSON in a single code block.
+For each identified issue:
+1. Use precise references (file name, line numbers, code snippets)
+2. Assign appropriate severity:
+   - High: Critical refactoring needs that affect maintainability, performance, or reliability
+   - Medium: Important improvements that would significantly enhance code quality
+   - Low: Minor suggestions that would provide incremental improvements
+3. Provide actionable recommendations with specific code suggestions when possible
 
-    **Output JSON Structure:**
+**Output JSON Structure:**
 
-    \`\`\`
-    {
-      "Refactoring": {
-        "Issues": [
-          {
-            "Description": "Detailed description of code areas that need refactoring including file name and line number.",
-            "File": "File name",
-            "Line": "Line number(s)",
-            "Severity": "High/Medium/Low"
-          }
-        ],
-        "Recommendations": [
-          {
-            "Description": "Detailed recommendation for refactoring with specific instructions and references to file and line number.",
-            "File": "Relevant file name",
-            "Line": "Line number(s)",
-            "Severity": "High/Medium/Low"
-          }
-        ]
+\`\`\`
+{
+  "Refactoring": {
+    "Issues": [
+      {
+        "Description": "Detailed description of code areas that need refactoring",
+        "File": "Specific file name",
+        "Line": "Specific line number(s)",
+        "Code": "Relevant code snippet",
+        "Severity": "High/Medium/Low",
+        "Type": "Duplication/Complexity/Naming/Performance/Structure/Other"
       }
+    ],
+    "Recommendations": [
+      {
+        "Description": "Detailed recommendation for refactoring",
+        "File": "Relevant file name",
+        "Line": "Specific line number(s)",
+        "SuggestedCode": "Suggested code implementation",
+        "Severity": "High/Medium/Low",
+        "Impact": "Brief description of the positive impact this refactoring would have"
+      }
+    ],
+    "Summary": {
+      "HighPriorityIssues": 0,
+      "MediumPriorityIssues": 0,
+      "LowPriorityIssues": 0,
+      "PrimaryFocus": "Brief statement about the most important refactoring need"
     }
-    \`\`\`
+  }
+}
+\`\`\`
 
-    Please generate the review following the above structure. Do not output the prompt text or any translations—only produce the JSON review with your findings based on the code, and ensure that your entire output is enclosed within a code block using triple backticks.
-
+Generate only the JSON review with your findings based on the code diff. Your entire output must be enclosed within a code block using triple backticks. If no issues are found, include empty arrays rather than omitting sections.
   `;
 }
 

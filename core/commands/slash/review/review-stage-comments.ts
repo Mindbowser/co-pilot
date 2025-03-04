@@ -27,63 +27,67 @@ const ReviewStageDifferenceCommentsCommand: SlashCommand = {
 
 function createReviewPrompt(context: string): string {
   return `
-    ### Context
-    ${context}
+  ### Context
+${context}
 
-    ### Question
-    You are a code review assistant. Analyze the provided context and generate a detailed review covering the following aspects. Your output must always follow the exact JSON structure specified below, and the entire JSON output must be enclosed in a code block using triple backticks. Do not output any text outside of the code block.
+### Instructions
+You are reviewing code comments in a git diff. Analyze if adequate comments exist for new or modified code.
 
-    Note: The following code context is provided as a git diff in unified format. In this format:
-    - The header line starting with "diff --git" indicates the file paths (e.g., "a/file" and "b/file").
-    - The "index" line shows the commit hashes.
-    - The lines starting with "---" and "+++" indicate the original and updated files, respectively.
-    - Hunk headers beginning with "@@" provide line number information in the format "@@ -<start line>,<number of lines> +<start line>,<number of lines> @@". For example, "@@ -34,6 +34,16 @@" means the changes in the original file start at line 34 and span 6 lines, while in the updated file they start at line 34 and span 16 lines.
-    - Lines prefixed with '-' indicate removals, '+' indicate additions, and lines without a prefix are context lines.
+**Input Format:**
+- Git diff in unified format
+- '+' marks additions, '-' marks removals
 
-    Please parse the diff accordingly to extract file names and line number details when generating your analysis.
+**Focus only on comment quality:**
+1. Are comments present where needed?
+2. Are comments clear and helpful?
+3. Do comments explain "why" not just "what"?
+4. Is comment style consistent?
 
-    For each review category:
-    - List all the issues and prioritized by severity (High, Medium, Low)
-    - Each issue must include a detailed description with specific instructions such as file name, line number, variable names, and any other specific details.
-    - Each issue must also include a "Severity" field (possible values: "High", "Medium", "Low").
-    - Similarly, provide detailed recommendations that include specific instructions (file name, line number, variable names, etc.) along with a "Severity" field if applicable.
+**Review Structure:**
+1. Missing Comments: Code that needs comments
+2. Inadequate Comments: Existing comments needing improvement
+3. Recommended Comments: Specific suggestions
+4. Summary: Overall assessment
 
-    The review must cover the following sections:
-
-    **Proper Comments for All Activities**
-      - Check that every significant piece of code has clear, helpful comments.
-      - Provide detailed issues and recommendations for each sub-section (AddFunctions and DeleteFunctions).
-
-    Your output must strictly adhere to the JSON structure provided below, including all specified keys. Do not output any text besides the JSON in a single code block.
-
-    **Output JSON Structure:**
-
-    \`\`\`
-    {
-      "ProperComments": {
-        "Issues": [
-          {
-            "Description": "Detailed description of missing or inadequate comments in add functions (include file, line, etc.).",
-            "File": "File name",
-            "Line": "Line number(s)",
-            "Severity": "High/Medium/Low"
-          }
-        ],
-        "Recommendations": [
-          {
-            "Description": "Detailed recommendation to improve comments in add functions with specific instructions.",
-            "File": "Relevant file name",
-            "Line": "Line number(s)",
-            "Severity": "High/Medium/Low"
-          }
-        ]
+**Output JSON Format:**
+\`\`\`json
+{
+  "CommentReview": {
+    "MissingComments": [
+      {
+        "File": "filename.ext",
+        "Line": "line_number",
+        "CodeSnippet": "code without comments",
+        "Severity": "High/Medium/Low"
       }
+    ],
+    "InadequateComments": [
+      {
+        "File": "filename.ext",
+        "Line": "line_number",
+        "ExistingComment": "current comment",
+        "Issue": "specific problem",
+        "Severity": "High/Medium/Low"
+      }
+    ],
+    "RecommendedAdditions": [
+      {
+        "File": "filename.ext",
+        "Line": "line_number",
+        "SuggestedComment": "proposed comment",
+        "Severity": "High/Medium/Low"
+      }
+    ],
+    "Summary": {
+      "Quality": "Good/Fair/Poor",
+      "PriorityIssues": "highest priority issues",
+      "PositiveAspects": "well-commented areas"
     }
-    \`\`\`
+  }
+}
+\`\`\`
 
-    Please generate the review following the above structure. Do not output the prompt text or any translations—only produce the JSON review with your findings based on the code, and ensure that your entire output is enclosed within a code block using triple backticks.
-
-  `;
+Respond with only valid JSON inside a code block.`;
 }
 
 export default ReviewStageDifferenceCommentsCommand;

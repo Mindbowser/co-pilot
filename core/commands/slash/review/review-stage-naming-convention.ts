@@ -27,64 +27,133 @@ const ReviewStageDifferenceNamingConventionCommand: SlashCommand = {
 
 function createReviewPrompt(context: string): string {
   return `
-    ### Context
-    ${context}
+### Context
+${context}
 
-    ### Question
-    You are a code review assistant. Analyze the provided context and generate a detailed review covering the following aspects. Your output must always follow the exact JSON structure specified below, and the entire JSON output must be enclosed in a code block using triple backticks. Do not output any text outside of the code block.
+### Question
+You are a code review assistant specializing in naming conventions. Analyze the provided git diff to identify ONLY legitimate naming issues where the name can be meaningfully improved. Your output must follow the JSON structure specified below.
 
-    Note: The following code context is provided as a git diff in unified format. In this format:
-    - The header line starting with "diff --git" indicates the file paths (e.g., "a/file" and "b/file").
-    - The "index" line shows the commit hashes.
-    - The lines starting with "---" and "+++" indicate the original and updated files, respectively.
-    - Hunk headers beginning with "@@" provide line number information in the format "@@ -<start line>,<number of lines> +<start line>,<number of lines> @@". For example, "@@ -34,6 +34,16 @@" means the changes in the original file start at line 34 and span 6 lines, while in the updated file they start at line 34 and span 16 lines.
-    - Lines prefixed with '-' indicate removals, '+' indicate additions, and lines without a prefix are context lines.
+Note: The code context is provided as a git diff in unified format where:
+- "diff --git" header lines indicate file paths 
+- Lines with "-" prefix show removed code
+- Lines with "+" prefix show added code
+- Lines without prefixes are unchanged context
 
-    Please parse the diff accordingly to extract file names and line number details when generating your analysis.
+CRITICAL RULES TO FOLLOW:
+1. NEVER output an issue unless you can suggest a GENUINELY BETTER alternative name.
+2. CurrentName and SuggestedName MUST be different for every issue.
+3. Do not flag standard abbreviations (sqrt, pow, min, max, etc.) as issues.
+4. Do not flag standard loop counter variables (i, j, k) as issues.
+5. Follow language-appropriate conventions:
+   - JavaScript/TypeScript: camelCase for variables/functions, PascalCase for classes
+   - Python: snake_case for variables/functions, PascalCase for classes
+   - Java/C#/Kotlin: camelCase for variables/functions, PascalCase for classes
+   - Do NOT recommend PascalCase for JavaScript functions
 
-    For each review category:
-    - List all the issues and prioritized by severity (High, Medium, Low)
-    - Each issue must include a detailed description with specific instructions such as file name, line number, variable names, and any other specific details.
-    - Each issue must also include a "Severity" field (possible values: "High", "Medium", "Low").
-    - Similarly, provide detailed recommendations that include specific instructions (file name, line number, variable names, etc.) along with a "Severity" field if applicable.
+When evaluating names, look for:
+1. Non-descriptive names (e.g., 'data', 'temp', 'obj') that could be more specific
+2. Ambiguous names that don't clearly convey the variable's purpose
+3. Inconsistent casing relative to the language convention
+4. Names with unnecessary type information (e.g., 'userString', 'accountArray')
+5. Misleading names that suggest different functionality than implemented
 
-    The review must cover the following sections:
+For each issue found:
+- Show the exact problematic name (CurrentName)
+- Suggest a specific, improved alternative (SuggestedName)
+- Explain precisely how the suggested name is better than the current one
+- Verify that SuggestedName follows appropriate conventions for the language
 
-    **Naming Conventions**
-      - Evaluate if variable, function, and class names are consistent, descriptive, and follow a standard naming pattern.
-      - Provide detailed issues (with file name, line number, variable names, etc.) and recommendations.
+Your output must adhere to this JSON structure:
 
-    Your output must strictly adhere to the JSON structure provided below, including all specified keys. Do not output any text besides the JSON in a single code block.
+**Output JSON Structure:**
 
-    **Output JSON Structure:**
-
-    \`\`\`
-    {
-      "NamingConventions": {
-        "Issues": [
-          {
-            "Description": "Detailed description including file name, line number, variable/function/class names, etc.",
-            "File": "File name where the issue was found",
-            "Line": "Line number(s) where the issue was detected",
-            "Severity": "High/Medium/Low"
-          }
-        ],
-        "Recommendations": [
-          {
-            "Description": "Detailed recommendation with specific instructions including file name, line number, etc.",
-            "File": "File name relevant to the recommendation",
-            "Line": "Line number(s) if applicable",
-            "Severity": "High/Medium/Low"
-          }
-          // Corresponding recommendations
-        ]
+\`\`\`
+{
+  "NamingConventions": {
+    "Issues": [
+      {
+        "Description": "Specific description of the naming issue",
+        "File": "File where the issue was found",
+        "Line": "Line number(s) where the issue was detected",
+        "CurrentName": "The problematic name as it currently exists",
+        "SuggestedName": "A better alternative name (MUST be different from CurrentName)",
+        "Category": "Variable/Function/Class/Interface/Constant/File",
+        "Convention": "Expected convention for this language and category",
+        "Severity": "High/Medium/Low",
+        "Rationale": "Detailed explanation of how the suggested name improves on the current one"
       }
+    ],
+    "Recommendations": [
+      {
+        "Description": "Recommendation for consistent naming patterns",
+        "Files": [
+          "List of affected files"
+        ],
+        "NamingPattern": "Pattern that should be consistently applied",
+        "Examples": {
+          "Before": [
+            "Example of a current problematic name"
+          ],
+          "After": [
+            "Example of the improved name (MUST be different from Before)"
+          ]
+        },
+        "Severity": "High/Medium/Low",
+        "ImplementationApproach": "Approach for implementing these changes"
+      }
+    ],
+    "DetectedConventions": {
+      "Variables": "Detected convention for variables in this codebase",
+      "Functions": "Detected convention for functions in this codebase",
+      "Classes": "Detected convention for classes in this codebase",
+      "Constants": "Detected convention for constants in this codebase",
+      "Files": "Detected convention for file names in this codebase"
+    },
+    "Summary": {
+      "TotalIssues": 0,
+      "HighSeverity": 0,
+      "MediumSeverity": 0,
+      "LowSeverity": 0,
+      "MostCommonIssue": "Description of the most common naming issue found"
     }
-    \`\`\`
+  }
+}
+\`\`\`
 
-    Please generate the review following the above structure. Do not output the prompt text or any translations—only produce the JSON review with your findings based on the code, and ensure that your entire output is enclosed within a code block using triple backticks.
+IF NO NAMING ISSUES ARE FOUND:
+If you cannot identify any genuine naming issues where you can suggest better alternatives, return the following structure:
 
-  `;
+\`\`\`
+{
+  "NamingConventions": {
+    "Issues": [],
+    "Recommendations": [],
+    "DetectedConventions": {
+      "Variables": "Appropriate conventions are being followed",
+      "Functions": "Appropriate conventions are being followed",
+      "Classes": "Appropriate conventions are being followed",
+      "Constants": "Appropriate conventions are being followed",
+      "Files": "Appropriate conventions are being followed"
+    },
+    "Summary": {
+      "TotalIssues": 0,
+      "HighSeverity": 0,
+      "MediumSeverity": 0,
+      "LowSeverity": 0,
+      "MostCommonIssue": "No naming issues detected"
+    }
+  }
+}
+\`\`\`
+
+FINAL CHECKS BEFORE SUBMISSION:
+1. Verify that every CurrentName and SuggestedName pair contains different values
+2. Confirm that all conventions recommended are appropriate for the language
+3. Ensure Examples Before and After values are different
+4. Make sure all suggested names follow their stated conventions
+
+Generate only the JSON review with your findings. Ensure your output is enclosed within a code block using triple backticks.
+`;
 }
 
 export default ReviewStageDifferenceNamingConventionCommand;

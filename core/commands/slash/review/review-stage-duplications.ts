@@ -27,63 +27,85 @@ const ReviewStageDifferenceDuplicationCommand: SlashCommand = {
 
 function createReviewPrompt(context: string): string {
   return `
-    ### Context
-    ${context}
+### Context
+${context}
 
-    ### Question
-    You are a code review assistant. Analyze the provided context and generate a detailed review covering the following aspects. Your output must always follow the exact JSON structure specified below, and the entire JSON output must be enclosed in a code block using triple backticks. Do not output any text outside of the code block.
+### Question
+You are a code duplication detection specialist. Analyze the provided git diff and identify all instances of code duplication. Your output must follow the exact JSON structure specified below, enclosed in a code block using triple backticks.
 
-    Note: The following code context is provided as a git diff in unified format. In this format:
-    - The header line starting with "diff --git" indicates the file paths (e.g., "a/file" and "b/file").
-    - The "index" line shows the commit hashes.
-    - The lines starting with "---" and "+++" indicate the original and updated files, respectively.
-    - Hunk headers beginning with "@@" provide line number information in the format "@@ -<start line>,<number of lines> +<start line>,<number of lines> @@". For example, "@@ -34,6 +34,16 @@" means the changes in the original file start at line 34 and span 6 lines, while in the updated file they start at line 34 and span 16 lines.
-    - Lines prefixed with '-' indicate removals, '+' indicate additions, and lines without a prefix are context lines.
+Note: The following code context is provided as a git diff in unified format where:
+- "diff --git" header lines indicate file paths
+- Lines with "-" prefix show removed code 
+- Lines with "+" prefix show added code
+- Lines without prefixes are unchanged context
 
-    Please parse the diff accordingly to extract file names and line number details when generating your analysis.
+Focus exclusively on identifying:
+1. Duplicate code blocks within the same file
+2. Duplicate code across different files
+3. Similar code patterns that could be refactored into shared functions/utilities
+4. Redundant logic that appears in multiple places
 
-    For each review category:
-    - List all the issues and prioritized by severity (High, Medium, Low)
-    - Each issue must include a detailed description with specific instructions such as file name, line number, variable names, and any other specific details.
-    - Each issue must also include a "Severity" field (possible values: "High", "Medium", "Low").
-    - Similarly, provide detailed recommendations that include specific instructions (file name, line number, variable names, etc.) along with a "Severity" field if applicable.
+For each duplication issue:
+- Include the exact duplicate code snippets
+- Specify all locations where duplication occurs (files and line numbers)
+- Assess severity based on:
+  * HIGH: Large blocks of identical code or duplications that significantly impact maintainability
+  * MEDIUM: Multiple smaller duplications or partial duplications with slight variations
+  * LOW: Minor duplications that may be acceptable in some contexts
 
-    The review must cover the following sections:
+Provide actionable recommendations for addressing each duplication, such as:
+- Extracting shared functions or utilities
+- Creating abstract base classes or interfaces
+- Implementing design patterns to eliminate duplication
+- Using existing libraries or utility functions
 
-    **Duplications**
-      - Identify any duplicate code segments or functionality that could be refactored.
-      - Provide detailed issues and recommendations.
+Your output must strictly adhere to this JSON structure:
 
-    Your output must strictly adhere to the JSON structure provided below, including all specified keys. Do not output any text besides the JSON in a single code block.
 
-    **Output JSON Structure:**
-
-    \`\`\`
-    {
-      "Duplications": {
-        "Issues": [
+**Output JSON Structure:**
+\`\`\`
+{
+  "Duplications": {
+    "Issues": [
+      {
+        "Description": "Detailed description of the duplicated code, including what it does",
+        "DuplicatedCode": "The actual duplicated code snippet",
+        "Locations": [
           {
-            "Description": "Detailed description including file name, line number, etc.",
-            "File": "File name where the duplication was found",
-            "Line": "Line number(s) where the duplication occurs",
-            "Severity": "High/Medium/Low"
+            "File": "First file where duplication appears",
+            "Lines": "Line range in the first file (e.g., 45-60)"
+          },
+          {
+            "File": "Second file where duplication appears",
+            "Lines": "Line range in the second file (e.g., 112-127)"
           }
         ],
-        "Recommendations": [
-          {
-            "Description": "Detailed recommendation with specific instructions to refactor duplicate code.",
-            "File": "Relevant file name",
-            "Line": "Line number(s) if applicable",
-            "Severity": "High/Medium/Low"
-          }
-        ]
-      },
+        "Severity": "High/Medium/Low",
+        "Impact": "Explanation of why this duplication matters (e.g., maintenance issues, bug propagation risk)"
+      }
+    ],
+    "Recommendations": [
+      {
+        "Description": "Detailed recommendation for addressing the duplication",
+        "RefactoringApproach": "Specific refactoring technique to apply",
+        "Example": "Sample code showing how the refactoring could look",
+        "AffectedFiles": ["List of files that would be affected by this change"],
+        "Severity": "High/Medium/Low",
+        "Effort": "Estimated effort required (Low/Medium/High)"
+      }
+    ],
+    "Summary": {
+      "TotalDuplications": 0,
+      "HighSeverity": 0,
+      "MediumSeverity": 0,
+      "LowSeverity": 0,
+      "MostAffectedFiles": ["List of files with the most duplications"]
     }
-    \`\`\`
-
-    Please generate the review following the above structure. Do not output the prompt text or any translations—only produce the JSON review with your findings based on the code, and ensure that your entire output is enclosed within a code block using triple backticks.
-
-  `;
+  }
+}
+\`\`\`
+Generate only the JSON review with your findings based on the code. Ensure your entire output is enclosed within a code block using triple backticks.
+`;
 }
 
 export default ReviewStageDifferenceDuplicationCommand;

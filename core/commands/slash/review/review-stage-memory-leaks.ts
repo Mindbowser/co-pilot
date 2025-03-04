@@ -27,62 +27,94 @@ const ReviewStageDifferenceMemoryLeaksCommand: SlashCommand = {
 
 function createReviewPrompt(context: string): string {
   return `
-    ### Context
-    ${context}
+### Context
+${context}
 
-    ### Question
-    You are a code review assistant. Analyze the provided context and generate a detailed review covering the following aspects. Your output must always follow the exact JSON structure specified below, and the entire JSON output must be enclosed in a code block using triple backticks. Do not output any text outside of the code block.
+### Question
+You are a specialized code review assistant focused on memory management. Analyze the provided git diff and identify potential memory leaks in the code changes. Your output must follow the exact JSON structure specified below, enclosed in a code block using triple backticks.
 
-    Note: The following code context is provided as a git diff in unified format. In this format:
-    - The header line starting with "diff --git" indicates the file paths (e.g., "a/file" and "b/file").
-    - The "index" line shows the commit hashes.
-    - The lines starting with "---" and "+++" indicate the original and updated files, respectively.
-    - Hunk headers beginning with "@@" provide line number information in the format "@@ -<start line>,<number of lines> +<start line>,<number of lines> @@". For example, "@@ -34,6 +34,16 @@" means the changes in the original file start at line 34 and span 6 lines, while in the updated file they start at line 34 and span 16 lines.
-    - Lines prefixed with '-' indicate removals, '+' indicate additions, and lines without a prefix are context lines.
+Note: The following code context is provided as a git diff in unified format. In this format:
+- The header line starting with "diff --git" indicates the file paths (e.g., "a/file" and "b/file").
+- The "index" line shows the commit hashes.
+- The lines starting with "---" and "+++" indicate the original and updated files, respectively.
+- Hunk headers beginning with "@@" provide line number information in the format "@@ -<start line>,<number of lines> +<start line>,<number of lines> @@".
+- Lines prefixed with '-' indicate removals, '+' indicate additions, and lines without a prefix are context lines.
 
-    Please parse the diff accordingly to extract file names and line number details when generating your analysis.
+Focus on identifying the following types of memory leaks and management issues:
 
-    For each review category:
-    - List all the issues and prioritized by severity (High, Medium, Low)
-    - Each issue must include a detailed description with specific instructions such as file name, line number, variable names, and any other specific details.
-    - Each issue must also include a "Severity" field (possible values: "High", "Medium", "Low").
-    - Similarly, provide detailed recommendations that include specific instructions (file name, line number, variable names, etc.) along with a "Severity" field if applicable.
+1. Unfreed resources: Allocated memory that is never freed (malloc/new without free/delete)
+2. Resource handle leaks: Unclosed file handles, database connections, or network sockets
+3. Circular references: Objects referencing each other causing garbage collection issues
+4. Event listener leaks: Listeners or callbacks that are registered but never removed
+5. Closure-related memory leaks: Variables captured in closures preventing garbage collection
+6. Memory-intensive data structures: Large collections or arrays that grow without bounds
+7. Cached data without eviction policies: Data that accumulates in memory without cleanup
+8. Improper cleanup in component lifecycles: Resources not released during destruction/unmounting
 
-    The review must cover the following sections:
+For each identified issue:
+- Provide a detailed description with specific code references
+- Indicate the severity based on potential impact
+- Include specific recommendations for fixing the issue
+- Consider the language-specific memory management patterns (garbage collection, manual memory management, etc.)
 
-    **Memory Leaks**
-      - Identify potential memory leaks such as unused arrays or improperly managed memory.
-      - Provide detailed issues and recommendations.
+Severity Guidelines:
+- High: Definite memory leak that will grow over time or with user interactions
+- Medium: Potential memory leak that may occur under certain conditions
+- Low: Inefficient memory usage that could be improved but not likely to cause crashes
 
-    Your output must strictly adhere to the JSON structure provided below, including all specified keys. Do not output any text besides the JSON in a single code block.
+Your output must strictly adhere to the following JSON structure:
 
-    **Output JSON Structure:**
+**Output JSON Structure:**
 
-    \`\`\`
-    {
-      "MemoryLeaks": {
-        "Issues": [
-          {
-            "Description": "Detailed description of potential memory leaks including file, line number, and affected variable/array names.",
-            "File": "File name",
-            "Line": "Line number(s)",
-            "Severity": "High/Medium/Low"
-          }
-        ],
-        "Recommendations": [
-          {
-            "Description": "Detailed recommendation to resolve the memory leak with specific instructions.",
-            "File": "Relevant file name",
-            "Line": "Line number(s)",
-            "Severity": "High/Medium/Low"
-          }
-        ]
+\`\`\`
+{
+  "MemoryLeaks": {
+    "Issues": [
+      {
+        "Description": "Detailed description of the memory leak including the mechanism and impact",
+        "File": "File name",
+        "Line": "Line number(s)",
+        "Code": "Relevant code snippet",
+        "LeakType": "Type of memory leak (e.g., 'Unfreed Resource', 'Event Listener Leak')",
+        "Severity": "High/Medium/Low",
+        "LanguageSpecific": "Any language-specific concerns (e.g., JavaScript closure leaks, C++ smart pointer usage)"
       }
+    ],
+    "Recommendations": [
+      {
+        "Description": "Detailed recommendation to resolve the memory leak with specific instructions",
+        "File": "Relevant file name",
+        "Line": "Line number(s)",
+        "ProposedFix": "Example code showing how to fix the issue",
+        "RelatedIssue": "Index of the related issue in the Issues array",
+        "Severity": "High/Medium/Low"
+      }
+    ],
+    "Summary": {
+      "TotalIssues": 0,
+      "SeverityCounts": {
+        "High": 0,
+        "Medium": 0,
+        "Low": 0
+      },
+      "MostAffectedFiles": [
+        "file1.js",
+        "file2.cpp"
+      ],
+      "CommonPatterns": "Description of any repeated memory management issues across the codebase",
+      "GeneralRecommendation": "Overall recommendation for improving memory management practices"
     }
-    \`\`\`
+  }
+}
+\`\`\`
 
-    Please generate the review following the above structure. Do not output the prompt text or any translations—only produce the JSON review with your findings based on the code, and ensure that your entire output is enclosed within a code block using triple backticks.
+When analyzing the code, consider the programming language being used and apply appropriate memory management principles. For example:
+- In C/C++: Look for proper pairing of malloc/free or new/delete, smart pointer usage, and RAII patterns
+- In JavaScript/TypeScript: Check for event listener removal, DOM references, and closure variable retention
+- In Python: Look for proper resource cleanup, context managers, and reference cycles
+- In Java/C#: Check for proper disposal of IDisposable objects and closing of resources
 
+Please generate the review following the above structure. Only produce the JSON review with your findings based on the code, enclosed within a code block using triple backticks.
   `;
 }
 
