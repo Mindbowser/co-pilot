@@ -37,12 +37,7 @@ function Footer() {
         <ProfileSwitcher />
         
         {accountEmail ? (
-          <HeaderButtonWithToolTip
-            tooltipPlacement="top-end"
-            text={`Logged in as ${accountEmail}`}
-          >
-            <UserCircleIcon className="h-4 w-4" />
-          </HeaderButtonWithToolTip>
+          <></>
           ) : 
           <div 
             onClick={handleAccountClicked} 

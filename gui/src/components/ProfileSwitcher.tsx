@@ -126,44 +126,11 @@ function ListBoxOption({
 
 function ProfileSwitcher() {
   const ideMessenger = useContext(IdeMessengerContext);
-  const { session, logout, login } = useAuth();
+  const { session, logout } = useAuth();
   const [profiles, setProfiles] = useState<ProfileDescription[]>([]);
-
-  const dispatch = useDispatch();
-  const lastControlServerBetaEnabledStatus = useAppSelector(
-    (state) => state.misc.lastControlServerBetaEnabledStatus,
-  );
 
   const selectedProfileId = useAppSelector(
     (store) => store.session.selectedProfileId,
-  );
-
-  const [controlServerBetaEnabled, setControlServerBetaEnabled] =
-    useState(false);
-
-  useEffect(() => {
-    ideMessenger.ide.getIdeSettings().then(({ enableControlServerBeta }) => {
-      setControlServerBetaEnabled(enableControlServerBeta);
-      dispatch(setLastControlServerBetaEnabledStatus(enableControlServerBeta));
-
-      const shouldShowPopup =
-        !lastControlServerBetaEnabledStatus && enableControlServerBeta;
-      if (shouldShowPopup) {
-        ideMessenger.ide.showToast("info", "Epico-Pilot for Teams enabled");
-      }
-    });
-  }, []);
-
-  useWebviewListener(
-    "didChangeIdeSettings",
-    async (msg) => {
-      const { settings } = msg;
-      setControlServerBetaEnabled(settings.enableControlServerBeta);
-      dispatch(
-        setLastControlServerBetaEnabledStatus(settings.enableControlServerBeta),
-      );
-    },
-    [],
   );
 
   useEffect(() => {
@@ -190,84 +157,21 @@ function ProfileSwitcher() {
 
   return (
     <>
-      {controlServerBetaEnabled && session?.account?.id && (
-        <StyledListbox
-          value={"GPT-4"}
-          onChange={(id: string) => {
-            ideMessenger.post("didChangeSelectedProfile", { id });
-          }}
+      {session?.account ? (
+        <HeaderButtonWithToolTip
+          tooltipPlacement="top-end"
+          text={
+            session.account.label === ""
+              ? "Logged in"
+              : `Logged in as ${session.account.label}`
+          }
+          onClick={logout}
         >
-          <div className="relative">
-            <StyledListboxButton>
-              <span className="truncate">{selectedProfile()?.title}</span>
-              <div className="pointer-events-none flex items-center">
-                <ChevronUpDownIcon
-                  className="h-4 w-4 text-gray-400"
-                  aria-hidden="true"
-                />
-              </div>
-            </StyledListboxButton>
-            {topDiv &&
-              ReactDOM.createPortal(
-                <Transition
-                  as={Fragment}
-                  leave="transition ease-in duration-100"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <StyledListboxOptions>
-                    {profiles.map((option, idx) => (
-                      <ListBoxOption
-                        selected={option.id === selectedProfileId}
-                        option={option}
-                        idx={idx}
-                        key={idx}
-                        showDelete={profiles.length > 1}
-                      />
-                    ))}
-                    <div
-                      className="px-2 py-1"
-                      style={{
-                        color: lightGray,
-                        fontSize: getFontSize() - 2,
-                      }}
-                    >
-                      {profiles.length === 0 ? (
-                        <i>No workspaces found</i>
-                      ) : (
-                        "Select workspace"
-                      )}
-                    </div>
-                  </StyledListboxOptions>
-                </Transition>,
-                topDiv,
-              )}
-          </div>
-        </StyledListbox>
+          <UserCircleIconSolid className="h-4 w-4" />
+        </HeaderButtonWithToolTip>
+      ) : (
+        <></>
       )}
-
-      {controlServerBetaEnabled &&
-        (session?.account ? (
-          <HeaderButtonWithToolTip
-            tooltipPlacement="top-end"
-            text={
-              session.account.label === ""
-                ? "Logged in"
-                : `Logged in as ${session.account.label}`
-            }
-            onClick={logout}
-          >
-            <UserCircleIconSolid className="h-4 w-4" />
-          </HeaderButtonWithToolTip>
-        ) : (
-          <HeaderButtonWithToolTip
-            tooltipPlacement="top-end"
-            text="Click to login to Epico-Pilot"
-            onClick={login}
-          >
-            <UserCircleIconOutline className="h-4 w-4" />
-          </HeaderButtonWithToolTip>
-        ))}
     </>
   );
 }

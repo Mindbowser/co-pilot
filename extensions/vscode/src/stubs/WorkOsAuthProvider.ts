@@ -214,7 +214,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
         const devDataDir = devDataPath();
         const sessionPath = path.join(devDataDir, "session.jsonl");
         // for now, donot delete the session file if we get an error
-        // fs.unlinkSync(sessionPath);
+        fs.unlinkSync(sessionPath);
         await this.debugAccessTokenValidity(
           session.accessToken,
           session.refreshToken,
@@ -372,6 +372,14 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
         changed: [],
       });
     }
+
+    const devDataDir = devDataPath();
+    const sessionPath = path.join(devDataDir, "session.jsonl");
+    try {
+      fs.unlinkSync(sessionPath);
+    } catch {
+      console.log("Error:", "No session file found!");
+    }
   }
 
   /**
@@ -443,7 +451,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
   }
 
   /**
-   * Handle the redirect to VS Code (after sign in from Continue)
+   * Handle the redirect to VS Code (after sign in from Epico-Pilot)
    * @param scopes
    * @returns
    */

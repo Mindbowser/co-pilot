@@ -336,7 +336,7 @@ export class VsCodeExtension {
       if (e.provider.id === controlPlaneEnv.AUTH_TYPE) {
         vscode.commands.executeCommand(
           "setContext",
-          "continue.isSignedInToControlPlane",
+          "epico-pilot.isSignedInToControlPlane",
           true,
         );
 
@@ -355,7 +355,7 @@ export class VsCodeExtension {
       } else {
         vscode.commands.executeCommand(
           "setContext",
-          "continue.isSignedInToControlPlane",
+          "epico-pilot.isSignedInToControlPlane",
           false,
         );
 

@@ -41,7 +41,7 @@ export class GUIActions {
   };
 
   public static openGui = async () => {
-    return new Workbench().executeCommand("continue.focusContinueInput");
+    return new Workbench().executeCommand("epico-pilot.focusContinueInput");
   };
 
   public static selectModelFromDropdown = async (

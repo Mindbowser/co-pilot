@@ -16,6 +16,9 @@ import { setLastControlServerBetaEnabledStatus } from "../redux/slices/miscSlice
 import { useWebviewListener } from "../hooks/useWebviewListener";
 import AccountDialog from "../components/AccountDialog";
 import { useAppSelector } from "../redux/hooks";
+import { setAccount } from "../redux/slices/configSlice";
+import { isNewUserOnboarding, useOnboardingCard } from "../components/OnboardingCard";
+import { useNavigate } from "react-router-dom";
 
 interface AuthContextType {
   session: ControlPlaneSessionInfo | undefined;
@@ -31,6 +34,9 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const navigate = useNavigate();
+  const onboardingCard = useOnboardingCard();
+
   const [session, setSession] = useState<ControlPlaneSessionInfo | undefined>(
     undefined,
   );
@@ -65,8 +71,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           dispatch(
             setDialogMessage(
               <ConfirmationDialog
-                title="Welcome to Continue for Teams!"
-                text="You can switch between your local profile and team profile using the profile icon in the top right. Each profile defines a set of models, slash commands, context providers, and other settings to customize Continue."
+                title="Welcome to Epico-Pilot!"
+                text=""
                 hideCancelButton={true}
                 confirmText="Ok"
                 onConfirm={() => {}}
@@ -84,13 +90,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setDialogMessage(
         <ConfirmationDialog
           confirmText="Yes, log out"
-          text="Are you sure you want to log out of Continue?"
+          text="Are you sure you want to log out of Epico-Pilot?"
           onConfirm={() => {
             ideMessenger.post("logoutOfControlPlane", undefined);
-          }}
-          onCancel={() => {
-            dispatch(setDialogMessage(<AccountDialog />));
-            dispatch(setShowDialog(true));
+            dispatch(setAccount({
+              accountEmail: "",
+              accountName: "",
+            }));
+            isNewUserOnboarding();
+            onboardingCard.open("Quickstart");
+            navigate("/");
           }}
         />,
       ),
@@ -124,7 +133,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       const shouldShowPopup =
         !lastControlServerBetaEnabledStatus && enableControlServerBeta;
       if (shouldShowPopup) {
-        ideMessenger.ide.showToast("info", "Continue for Teams enabled");
+        ideMessenger.ide.showToast("info", "Epico-Pilot enabled");
       }
     });
   }, []);
