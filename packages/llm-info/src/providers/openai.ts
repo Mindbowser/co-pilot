@@ -97,6 +97,14 @@ export const OpenAi: ModelProvider = {
       maxCompletionTokens: 65536,
       recommendedFor: ["chat"],
     },
+    // o3
+    {
+      model: "o3-mini",
+      displayName: "o3 Mini",
+      contextLength: 128000,
+      maxCompletionTokens: 65536,
+      recommendedFor: ["chat"],
+    },
     // embed
     {
       model: "text-embedding-3-large",

@@ -211,10 +211,6 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
       } catch (e: any) {
         // If the refresh token doesn't work, we just drop the session
         console.debug(`Error refreshing session token: ${e.message}`);
-        const devDataDir = devDataPath();
-        const sessionPath = path.join(devDataDir, "session.jsonl");
-        // for now, donot delete the session file if we get an error
-        fs.unlinkSync(sessionPath);
         await this.debugAccessTokenValidity(
           session.accessToken,
           session.refreshToken,

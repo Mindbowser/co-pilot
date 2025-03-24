@@ -1,4 +1,4 @@
-import { ChatCompletionCreateParams } from "openai/resources/index";
+import { ChatCompletionCreateParams, ChatCompletionMessageParam } from "openai/resources/index";
 
 import {
   ChatMessage,
@@ -46,7 +46,21 @@ const CHAT_ONLY_MODELS = [
   "gpt-4o-mini",
   "o1-preview",
   "o1-mini",
+  "o3-mini",
 ];
+
+const formatMessageForO1 = (messages: ChatCompletionMessageParam[]) => {
+  return messages?.map((message: any) => {
+    if (message?.role === "system") {
+      return {
+        ...message,
+        role: "user",
+      };
+    }
+
+    return message;
+  });
+};
 
 class OpenAI extends BaseLLM {
   public useLegacyCompletionsEndpoint: boolean | undefined = undefined;
@@ -80,6 +94,10 @@ class OpenAI extends BaseLLM {
     return (
       !!model && (model.startsWith("o1-preview") || model.startsWith("o1-mini"))
     );
+  }
+
+  private isO3orO1Model(model?: string): boolean {
+    return !!model && (model.startsWith("o1") || model.startsWith("o3"));
   }
 
   protected supportsPrediction(model: string): boolean {
@@ -126,18 +144,20 @@ class OpenAI extends BaseLLM {
 
     finalOptions.stop = options.stop?.slice(0, this.getMaxStopWords());
 
-    // OpenAI o1-preview and o1-mini:
-    if (this.isO1Model(options.model)) {
+    // OpenAI o1-preview and o1-mini or o3-mini:
+    if (this.isO3orO1Model(options.model)) {
       // a) use max_completion_tokens instead of max_tokens
       finalOptions.max_completion_tokens = options.maxTokens;
       finalOptions.max_tokens = undefined;
 
       // b) don't support system message
-      finalOptions.messages = finalOptions.messages?.filter(
-        (message: any) => message?.role !== "system",
-      );
+      finalOptions.messages = formatMessageForO1(finalOptions.messages);
     }
 
+    if (options.model === "o1") {
+      finalOptions.stream = false;
+    }
+    
     if (options.prediction && this.supportsPrediction(options.model)) {
       if (finalOptions.presence_penalty) {
         // prediction doesn't support > 0
@@ -217,16 +237,19 @@ class OpenAI extends BaseLLM {
   ): ChatCompletionCreateParams {
     body.stop = body.stop?.slice(0, this.getMaxStopWords());
 
-    // OpenAI o1-preview and o1-mini:
-    if (this.isO1Model(body.model)) {
+    // OpenAI o1-preview and o1-mini or o3-mini:
+    if (this.isO3orO1Model(body.model)) {
       // a) use max_completion_tokens instead of max_tokens
       body.max_completion_tokens = body.max_tokens;
       body.max_tokens = undefined;
 
       // b) don't support system message
-      body.messages = body.messages?.filter(
-        (message: any) => message?.role !== "system",
-      );
+      body.messages = formatMessageForO1(body.messages);
+    }
+
+    if (body.model === "o1") {
+      // o1 doesn't support streaming
+      body.stream = false;
     }
 
     if (body.prediction && this.supportsPrediction(body.model)) {

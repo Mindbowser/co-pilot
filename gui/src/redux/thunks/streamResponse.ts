@@ -1,6 +1,6 @@
 import { createAsyncThunk, unwrapResult } from "@reduxjs/toolkit";
 import { JSONContent } from "@tiptap/core";
-import { InputModifiers, MessageContent, SlashCommandDescription } from "core";
+import { InputModifiers, MessageContent, MessagePart, SlashCommandDescription } from "core";
 import { constructMessages } from "core/llm/constructMessages";
 import { renderChatMessage } from "core/util/messageContent";
 import posthog from "posthog-js";
@@ -95,12 +95,20 @@ export const streamResponseThunk = createAsyncThunk<
         // Construct messages from updated history
         const updatedHistory = getState().session.history;
         const messages = constructMessages(updatedHistory, defaultModel.model);
+        const extensionVersion = localStorage.getItem('extensionVersion');
 
         posthog.capture("step run", {
           step_name: "User Input",
           params: {},
         });
-        posthog.capture("userInput", {});
+        posthog.capture("userInput", {
+          modelName: defaultModel?.model,
+          modelProvider: defaultModel?.provider,
+          input: (content[0] as MessagePart).text,
+          accountEmail: state.config.accountEmail,
+          accountName: state.config.accountName,
+          extensionVersion: JSON.parse(extensionVersion),
+        });
 
         // Determine if the input is a slash command
         let commandAndInput = getSlashCommandForInput(content, slashCommands);

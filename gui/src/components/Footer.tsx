@@ -33,7 +33,7 @@ function Footer() {
 
   return (
     <footer className="flex h-7 items-center justify-between overflow-hidden border-0 border-t border-solid border-t-zinc-700 p-2">
-      <div className="flex max-w-[40vw] gap-2">
+      <div className="flex w-full gap-2">
         <ProfileSwitcher />
         
         {accountEmail ? (

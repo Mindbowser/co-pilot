@@ -837,6 +837,7 @@ export type ModelName =
   | "gpt-4-vision-preview"
   | "o1-preview"
   | "o1-mini"
+  | "o3-mini"
   // Mistral
   | "codestral-latest"
   | "open-mistral-7b"

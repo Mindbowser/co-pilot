@@ -7,24 +7,18 @@ import {
 
 export const DEFAULT_CHAT_MODEL_CONFIG: ModelDescription[] = [
   {
-    "model": "codellama-7b",
-    "provider": "ollama",
-    "apiBase": "https://pilot.epico.ai/",
-    "title": "Ollama Epico Pilot"
-  },
-  {
-    "model": "deepseek-coder:6.7b",
-    "provider": "ollama",
-    "apiBase": "https://pilot.epico.ai/",
-    "title": "DeepSeek Epico Pilot"
+    "model": "claude-3-5-haiku-latest",
+    "title": "Claude 3.5 Haiku",
+    "apiKey": "",
+    "provider": "anthropic"
   },
 ];
 
 export const DEFAULT_AUTOCOMPLETE_MODEL_CONFIG: ModelDescription = {
-  "title": "Tab Autocomplete Model",
-  "model": "codellama-7b",
-  "provider": "ollama",
-  "apiBase": "https://pilot.epico.ai/"
+  "model": "claude-3-5-haiku-latest",
+  "title": "Claude 3.5 Haiku",
+  "apiKey": "",
+  "provider": "anthropic"
 };
 
 export const FREE_TRIAL_MODELS: ModelDescription[] = [

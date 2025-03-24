@@ -1,177 +1,40 @@
-import { Listbox, Transition } from "@headlessui/react";
-import {
-  ChevronUpDownIcon,
-  UserCircleIcon as UserCircleIconOutline,
-} from "@heroicons/react/24/outline";
-import { UserCircleIcon as UserCircleIconSolid } from "@heroicons/react/24/solid";
-import { ProfileDescription } from "core/config/ConfigHandler";
-import { Fragment, useContext, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import {
-  defaultBorderRadius,
-  lightGray,
-  vscBackground,
-  vscForeground,
-  vscInputBackground,
-  vscListActiveBackground,
-  vscListActiveForeground,
-} from ".";
+import { UserCircleIcon as UserCircleIconSolid, ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/solid";
 import { useAuth } from "../context/Auth";
-import { IdeMessengerContext } from "../context/IdeMessenger";
-import { useWebviewListener } from "../hooks/useWebviewListener";
-import { setLastControlServerBetaEnabledStatus } from "../redux/slices/miscSlice";
 import { RootState } from "../redux/store";
-import { getFontSize } from "../util";
 import HeaderButtonWithToolTip from "./gui/HeaderButtonWithToolTip";
 import { useAppSelector } from "../redux/hooks";
 
-const StyledListbox = styled(Listbox)`
-  background-color: ${vscBackground};
-  min-width: 80px;
-`;
-
-const StyledListboxButton = styled(Listbox.Button)`
-  position: relative;
-  cursor: pointer;
-  background-color: ${vscBackground};
-  text-align: left;
-  border: none;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  max-width: 180px;
-  white-space: nowrap;
-  overflow: hidden;
-
-  border: 0.5px solid ${lightGray};
-  border-radius: ${defaultBorderRadius};
-
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-
-  color: ${vscForeground};
-
-  padding: 3px 6px;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    background-color: ${vscInputBackground};
-  }
-
-  font-size: ${getFontSize() - 2}px;
-`;
-
-const StyledListboxOptions = styled(Listbox.Options)`
-  background-color: ${vscInputBackground};
-  padding: 0;
-
-  position: absolute;
-  bottom: calc(100% - 16px);
-  max-width: 100%;
-  max-height: 80vh;
-
-  border-radius: ${defaultBorderRadius};
-  overflow-y: scroll;
-`;
-
-const StyledListboxOption = styled(Listbox.Option)<{ selected: boolean }>`
-  background-color: ${({ selected }) =>
-    selected ? vscListActiveBackground : vscInputBackground};
-  cursor: pointer;
-  padding: 6px 8px;
-
-  &:hover {
-    background-color: ${vscListActiveBackground};
-    color: ${vscListActiveForeground};
-  }
-`;
-
-function ListBoxOption({
-  option,
-  idx,
-  showDelete,
-  selected,
-}: {
-  option: ProfileDescription;
-  idx: number;
-  showDelete?: boolean;
-  selected: boolean;
-}) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <StyledListboxOption
-      key={idx}
-      selected={selected}
-      value={option.id}
-      onMouseEnter={() => {
-        setHovered(true);
-      }}
-      onMouseLeave={() => {
-        setHovered(false);
-      }}
-    >
-      <div className="relative flex h-5 items-center justify-between gap-3">
-        {option.title}
-      </div>
-    </StyledListboxOption>
-  );
-}
-
 function ProfileSwitcher() {
-  const ideMessenger = useContext(IdeMessengerContext);
-  const { session, logout } = useAuth();
-  const [profiles, setProfiles] = useState<ProfileDescription[]>([]);
-
-  const selectedProfileId = useAppSelector(
-    (store) => store.session.selectedProfileId,
+  const { logout } = useAuth();
+  const accountEmail = useAppSelector(
+    (state: RootState) => state.config?.accountEmail,
   );
-
-  useEffect(() => {
-    ideMessenger
-      .request("config/listProfiles", undefined)
-      .then(
-        (result) => result.status === "success" && setProfiles(result.content),
-      );
-  }, []);
-
-  useWebviewListener(
-    "didChangeAvailableProfiles",
-    async (data) => {
-      setProfiles(data.profiles);
-    },
-    [],
-  );
-
-  const topDiv = document.getElementById("profile-select-top-div");
-
-  function selectedProfile() {
-    return profiles.find((p) => p.id === selectedProfileId);
-  }
 
   return (
     <>
-      {session?.account ? (
-        <HeaderButtonWithToolTip
-          tooltipPlacement="top-end"
-          text={
-            session.account.label === ""
-              ? "Logged in"
-              : `Logged in as ${session.account.label}`
-          }
-          onClick={logout}
-        >
-          <UserCircleIconSolid className="h-4 w-4" />
-        </HeaderButtonWithToolTip>
-      ) : (
-        <></>
-      )}
+      {accountEmail ? (
+        <div className="flex w-full justify-between gap-2">
+          <HeaderButtonWithToolTip
+            tooltipPlacement="top-end"
+            text={
+              accountEmail === ""
+                ? "Logged in"
+                : `Logged in as ${accountEmail}`
+            }
+          >
+            <UserCircleIconSolid className="h-4 w-4" />
+          </HeaderButtonWithToolTip>
+          <HeaderButtonWithToolTip
+            tooltipPlacement="top-end"
+            text="Logout"
+            onClick={logout}
+          >
+            <ArrowLeftStartOnRectangleIcon className="h-4 w-4" />
+          </HeaderButtonWithToolTip>
+        </div>
+        ) : (
+          <></>
+        )}
     </>
   );
 }

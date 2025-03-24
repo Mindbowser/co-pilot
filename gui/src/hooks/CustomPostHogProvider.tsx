@@ -16,8 +16,8 @@ const CustomPostHogProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (allowAnonymousTelemetry) {
-      posthog.init("phc_JS6XFROuNbhJtVCEdTSYk6gl5ArRrTNMpCcguAXlSPs", {
-        api_host: "https://app.posthog.com",
+      posthog.init("phc_fhpVNKE9FlZLxdiBN88s01gBkgoOxHnjtKZuVqX7ZaX", {
+        api_host: "https://us.i.posthog.com",
         disable_session_recording: true,
         autocapture: false,
         // // We need to manually track pageviews since we're a SPA
@@ -26,7 +26,8 @@ const CustomPostHogProvider = ({ children }: PropsWithChildren) => {
       });
       posthog.identify(window.vscMachineId, {
         accountName: config.accountName,
-        accountEmail: config.accountEmail
+        accountEmail: config.accountEmail,
+        lastSeen: new Date().toISOString(),
       });
       posthog.opt_in_capturing();
       setClient(client);

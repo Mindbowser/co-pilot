@@ -54,7 +54,9 @@ import WatsonX from "./WatsonX";
 import xAI from "./xAI";
 
 export const LLMClasses = [
+  Anthropic,
   Ollama,
+  OpenAI,
 ];
 
 export async function llmFromDescription(

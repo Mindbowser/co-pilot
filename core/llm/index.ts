@@ -208,7 +208,7 @@ export abstract class BaseLLM implements ILLM {
       );
     this.writeLog = options.writeLog;
     this.llmRequestHook = options.llmRequestHook;
-    this.apiKey = session?.accessToken;
+    this.apiKey = options?.apiKey;
     this.aiGatewaySlug = options.aiGatewaySlug;
     this.apiBase = options.apiBase;
     this.cacheBehavior = options.cacheBehavior;
@@ -387,9 +387,23 @@ export abstract class BaseLLM implements ILLM {
             text =
               "You may need to add pre-paid credits before using the OpenAI API.";
           } else if (resp.status === 400 && text.includes("Error parsing JWT token")) {
+            try {
+              const devDataDir = path.join(CONTINUE_GLOBAL_DIR, "dev_data");
+              const sessionPath = path.join(devDataDir, "session.jsonl");
+              // fs.unlinkSync(sessionPath)
+            } catch {
+              console.log("Error:", "No session file found!");
+            }
             throw new Error("Session expired, please log in."); 
           }
           else if (resp.status === 401) {
+            try {
+              const devDataDir = path.join(CONTINUE_GLOBAL_DIR, "dev_data");
+              const sessionPath = path.join(devDataDir, "session.jsonl");
+              // fs.unlinkSync(sessionPath)
+            } catch {
+              console.log("Error:", "No session file found!");
+            }
             throw new Error("Session expired, please log in."); 
           }
           throw new Error(
@@ -702,53 +716,52 @@ export abstract class BaseLLM implements ILLM {
     }
     
     let completion = "";
-    const lowContextInputs = ["hi", "hello", "how are you", "thanks", "goodbye"];
-    const message = messages?.[messages?.length - 1]?.content as string;
-    if (lowContextInputs.includes(message.toLowerCase())) {
-      yield { role: "assistant", content: this.handleDefaultBehavior(message) };
-    } else {
-      try {
-        if (this.templateMessages) {
-          for await (const chunk of this._streamComplete(
-            prompt,
+    // const lowContextInputs = ["hi", "hello", "how are you", "thanks", "goodbye"];
+    // const message = messages?.[messages?.length - 1]?.content as string;
+    // if (lowContextInputs.includes(message.toLowerCase())) {
+    //   yield { role: "assistant", content: this.handleDefaultBehavior(message) };
+    // } else {
+    try {
+      if (this.templateMessages) {
+        for await (const chunk of this._streamComplete(
+          prompt,
+          signal,
+          completionOptions,
+        )) {
+          completion += chunk;
+          yield { role: "assistant", content: chunk };
+        }
+      } else {
+        if (this.shouldUseOpenAIAdapter("streamChat") && this.openaiAdapter) {
+          let body = toChatBody(messages, completionOptions);
+          body = this.modifyChatBody(body);
+          const stream = this.openaiAdapter.chatCompletionStream(
+            {
+              ...body,
+              stream: true,
+            },
+            signal,
+          );
+          for await (const chunk of stream) {
+            const result = fromChatCompletionChunk(chunk);
+            if (result) {
+              yield result;
+            }
+          }
+        } else {
+          for await (const chunk of this._streamChat(
+            messages,
             signal,
             completionOptions,
           )) {
-            completion += chunk;
-            yield { role: "assistant", content: chunk };
-          }
-        } else {
-          if (this.shouldUseOpenAIAdapter("streamChat") && this.openaiAdapter) {
-            let body = toChatBody(messages, completionOptions);
-            body = this.modifyChatBody(body);
-            const stream = this.openaiAdapter.chatCompletionStream(
-              {
-                ...body,
-                stream: true,
-              },
-              signal,
-            );
-            for await (const chunk of stream) {
-              const result = fromChatCompletionChunk(chunk);
-              if (result) {
-                yield result;
-              }
-            }
-          } else {
-            for await (const chunk of this._streamChat(
-              messages,
-              signal,
-              completionOptions,
-            )) {
-              completion += chunk.content;
-              yield chunk;
-            }
+            completion += chunk.content;
+            yield chunk;
           }
         }
-      } catch (error) {
-        console.log(error);
-        throw error;
       }
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
 
 

@@ -331,6 +331,9 @@ export class Core {
           "useContextProvider",
           {
             name: provider.description.title,
+            input: fullInput,
+            modelName: llm.model,
+            modelProvider: llm.providerName,
           },
           true,
         );
@@ -535,6 +538,9 @@ export class Core {
         "useSlashCommand",
         {
           name: slashCommandName,
+          input,
+          modelName: llm.model,
+          modelProvider: llm.providerName,
         },
         true,
       );

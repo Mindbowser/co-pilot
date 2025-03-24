@@ -309,9 +309,10 @@ function ModelSelect() {
         const updateAutocompleteModel = async (model) => {
           const autocompleteModelConfig = {
             title: "Tab Autocomplete Model",
-            provider: "ollama",
-            model,
-            apiBase: "https://pilot.epico.ai/",
+            provider: model.provider,
+            model: model.model,
+            apiBase: model.apiBase,
+            apiKey: model.apiKey,
           };
           await ideMessenger.request("addAutocompleteModel", {
             model: autocompleteModelConfig,
@@ -321,7 +322,7 @@ function ModelSelect() {
           (model) => model.title === val,
         );
         if (model) {   
-          updateAutocompleteModel(model.model);
+          updateAutocompleteModel(model);
         }
       }}
     >
