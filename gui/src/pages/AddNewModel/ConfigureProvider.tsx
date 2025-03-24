@@ -6,20 +6,20 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
-  Input,
-  defaultBorderRadius,
-  lightGray,
-  vscBackground,
+    Input,
+    defaultBorderRadius,
+    lightGray,
+    vscBackground,
 } from "../../components";
 import StyledMarkdownPreview from "../../components/markdown/StyledMarkdownPreview";
 import ModelCard from "../../components/modelSelection/ModelCard";
 import { ModelProviderTag } from "../../components/modelSelection/ModelProviderTag";
 import { IdeMessengerContext } from "../../context/IdeMessenger";
 import { useNavigationListener } from "../../hooks/useNavigationListener";
+import { setDefaultModel } from "../../redux/slices/configSlice";
 import { updatedObj } from "../../util";
 import type { ProviderInfo } from "./configs/providers";
 import { providers } from "./configs/providers";
-import { setDefaultModel } from "../../redux/slices/configSlice";
 
 const GridDiv = styled.div`
   display: grid;

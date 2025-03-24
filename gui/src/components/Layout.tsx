@@ -8,11 +8,11 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { selectUseHub } from "../redux/selectors";
 import { focusEdit, setEditStatus } from "../redux/slices/editModeState";
 import {
-  addCodeToEdit,
-  newSession,
-  selectIsInEditMode,
-  setMode,
-  updateApplyState,
+    addCodeToEdit,
+    newSession,
+    selectIsInEditMode,
+    setMode,
+    updateApplyState,
 } from "../redux/slices/sessionSlice";
 import { setShowDialog } from "../redux/slices/uiSlice";
 import { exitEditMode } from "../redux/thunks";
@@ -252,7 +252,7 @@ const Layout = () => {
   const useHub = useAppSelector(selectUseHub);
 
   // Existing users that have already seen the onboarding card
-  // should be shown an intro card for hub.continue.dev
+  // should be shown an intro card for hub.epico-pilot.dev
   // useEffect(() => {
   //   if (useHub !== true) {
   //     return;

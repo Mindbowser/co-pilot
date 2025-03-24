@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { Button, ButtonSubtext } from "../..";
 import { IdeMessengerContext } from "../../../context/IdeMessenger";
+import { setDefaultModel } from "../../../redux/slices/configSlice";
 import { setDialogMessage, setShowDialog } from "../../../redux/slices/uiSlice";
 import { isJetBrains } from "../../../util";
 import { useSubmitOnboarding } from "../hooks";
 import JetBrainsFetchGitHubTokenDialog from "./JetBrainsFetchGitHubTokenDialog";
-import { setDefaultModel } from "../../../redux/slices/configSlice";
 
 interface QuickstartSubmitButtonProps {
   isDialog?: boolean;
@@ -46,7 +46,7 @@ function QuickstartSubmitButton({ isDialog }: QuickstartSubmitButtonProps) {
     } else {
       ideMessenger.post("showToast", [
         "error",
-        "Failed to sign up for Continue free trial through GitHub",
+        "Failed to sign up for Epico Pilot free trial through GitHub",
       ]);
     }
   }

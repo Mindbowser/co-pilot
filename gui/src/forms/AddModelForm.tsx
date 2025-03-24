@@ -7,14 +7,14 @@ import AddModelButtonSubtext from "../components/AddModelButtonSubtext";
 import Alert from "../components/gui/Alert";
 import ModelSelectionListbox from "../components/modelSelection/ModelSelectionListbox";
 import { IdeMessengerContext } from "../context/IdeMessenger";
-import {
-  ProviderInfo,
-  providers,
-} from "../pages/AddNewModel/configs/providers";
-import { FREE_TRIAL_LIMIT_REQUESTS, hasPassedFTL } from "../util/freeTrial";
 import { completionParamsInputs } from "../pages/AddNewModel/configs/completionParamsInputs";
-import { setDefaultModel } from "../redux/slices/configSlice";
 import { DisplayInfo } from "../pages/AddNewModel/configs/models";
+import {
+    ProviderInfo,
+    providers,
+} from "../pages/AddNewModel/configs/providers";
+import { setDefaultModel } from "../redux/slices/configSlice";
+import { FREE_TRIAL_LIMIT_REQUESTS, hasPassedFTL } from "../util/freeTrial";
 
 interface QuickModelSetupProps {
   onDone: () => void;
@@ -22,9 +22,9 @@ interface QuickModelSetupProps {
 }
 
 const MODEL_PROVIDERS_URL =
-  "https://docs.continue.dev/customize/model-providers";
+  "https://docs.epico-pilot.dev/customize/model-providers";
 const CODESTRAL_URL = "https://console.mistral.ai/codestral";
-const CONTINUE_SETUP_URL = "https://docs.continue.dev/setup/overview";
+const CONTINUE_SETUP_URL = "https://docs.epico-pilot.dev/setup/overview";
 
 function AddModelForm({
   onDone,
@@ -133,7 +133,7 @@ function AddModelForm({
           {!hideFreeTrialLimitMessage && hasPassedFTL() && (
             <p className="text-sm text-gray-400">
               You've reached the free trial limit of {FREE_TRIAL_LIMIT_REQUESTS}{" "}
-              free inputs. To keep using Continue, you can either use your own
+              free inputs. To keep using Epico Pilot, you can either use your own
               API key, or use a local LLM. To read more about the options, see
               our{" "}
               <a

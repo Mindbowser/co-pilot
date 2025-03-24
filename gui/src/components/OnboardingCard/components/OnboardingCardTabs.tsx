@@ -23,8 +23,8 @@ export const TabTitles: { [k in TabTitle]: { md: string; default: string } } = {
     default: "Local with Ollama",
   },
   ExistingUserHubIntro: {
-    md: "Try out hub.continue.dev",
-    default: "Try out hub.continue.dev",
+    md: "Try out hub.epico-pilot.dev",
+    default: "Try out hub.epico-pilot.dev",
   },
 };
 

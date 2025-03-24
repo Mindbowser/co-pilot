@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {
-  defaultBorderRadius,
-  lightGray,
-  vscBackground,
+    defaultBorderRadius,
+    lightGray,
+    vscBackground,
 } from "../../components";
 import ModelCard from "../../components/modelSelection/ModelCard";
 import Toggle from "../../components/modelSelection/Toggle";
@@ -97,7 +97,7 @@ function AddNewModel() {
           </ul>
           <Link
             target="_blank"
-            to="https://docs.continue.dev/model-setup/overview"
+            to="https://docs.epico-pilot.dev/model-setup/overview"
           >
             Visit our setup overview docs
           </Link>{" "}
@@ -134,7 +134,7 @@ function AddNewModel() {
                     description={modelInfo.description}
                     tags={modelInfo.tags}
                     icon={modelInfo.icon}
-                    refUrl={`https://docs.continue.dev/reference/Model%20Providers/${
+                    refUrl={`https://docs.epico-pilot.dev/reference/Model%20Providers/${
                       modelInfo.refPage || modelInfo.provider.toLowerCase()
                     }`}
                     onClick={(e) => {

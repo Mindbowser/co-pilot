@@ -1,8 +1,8 @@
 import {
-  ArrowLeftIcon,
-  ChatBubbleOvalLeftIcon,
-  CodeBracketSquareIcon,
-  ExclamationTriangleIcon,
+    ArrowLeftIcon,
+    ChatBubbleOvalLeftIcon,
+    CodeBracketSquareIcon,
+    ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 import { Editor, JSONContent } from "@tiptap/react";
 import { InputModifiers, RangeInFileWithContents, ToolCallState } from "core";
@@ -36,14 +36,14 @@ import { selectCurrentToolCall } from "../../redux/selectors/selectCurrentToolCa
 import { selectDefaultModel } from "../../redux/slices/configSlice";
 import { submitEdit } from "../../redux/slices/editModeState";
 import {
-  newSession,
-  selectIsInEditMode,
-  selectIsSingleRangeEditOrInsertion,
+    newSession,
+    selectIsInEditMode,
+    selectIsSingleRangeEditOrInsertion,
 } from "../../redux/slices/sessionSlice";
 import {
-  setDialogEntryOn,
-  setDialogMessage,
-  setShowDialog,
+    setDialogEntryOn,
+    setDialogMessage,
+    setShowDialog,
 } from "../../redux/slices/uiSlice";
 import { RootState } from "../../redux/store";
 import { cancelStream } from "../../redux/thunks/cancelStream";
@@ -52,8 +52,8 @@ import { loadLastSession } from "../../redux/thunks/session";
 import { streamResponseThunk } from "../../redux/thunks/streamResponse";
 import { isMetaEquivalentKeyPressed } from "../../util";
 import {
-  FREE_TRIAL_LIMIT_REQUESTS,
-  incrementFreeTrialCount,
+    FREE_TRIAL_LIMIT_REQUESTS,
+    incrementFreeTrialCount,
 } from "../../util/freeTrial";
 import getMultifileEditPrompt from "../../util/getMultifileEditPrompt";
 import { getLocalStorage, setLocalStorage } from "../../util/localStorage";
@@ -174,7 +174,7 @@ export function Chat() {
           // So that something happens if in new chat
           ideMessenger.ide.showToast(
             "error",
-            "You've reached the free trial limit. Please configure a model to continue.",
+            "You've reached the free trial limit. Please configure a model to epico-pilot.",
           );
 
           // Card in chat will only show if no history

@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import {
-  defaultBorderRadius,
-  lightGray,
-  vscButtonBackground,
-  vscButtonForeground,
+    defaultBorderRadius,
+    lightGray,
+    vscButtonBackground,
+    vscButtonForeground,
 } from "../../../components";
 import Spinner from "../../../components/gui/Spinner";
 import { useAppDispatch } from "../../../redux/hooks";
@@ -79,7 +79,7 @@ export function ToolCallButtons(props: ToolCallButtonsProps) {
               onClick={() => dispatch(callTool())}
               data-testid="accept-tool-call-button"
             >
-              Continue
+              Epico Pilot
             </AcceptButton>
           </>
         ) : toolCallState.status === "calling" ? (

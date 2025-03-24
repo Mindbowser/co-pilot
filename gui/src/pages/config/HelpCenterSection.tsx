@@ -1,7 +1,7 @@
 import {
-  ArrowTopRightOnSquareIcon,
-  DocumentArrowUpIcon,
-  TableCellsIcon,
+    ArrowTopRightOnSquareIcon,
+    DocumentArrowUpIcon,
+    TableCellsIcon,
 } from "@heroicons/react/24/outline";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,10 +22,10 @@ export function HelpCenterSection() {
       <div className="-mx-4 flex flex-col">
         <MoreHelpRow
           title="Documentation"
-          description="Learn how to configure and use Continue"
+          description="Learn how to configure and use Epico Pilot"
           Icon={ArrowTopRightOnSquareIcon}
           onClick={() =>
-            ideMessenger.post("openUrl", "https://docs.continue.dev/")
+            ideMessenger.post("openUrl", "https://docs.epico-pilot.dev/")
           }
         />
 
@@ -36,7 +36,7 @@ export function HelpCenterSection() {
           onClick={() =>
             ideMessenger.post(
               "openUrl",
-              "https://github.com/continuedev/continue/issues/new/choose",
+              "https://github.com/Mindbowser/co-pilot/issues/new/choose",
             )
           }
         />

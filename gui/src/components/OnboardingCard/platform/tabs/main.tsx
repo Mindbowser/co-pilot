@@ -45,21 +45,21 @@ export default function MainTab({
       {pastFreeTrialLimit ? (
         <>
           <p className="xs:w-3/4 w-full text-sm">
-            You've reached the free trial limit. Visit the Continue Platform to
+            You've reached the free trial limit. Visit the Epico Pilot Platform to
             select a Coding Assistant.
           </p>
           <Button
             onClick={openPastFreeTrialOnboarding}
             className="mt-4 grid w-full grid-flow-col items-center gap-2"
           >
-            Go to Continue Platform
+            Go to Epico Pilot Platform
           </Button>
         </>
       ) : onboardingCard.activeTab === "ExistingUserHubIntro" ? (
         <>
           <p className="xs:w-3/4 w-full text-sm">
             You can now browse and create custom AI code assistants at{" "}
-            <code>hub.continue.dev</code>
+            <code>hub.epico-pilot.dev</code>
           </p>
 
           <Button
@@ -87,7 +87,7 @@ export default function MainTab({
       {onboardingCard.activeTab === "ExistingUserHubIntro" ? (
         <ButtonSubtext onClick={() => onboardingCard.close(isDialog)}>
           <div className="mt-4 flex cursor-pointer items-center justify-center gap-1">
-            <span>Or, use Continue as usual</span>
+            <span>Or, use Epico Pilot as usual</span>
             <ChevronRightIcon className="h-3 w-3" />
           </div>
         </ButtonSubtext>

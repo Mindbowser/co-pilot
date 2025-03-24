@@ -15,7 +15,7 @@ type LocalStorageTypes = {
   showTutorialCard: boolean;
   shownProfilesIntroduction: boolean;
   disableIndexing: boolean;
-  /** Indicates whether the user has seen any kind of onboarding card since hub.continue.dev */
+  /** Indicates whether the user has seen any kind of onboarding card since hub.epico-pilot.dev */
   seenHubIntro: boolean;
 };
 

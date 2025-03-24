@@ -1,12 +1,12 @@
 import { BarsArrowDownIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { ChatHistoryItem } from "core";
 import { renderChatMessage } from "core/util/messageContent";
+import { useAppSelector } from "../../redux/hooks";
+import { selectIsInEditMode } from "../../redux/slices/sessionSlice";
 import { CopyIconButton } from "../gui/CopyIconButton";
 import HeaderButtonWithToolTip from "../gui/HeaderButtonWithToolTip";
 import EditActions from "./EditActions";
 import FeedbackButtons from "./FeedbackButtons";
-import { useAppSelector } from "../../redux/hooks";
-import { selectIsInEditMode } from "../../redux/slices/sessionSlice";
 
 export interface ResponseActionsProps {
   isTruncated: boolean;
@@ -34,7 +34,7 @@ export default function ResponseActions({
       {isTruncated && (
         <HeaderButtonWithToolTip
           tabIndex={-1}
-          text="Continue generation"
+          text="Epico Pilot generation"
           onClick={onContinueGeneration}
         >
           <BarsArrowDownIcon className="h-3.5 w-3.5 text-gray-500" />

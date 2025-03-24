@@ -15,7 +15,7 @@ export const CodeBlockComponent = (props: any) => {
   const isFirstContextItem = false; // TODO: fix this, decided not worth the insane renders for now
 
   // Not setting this as a "p" will cause issues with foreign keyboards
-  // See https://github.com/continuedev/continue/issues/3199
+  // See https://github.com/Mindbowser/co-pilot/issues/3199
   const nodeViewWrapperTag: NodeViewWrapperProps["as"] = "p";
 
   return (

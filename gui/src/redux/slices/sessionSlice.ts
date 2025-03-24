@@ -1,25 +1,25 @@
 import {
-  ActionReducerMapBuilder,
-  AsyncThunk,
-  PayloadAction,
-  createSelector,
-  createSlice,
+    ActionReducerMapBuilder,
+    AsyncThunk,
+    PayloadAction,
+    createSelector,
+    createSlice,
 } from "@reduxjs/toolkit";
 import { JSONContent } from "@tiptap/react";
 import {
-  ApplyState,
-  ChatHistoryItem,
-  ChatMessage,
-  CodeToEdit,
-  ContextItem,
-  ContextItemWithId,
-  FileSymbolMap,
-  MessageModes,
-  PromptLog,
-  Session,
-  SessionMetadata,
-  ToolCallDelta,
-  ToolCallState,
+    ApplyState,
+    ChatHistoryItem,
+    ChatMessage,
+    CodeToEdit,
+    ContextItem,
+    ContextItemWithId,
+    FileSymbolMap,
+    MessageModes,
+    PromptLog,
+    Session,
+    SessionMetadata,
+    ToolCallDelta,
+    ToolCallState,
 } from "core";
 import { NEW_SESSION_TITLE } from "core/util/constants";
 import { incrementalParseJson } from "core/util/incrementalParseJson";

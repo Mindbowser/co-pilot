@@ -1,16 +1,16 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useContext, useState } from "react";
-import { StyledActionButton, Input, Button, ButtonSubtext } from "../..";
+import { useDispatch } from "react-redux";
+import { Button, ButtonSubtext, Input, StyledActionButton } from "../..";
 import { IdeMessengerContext } from "../../../context/IdeMessenger";
 import { setShowDialog } from "../../../redux/slices/uiSlice";
-import { useDispatch } from "react-redux";
 
 interface JetBrainsFetchGitHubTokenDialogProps {
   onComplete: () => void;
 }
 
 const GITHUB_AUTH_URL =
-  "https://github.com/settings/tokens/new?scopes=user:email&description=Continue%20Free%20Trial%20Token%20";
+  "https://github.com/settings/tokens/new?scopes=user:email&description=Epico Pilot%20Free%20Trial%20Token%20";
 
 function JetBrainsFetchGitHubTokenDialog({
   onComplete,
@@ -38,9 +38,9 @@ function JetBrainsFetchGitHubTokenDialog({
       <div className="text-center">
         <h1 className="my-0 text-xl">Sign in with GitHub</h1>
         <p className="text-sm">
-          Continue will request read access to your GitHub email so that we can
+          Epico Pilot will request read access to your GitHub email so that we can
           prevent abuse of the free trial. If you prefer not to sign in, you can
-          use Continue with your own API keys or local model.
+          use Epico Pilot with your own API keys or local model.
         </p>
       </div>
 

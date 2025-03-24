@@ -1,14 +1,14 @@
 import {
-  OrganizationDescription,
-  ProfileDescription,
+    OrganizationDescription,
+    ProfileDescription,
 } from "core/config/ProfileLifecycleManager";
 import { ControlPlaneSessionInfo } from "core/control-plane/client";
 import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
+    createContext,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
 } from "react";
 import ConfirmationDialog from "../components/dialogs/ConfirmationDialog";
 import { useWebviewListener } from "../hooks/useWebviewListener";
@@ -87,7 +87,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setDialogMessage(
         <ConfirmationDialog
           confirmText="Yes, log out"
-          text="Are you sure you want to log out of Continue?"
+          text="Are you sure you want to log out of Epico Pilot?"
           onConfirm={() => {
             ideMessenger.post("logoutOfControlPlane", undefined);
           }}

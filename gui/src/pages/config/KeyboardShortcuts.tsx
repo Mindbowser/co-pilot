@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import {
-  defaultBorderRadius,
-  lightGray,
-  vscForeground,
+    defaultBorderRadius,
+    lightGray,
+    vscForeground,
 } from "../../components";
 import { ToolTip } from "../../components/gui/Tooltip";
 import { getPlatform, isJetBrains } from "../../util";
@@ -90,7 +90,7 @@ const vscodeShortcuts: KeyboardShortcutProps[] = [
     mac: "⌘ L",
     windows: "⌃ L",
     description:
-      "New Chat / New Chat With Selected Code / Close Continue Sidebar If Chat Already In Focus",
+      "New Chat / New Chat With Selected Code / Close Epico Pilot Sidebar If Chat Already In Focus",
   },
   {
     mac: "⌘ ⌫",
@@ -106,7 +106,7 @@ const vscodeShortcuts: KeyboardShortcutProps[] = [
     mac: "⌘ ⇧ L",
     windows: "⌃ ⇧ L",
     description:
-      "Focus Current Chat / Add Selected Code To Current Chat / Close Continue Sidebar If Chat Already In Focus",
+      "Focus Current Chat / Add Selected Code To Current Chat / Close Epico Pilot Sidebar If Chat Already In Focus",
   },
   {
     mac: "⌘ ⇧ R",
@@ -160,7 +160,7 @@ const jetbrainsShortcuts: KeyboardShortcutProps[] = [
     mac: "⌘ J",
     windows: "⌃ J",
     description:
-      "New Chat / New Chat With Selected Code / Close Continue Sidebar If Chat Already In Focus",
+      "New Chat / New Chat With Selected Code / Close Epico Pilot Sidebar If Chat Already In Focus",
   },
   {
     mac: "⌘ ⌫",
@@ -176,7 +176,7 @@ const jetbrainsShortcuts: KeyboardShortcutProps[] = [
     mac: "⌘ ⇧ J",
     windows: "⌃ ⇧ J",
     description:
-      "Focus Current Chat / Add Selected Code To Current Chat / Close Continue Sidebar If Chat Already In Focus",
+      "Focus Current Chat / Add Selected Code To Current Chat / Close Epico Pilot Sidebar If Chat Already In Focus",
   },
   {
     mac: "⌘ ⇧ ⌫",

@@ -2,10 +2,10 @@ import { createAsyncThunk, unwrapResult } from "@reduxjs/toolkit";
 import { selectCurrentToolCall } from "../selectors/selectCurrentToolCall";
 import { selectDefaultModel } from "../slices/configSlice";
 import {
-  acceptToolCall,
-  cancelToolCall,
-  setCalling,
-  setToolCallOutput,
+    acceptToolCall,
+    cancelToolCall,
+    setCalling,
+    setToolCallOutput,
 } from "../slices/sessionSlice";
 import { ThunkApiType } from "../store";
 import { streamResponseAfterToolCall } from "./streamResponseAfterToolCall";
@@ -41,7 +41,7 @@ export const callTool = createAsyncThunk<void, undefined, ThunkApiType>(
       dispatch(setToolCallOutput(contextItems));
       dispatch(acceptToolCall());
 
-      // Send to the LLM to continue the conversation
+      // Send to the LLM to epico-pilot the conversation
       const response = await dispatch(
         streamResponseAfterToolCall({
           toolCallId: toolCallState.toolCall.id,

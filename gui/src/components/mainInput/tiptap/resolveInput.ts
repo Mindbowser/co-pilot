@@ -1,13 +1,13 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { JSONContent } from "@tiptap/react";
 import {
-  ContextItemWithId,
-  DefaultContextProvider,
-  InputModifiers,
-  MessageContent,
-  MessagePart,
-  RangeInFile,
-  TextMessagePart,
+    ContextItemWithId,
+    DefaultContextProvider,
+    InputModifiers,
+    MessageContent,
+    MessagePart,
+    RangeInFile,
+    TextMessagePart,
 } from "core";
 import { ctxItemToRifWithContents } from "core/commands/util";
 import { stripImages } from "core/util/messageContent";

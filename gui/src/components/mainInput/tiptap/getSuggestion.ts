@@ -1,8 +1,8 @@
 import { Editor, ReactRenderer } from "@tiptap/react";
 import {
-  ContextProviderDescription,
-  ContextSubmenuItem,
-  ContextSubmenuItemWithProvider,
+    ContextProviderDescription,
+    ContextSubmenuItem,
+    ContextSubmenuItemWithProvider,
 } from "core";
 import { MutableRefObject } from "react";
 import tippy from "tippy.js";
@@ -167,7 +167,7 @@ export function getContextProviderDropdownOptions(
         action: () => {
           ideMessenger.post(
             "openUrl",
-            "https://docs.continue.dev/customization/context-providers#built-in-context-providers",
+            "https://docs.epico-pilot.dev/customization/context-providers#built-in-context-providers",
           );
         },
         description: "",
@@ -226,7 +226,7 @@ export function getSlashCommandDropdownOptions(
         action: () =>
           ideMessenger.post(
             "openUrl",
-            "https://hub.continue.dev/explore/prompts",
+            "https://hub.epico-pilot.dev/explore/prompts",
           ),
         description: "",
         name: "",

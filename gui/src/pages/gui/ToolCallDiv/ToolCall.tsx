@@ -61,7 +61,7 @@ export function ToolCallDisplay(props: ToolCallDisplayProps) {
                 <img src={tool.faviconUrl} className="h-4 w-4 rounded-sm" />
               )}
               <div className="">
-                Continue wants to{" "}
+                Epico Pilot wants to{" "}
                 {wouldLikeToMessage ? (
                   <span>{wouldLikeToMessage}</span>
                 ) : (
