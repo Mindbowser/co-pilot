@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import com.github.continuedev.continueintellijextension.services.ContinuePluginService
 import com.github.continuedev.continueintellijextension.utils.getAltKeyLabel
@@ -26,7 +26,7 @@ import javax.swing.JComponent
 
 fun getDiffDirectory(): File {
     val homeDirectory = System.getProperty("user.home")
-    val diffDirPath = Paths.get(homeDirectory).resolve(".continue").resolve(".diffs").toString()
+    val diffDirPath = Paths.get(homeDirectory).resolve(".epico-pilot").resolve(".diffs").toString()
     val diffDir = File(diffDirPath)
     if (!diffDir.exists()) {
         diffDir.mkdirs()
@@ -123,7 +123,7 @@ class DiffManager(private val project: Project) : DumbAware {
         val content2: DiffContent = DiffContentFactory.getInstance().create(File(URI(file2)).readText())
 
         // Create a SimpleDiffRequest and populate it with the DiffContents and titles
-        val diffRequest = SimpleDiffRequest("Continue Diff", content1, content2, "Old", "New")
+        val diffRequest = SimpleDiffRequest("Epico Pilot Diff", content1, content2, "Old", "New")
 
         // Get a DiffRequestPanel from the DiffManager and set the DiffRequest to it
         val diffInfo = diffInfoMap[file2]
@@ -154,7 +154,7 @@ class DiffManager(private val project: Project) : DumbAware {
                     ?: object : DialogWrapper(project, true, IdeModalityType.MODELESS) {
                         init {
                             init()
-                            title = "Continue Diff"
+                            title = "Epico Pilot Diff"
                         }
 
                         override fun createCenterPanel(): JComponent? {

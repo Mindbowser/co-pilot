@@ -1,7 +1,7 @@
 {
-  "name": "continue-docs",
+  "name": "epico-pilot-docs",
   "version": "0.0.0",
-  "author": "Continue Dev, Inc",
+  "author": "Mindbowser",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",

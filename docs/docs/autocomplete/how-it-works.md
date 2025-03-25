@@ -16,7 +16,7 @@ In order to display suggestions quickly, without sending too many requests, we d
 
 ## Context
 
-As explained on the [context selection](./context-selection.md) page, Continue uses a number of retrieval methods to find relevant snippets from your codebase to include in the prompt.
+As explained on the [context selection](./context-selection.md) page, Epico Pilot uses a number of retrieval methods to find relevant snippets from your codebase to include in the prompt.
 
 ## Filtering
 

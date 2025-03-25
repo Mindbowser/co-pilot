@@ -2,28 +2,28 @@ import { ModelRole } from "@continuedev/config-yaml";
 import { fetchwithRequestOptions } from "@continuedev/fetch";
 import { findLlmInfo } from "@continuedev/llm-info";
 import {
-  BaseLlmApi,
-  ChatCompletionCreateParams,
-  constructLlmApi,
+    BaseLlmApi,
+    ChatCompletionCreateParams,
+    constructLlmApi,
 } from "@continuedev/openai-adapters";
 import Handlebars from "handlebars";
 
 import { DevDataSqliteDb } from "../data/devdataSqlite.js";
 import { DataLogger } from "../data/log.js";
 import {
-  CacheBehavior,
-  ChatMessage,
-  Chunk,
-  CompletionOptions,
-  ILLM,
-  LLMFullCompletionOptions,
-  LLMOptions,
-  ModelCapability,
-  ModelInstaller,
-  PromptLog,
-  PromptTemplate,
-  RequestOptions,
-  TemplateType,
+    CacheBehavior,
+    ChatMessage,
+    Chunk,
+    CompletionOptions,
+    ILLM,
+    LLMFullCompletionOptions,
+    LLMOptions,
+    ModelCapability,
+    ModelInstaller,
+    PromptLog,
+    PromptTemplate,
+    RequestOptions,
+    TemplateType,
 } from "../index.js";
 import mergeJson from "../util/merge.js";
 import { renderChatMessage } from "../util/messageContent.js";
@@ -32,31 +32,31 @@ import { Telemetry } from "../util/posthog.js";
 import { withExponentialBackoff } from "../util/withExponentialBackoff.js";
 
 import {
-  autodetectPromptTemplates,
-  autodetectTemplateFunction,
-  autodetectTemplateType,
-  modelSupportsImages,
+    autodetectPromptTemplates,
+    autodetectTemplateFunction,
+    autodetectTemplateType,
+    modelSupportsImages,
 } from "./autodetect.js";
 import {
-  CONTEXT_LENGTH_FOR_MODEL,
-  DEFAULT_ARGS,
-  DEFAULT_CONTEXT_LENGTH,
-  DEFAULT_MAX_BATCH_SIZE,
-  DEFAULT_MAX_CHUNK_SIZE,
-  DEFAULT_MAX_TOKENS,
+    CONTEXT_LENGTH_FOR_MODEL,
+    DEFAULT_ARGS,
+    DEFAULT_CONTEXT_LENGTH,
+    DEFAULT_MAX_BATCH_SIZE,
+    DEFAULT_MAX_CHUNK_SIZE,
+    DEFAULT_MAX_TOKENS,
 } from "./constants.js";
 import {
-  compileChatMessages,
-  countTokens,
-  pruneRawPromptFromTop,
+    compileChatMessages,
+    countTokens,
+    pruneRawPromptFromTop,
 } from "./countTokens.js";
 import {
-  fromChatCompletionChunk,
-  fromChatResponse,
-  LlmApiRequestType,
-  toChatBody,
-  toCompleteBody,
-  toFimBody,
+    fromChatCompletionChunk,
+    fromChatResponse,
+    LlmApiRequestType,
+    toChatBody,
+    toCompleteBody,
+    toFimBody,
 } from "./openaiTypeConverters.js";
 
 export class LLMError extends Error {
@@ -747,7 +747,7 @@ export abstract class BaseLLM implements ILLM {
   ): CompletionOptions {
     // As of 01/14/25 streaming is currently not available with o1
     // See these threads:
-    // - https://github.com/continuedev/continue/issues/3698
+    // - https://github.com/Mindbowser/co-pilot/issues/3698
     // - https://community.openai.com/t/streaming-support-for-o1-o1-2024-12-17-resulting-in-400-unsupported-value/1085043
     if (completionOptions.model === "o1") {
       completionOptions.stream = false;

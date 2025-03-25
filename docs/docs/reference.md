@@ -1,6 +1,6 @@
 ---
 title: config.json Reference
-description: Reference for the Continue _config.json_ configuration file
+description: Reference for the Epico Pilot _config.json_ configuration file
 keywords: [config, config_schema.json, json]
 ---
 
@@ -8,7 +8,7 @@ keywords: [config, config_schema.json, json]
 We recently introduced a new configuration format, `config.yaml`, to replace `config.json`. See the `config.yaml` reference and migration guide [here](./yaml-reference.md).
 :::
 
-Below are details for each property that can be set in `config.json`. The config schema code is found in [`extensions/vscode/config_schema.json`](https://github.com/continuedev/continue/blob/main/extensions/vscode/config_schema.json).
+Below are details for each property that can be set in `config.json`. The config schema code is found in [`extensions/vscode/config_schema.json`](https://github.com/Mindbowser/co-pilot/blob/main/extensions/vscode/config_schema.json).
 
 **All properties at all levels are optional unless explicitly marked required**
 
@@ -245,7 +245,7 @@ Example
 ```json title="config.json"
 "docs": [
     {
-    "title": "Continue",
+    "title": "Epico Pilot",
     "startUrl": "https://docs.continue.dev/intro",
     "faviconUrl": "https://docs.continue.dev/favicon.ico",
   }

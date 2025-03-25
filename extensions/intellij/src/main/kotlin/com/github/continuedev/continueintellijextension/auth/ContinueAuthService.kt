@@ -40,8 +40,8 @@ class ContinueAuthService {
         when (env) {
             "none" -> return "https://control-plane-api-service-i3dqylpbqa-uc.a.run.app"
             "local" -> return "http://localhost:3001"
-            "production" -> return "https://api.continue.dev"
-            "test" -> return "https://api-test.continue.dev"
+            "production" -> return "https://api.epico-pilot.dev"
+            "test" -> return "https://api-test.epico-pilot.dev"
         }
 
         return "https://control-plane-api-service-i3dqylpbqa-uc.a.run.app"

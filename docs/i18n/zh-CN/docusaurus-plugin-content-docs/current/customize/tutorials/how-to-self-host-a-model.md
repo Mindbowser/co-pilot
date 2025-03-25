@@ -12,7 +12,7 @@ title: 如何自托管模型
 
 ## 自托管开源模型
 
-对于很多情况， Continue 内置的提供者或你使用的 API 是 OpenAI-兼容的，这种情况下，你可以使用 "openai" 提供者，修改 "baseUrl" 指向服务器。
+对于很多情况， Epico Pilot 内置的提供者或你使用的 API 是 OpenAI-兼容的，这种情况下，你可以使用 "openai" 提供者，修改 "baseUrl" 指向服务器。
 
 不过，如果这些情况都不是，你需要编写一个新的 LLM 对象。
 

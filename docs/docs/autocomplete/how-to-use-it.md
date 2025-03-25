@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## How to use it
 
-Autocomplete provides inline code suggestions as you type. To enable it, simply click the "Continue" button in the status bar at the bottom right of your IDE or ensure the "Enable Tab Autocomplete" option is checked in your IDE settings.
+Autocomplete provides inline code suggestions as you type. To enable it, simply click the "Epico Pilot" button in the status bar at the bottom right of your IDE or ensure the "Enable Tab Autocomplete" option is checked in your IDE settings.
 
 ### Accepting a full suggestion
 

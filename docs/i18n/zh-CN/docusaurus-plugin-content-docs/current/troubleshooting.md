@@ -4,7 +4,7 @@ description: 故障排除，在等待 beta / alpha 测试帮助时
 keywords: [重新加载, 删除, 手动, 日志, 服务器, 控制台]
 ---
 
-Continue VS Code 扩展现在是 beta ， JetBrains 扩展现在是 Alpha 。如果你有问题，请跟随下面的步骤。
+Epico Pilot VS Code 扩展现在是 beta ， JetBrains 扩展现在是 Alpha 。如果你有问题，请跟随下面的步骤。
 
 1. [检查日志](#检查日志)
 2. [尝试最新的预览版](#下载最新的预览版)
@@ -35,7 +35,7 @@ Continue VS Code 扩展现在是 beta ， JetBrains 扩展现在是 Alpha 。如
 如果你从 LLM 获得的响应看起来是不合理的，你可以
 
 1. 打开 "Output" 面板 (终端的下一个)
-2. 在下拉框中，选择 "Continue - LLM Prompts/Completions"
+2. 在下拉框中，选择 "Epico Pilot - LLM Prompts/Completions"
 3. 查看发送给 LLM ，补全所接受的确切的提示词
 
 ### JetBrains
@@ -46,7 +46,7 @@ Continue VS Code 扩展现在是 beta ， JetBrains 扩展现在是 Alpha 。如
 
 ### VS Code
 
-我们不断地修复和改进 Continue ，但是最新的修改停留在 "预览" 版大概一周，让我们可以测试它们的稳定性。如果你遇到问题，你可以尝试预览版，通过去 VS Code 的 Continue 扩展页面，并选择 "切换到预览版" ，像下面显示的这样。
+我们不断地修复和改进 Epico Pilot ，但是最新的修改停留在 "预览" 版大概一周，让我们可以测试它们的稳定性。如果你遇到问题，你可以尝试预览版，通过去 VS Code 的 Epico Pilot 扩展页面，并选择 "切换到预览版" ，像下面显示的这样。
 
 ![Pre-Release](../../../../static/img/prerelease.png)
 
@@ -64,13 +64,13 @@ Continue VS Code 扩展现在是 beta ， JetBrains 扩展现在是 Alpha 。如
 
 如果你尝试了所有东西，报告一个错误，知道一个之前的版本对你有效，并等待回复，你可以尝试下载一个扩展的比较老的版本。
 
-对于 VS Code ，所有版本都托管在 [这里](https://open-vsx.org/extension/Continue/continue) 的 Open VSX Registry 。一旦你下载了扩展，它是一个 .vsix 文件，你可以通过 [在这里](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix) 的以下指令手动安装它。
+对于 VS Code ，所有版本都托管在 [这里](https://open-vsx.org/extension/Epico Pilot/continue) 的 Open VSX Registry 。一旦你下载了扩展，它是一个 .vsix 文件，你可以通过 [在这里](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix) 的以下指令手动安装它。
 
 你可以在他们的 [市场](https://plugins.jetbrains.com/plugin/22707-continue) 中找到较老版本的 JetBrains 扩展，这将允许你从磁盘上安装。
 
 ## 快捷键无法解析
 
-如果你的快捷键无法解析，你可能有其他命令优先于 Continue 快捷键。你可以看看是否是这种情况，在你的 IDE 的配置中修改你的快捷键绑定。
+如果你的快捷键无法解析，你可能有其他命令优先于 Epico Pilot 快捷键。你可以看看是否是这种情况，在你的 IDE 的配置中修改你的快捷键绑定。
 
 - [VSCode 快捷键文档](https://code.visualstudio.com/docs/getstarted/keybindings)
 - [IntelliJ 快捷键文档](https://www.jetbrains.com/help/idea/configuring-keyboard-and-mouse-shortcuts.html)
@@ -106,11 +106,11 @@ Continue VS Code 扩展现在是 beta ， JetBrains 扩展现在是 Alpha 。如
 
 #### code-server
 
-Continue 可以在 [code-server](https://coder.com/) 中使用，但是如果你运行，日志中错误包含 "This is likely because the editor is not running in a secure context" ，请查看 [他们的关于安全暴露 code-server 的文档](https://coder.com/docs/code-server/latest/guide#expose-code-server) 。
+Epico Pilot 可以在 [code-server](https://coder.com/) 中使用，但是如果你运行，日志中错误包含 "This is likely because the editor is not running in a secure context" ，请查看 [他们的关于安全暴露 code-server 的文档](https://coder.com/docs/code-server/latest/guide#expose-code-server) 。
 
-### 我安装了 Continue ，但是没有看到侧边栏窗口
+### 我安装了 Epico Pilot ，但是没有看到侧边栏窗口
 
-默认情况下， VS Code 中的 Continue 窗口在左边，但是它也可以拖动到右边，这在我们的入门教程中是推荐的。在你已经安装 Continue 并将它移动到右边的情况下，它可能仍然在那里。你可以显示 Continue ，通过使用 `cmd/ctrl+L` 或点击 VS Code 右上方的按钮打开右侧边栏。
+默认情况下， VS Code 中的 Epico Pilot 窗口在左边，但是它也可以拖动到右边，这在我们的入门教程中是推荐的。在你已经安装 Epico Pilot 并将它移动到右边的情况下，它可能仍然在那里。你可以显示 Epico Pilot ，通过使用 `cmd/ctrl+L` 或点击 VS Code 右上方的按钮打开右侧边栏。
 
 ### 我得到一个 OpenAI 的 404 错误
 
@@ -120,12 +120,12 @@ Continue 可以在 [code-server](https://coder.com/) 中使用，但是如果你
 
 如果你有持续的索引问题，我们的推荐是重新构建你的索引。注意，对于大的代码库，这可能需要一些时间。
 
-这可以通过以下命令实现： `Continue: Rebuild codebase index` 。
+这可以通过以下命令实现： `Epico Pilot: Rebuild codebase index` 。
 
 ### Android Studio - "Nothing to show" 在聊天中
 
-这可以修复，通过选择 `Actions > Choose Boot runtime for the IDE` ，然后选择最新的版本，然后重启 Android Studio 。[查看这个线索](https://github.com/continuedev/continue/issues/2280#issuecomment-2365231567) 获得详情。
+这可以修复，通过选择 `Actions > Choose Boot runtime for the IDE` ，然后选择最新的版本，然后重启 Android Studio 。[查看这个线索](https://github.com/Mindbowser/co-pilot/issues/2280#issuecomment-2365231567) 获得详情。
 
 ## 仍然有问题？
 
-你还可以 [在这里](https://discord.gg/vapESyrFmJ) 加入我们的 Discord 社区，获得更多的支持和讨论。另外，你可以 [在这里](https://github.com/continuedev/continue/issues/new?assignees=&labels=bug&projects=&template=bug-report-%F0%9F%90%9B.md&title=) 创建一个 GitHub issue ，提供你的问题的详情，我们将能更快的帮助你。
+你还可以 [在这里](https://discord.gg/vapESyrFmJ) 加入我们的 Discord 社区，获得更多的支持和讨论。另外，你可以 [在这里](https://github.com/Mindbowser/co-pilot/issues/new?assignees=&labels=bug&projects=&template=bug-report-%F0%9F%90%9B.md&title=) 创建一个 GitHub issue ，提供你的问题的详情，我们将能更快的帮助你。

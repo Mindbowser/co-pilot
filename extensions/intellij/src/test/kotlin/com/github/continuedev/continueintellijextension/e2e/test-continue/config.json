@@ -15,7 +15,7 @@
     }
   ],
   "analytics": {
-    "provider": "continue-proxy"
+    "provider": "epico-pilot-proxy"
   },
   "tabAutocompleteModel": {
     "title": "TEST LLM",

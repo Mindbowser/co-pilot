@@ -1,32 +1,32 @@
 import { ConfigResult, FullSlug } from "@continuedev/config-yaml";
 
 import {
-  ControlPlaneClient,
-  ControlPlaneSessionInfo,
+    ControlPlaneClient,
+    ControlPlaneSessionInfo,
 } from "../control-plane/client.js";
 import { getControlPlaneEnv, useHub } from "../control-plane/env.js";
 import {
-  BrowserSerializedContinueConfig,
-  ContinueConfig,
-  IContextProvider,
-  IDE,
-  IdeSettings,
-  ILLM,
+    BrowserSerializedContinueConfig,
+    ContinueConfig,
+    IContextProvider,
+    IDE,
+    IdeSettings,
+    ILLM,
 } from "../index.js";
 import Ollama from "../llm/llms/Ollama.js";
 import { GlobalContext } from "../util/GlobalContext.js";
 
 import { getAllAssistantFiles } from "./loadLocalAssistants.js";
 import {
-  LOCAL_ONBOARDING_CHAT_MODEL,
-  LOCAL_ONBOARDING_PROVIDER_TITLE,
+    LOCAL_ONBOARDING_CHAT_MODEL,
+    LOCAL_ONBOARDING_PROVIDER_TITLE,
 } from "./onboarding.js";
 import ControlPlaneProfileLoader from "./profile/ControlPlaneProfileLoader.js";
 import LocalProfileLoader from "./profile/LocalProfileLoader.js";
 import PlatformProfileLoader from "./profile/PlatformProfileLoader.js";
 import {
-  ProfileDescription,
-  ProfileLifecycleManager,
+    ProfileDescription,
+    ProfileLifecycleManager,
 } from "./ProfileLifecycleManager.js";
 
 export type { ProfileDescription };
@@ -85,7 +85,7 @@ export class ConfigHandler {
   }
 
   /**
-   * Users can define as many local assistants as they want in a `.continue/assistants` folder
+   * Users can define as many local assistants as they want in a `.epico-pilot/assistants` folder
    */
   private async getLocalAssistantProfiles() {
     const assistantFiles = await getAllAssistantFiles(this.ide);
@@ -373,7 +373,7 @@ export class ConfigHandler {
     return dirs.join("&");
   }
 
-  // Automatically refresh config when Continue-related IDE (e.g. VS Code) settings are changed
+  // Automatically refresh config when Epico Pilot-related IDE (e.g. VS Code) settings are changed
   updateIdeSettings(ideSettings: IdeSettings) {
     this.ideSettingsPromise = Promise.resolve(ideSettings);
     void this.reloadConfig();

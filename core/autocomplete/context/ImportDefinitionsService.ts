@@ -1,9 +1,9 @@
 import { IDE, RangeInFileWithContents } from "../..";
 import { PrecalculatedLruCache } from "../../util/LruCache";
 import {
-  getFullLanguageName,
-  getParserForFile,
-  getQueryForFile,
+    getFullLanguageName,
+    getParserForFile,
+    getQueryForFile,
 } from "../../util/treeSitter";
 
 interface FileInfo {
@@ -31,7 +31,7 @@ export class ImportDefinitionsService {
 
   private async _getFileInfo(filepath: string): Promise<FileInfo | null> {
     if (filepath.endsWith(".ipynb")) {
-      // Commenting out this line was the solution to https://github.com/continuedev/continue/issues/1463
+      // Commenting out this line was the solution to https://github.com/Mindbowser/co-pilot/issues/1463
       return null;
     }
 

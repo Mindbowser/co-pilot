@@ -16,4 +16,4 @@ Hugging Face 推理端点是一个在任何云上设置开源语言模型实例�
 }
 ```
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/HuggingFaceInferenceAPI.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/HuggingFaceInferenceAPI.ts)

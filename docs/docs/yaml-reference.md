@@ -1,6 +1,6 @@
 ---
 title: Config YAML Reference
-description: Reference for the Continue configuration YAML file
+description: Reference for the Epico Pilot configuration YAML file
 keywords: [config, yaml, configuration, customize, customization]
 ---
 
@@ -8,7 +8,7 @@ keywords: [config, yaml, configuration, customize, customization]
 
 ## Introduction
 
-Continue hub assistants are defined using the `config.yaml` specification. Local assistants can also be configured using a YAML file `config.yaml` placed in your global `.continue` folder (`~/.continue` on Mac, `%USERPROFILE%\.continue`)
+Epico Pilot hub assistants are defined using the `config.yaml` specification. Local assistants can also be configured using a YAML file `config.yaml` placed in your global `.continue` folder (`~/.continue` on Mac, `%USERPROFILE%\.continue`)
 
 :::info
 Config YAML replaces `config.json`. View the **[Migration Guide](/yaml-migration)**.
@@ -21,7 +21,7 @@ An assistant is made up of:
 
 A block is a single standalone building block of a coding assistants, e.g., one model or one documentation source. In `config.yaml` syntax, a block consists of the same top-level properties as assistants (`name`, `version`, and `schema`), but only has **ONE** item under whichever block type it is.
 
-Examples of blocks and assistants can be found on the [Continue hub](https://hub.continue.dev/explore/assistants).
+Examples of blocks and assistants can be found on the [Epico Pilot hub](https://hub.continue.dev/explore/assistants).
 
 Assistants can either explicitly define blocks - see [Properties](#properties) below - or import and configure existing hub blocks.
 
@@ -138,7 +138,7 @@ The `models` section defines the language models used in your configuration. Mod
 - `provider` (**required**): The provider of the model (e.g., `openai`, `ollama`).
 - `model` (**required**): The specific model name (e.g., `gpt-4`, `starcoder`).
 - `roles`: An array specifying the roles this model can fulfill, such as `chat`, `autocomplete`, `embed`, `rerank`, `edit`, `apply`, `summarize`. The default value is `[chat, edit, apply, summarize]`. Note that the `summarize` role is not currently used.
-- `capabilities`: Array of strings denoting model capabilities, which will overwrite Continue's autodetection based on provider and model. Supported capabilities include `tool_use` and `image_input`.
+- `capabilities`: Array of strings denoting model capabilities, which will overwrite Epico Pilot's autodetection based on provider and model. Supported capabilities include `tool_use` and `image_input`.
 - `embedOptions`: If the model includes role `embed`, these settings apply for embeddings:
 
   - `maxChunkSize`: Maximum tokens per document chunk. Minimum is 128 tokens.
@@ -286,7 +286,7 @@ Example
 
 ```yaml title="config.yaml"
 docs:
-  - name: Continue
+  - name: Epico Pilot
     startUrl: https://docs.continue.dev/intro
     favicon: https://docs.continue.dev/favicon.ico
 ```
@@ -297,7 +297,7 @@ docs:
 
 <!-- TODO is this correct? -->
 
-The [Model Context Protocol](https://modelcontextprotocol.io/introduction) is a standard proposed by Anthropic to unify prompts, context, and tool use. Continue supports any MCP server with the MCP context provider.
+The [Model Context Protocol](https://modelcontextprotocol.io/introduction) is a standard proposed by Anthropic to unify prompts, context, and tool use. Epico Pilot supports any MCP server with the MCP context provider.
 
 **Properties:**
 

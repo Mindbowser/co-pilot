@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import com.github.continuedev.continueintellijextension.activities.ContinuePluginStartupActivity
 import com.github.continuedev.continueintellijextension.constants.getContinueGlobalPath

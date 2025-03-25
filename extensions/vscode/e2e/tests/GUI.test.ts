@@ -1,13 +1,13 @@
 import { expect } from "chai";
 import {
-  By,
-  EditorView,
-  Key,
-  VSBrowser,
-  WebDriver,
-  WebElement,
-  WebView,
-  until,
+    By,
+    EditorView,
+    Key,
+    VSBrowser,
+    WebDriver,
+    WebElement,
+    WebView,
+    until,
 } from "vscode-extension-tester";
 
 import { GlobalActions } from "../actions/Global.actions";
@@ -246,7 +246,7 @@ describe("GUI Test", () => {
       await messageInput.sendKeys(Key.ENTER);
 
       await TestUtils.waitForSuccess(
-        () => GUISelectors.getThreadMessageByText(view, "No matches found"), // Defined in extensions/vscode/e2e/test-continue/config.json's TOOL MOCK LLM that we are calling the exact search tool
+        () => GUISelectors.getThreadMessageByText(view, "No matches found"), // Defined in extensions/vscode/e2e/test-epico-pilot/config.json's TOOL MOCK LLM that we are calling the exact search tool
       );
     });
   });

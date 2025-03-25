@@ -1,10 +1,10 @@
 package com.github.continuedev.continueintellijextension.services
 
 import IntelliJIDE
-import com.github.continuedev.continueintellijextension.`continue`.CoreMessenger
-import com.github.continuedev.continueintellijextension.`continue`.CoreMessengerManager
-import com.github.continuedev.continueintellijextension.`continue`.DiffManager
-import com.github.continuedev.continueintellijextension.`continue`.IdeProtocolClient
+import com.github.continuedev.continueintellijextension.`epico-pilot`.CoreMessenger
+import com.github.continuedev.continueintellijextension.`epico-pilot`.CoreMessengerManager
+import com.github.continuedev.continueintellijextension.`epico-pilot`.DiffManager
+import com.github.continuedev.continueintellijextension.`epico-pilot`.IdeProtocolClient
 import com.github.continuedev.continueintellijextension.toolWindow.ContinuePluginToolWindowFactory
 import com.github.continuedev.continueintellijextension.utils.uuid
 import com.intellij.openapi.Disposable

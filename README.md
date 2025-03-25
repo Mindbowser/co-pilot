@@ -1,14 +1,14 @@
 <div align="center">
 
-![Continue logo](media/readme.png)
+![Epico Pilot logo](media/readme.png)
 
 </div>
 
-<h1 align="center">Continue</h1>
+<h1 align="center">Epico Pilot</h1>
 
 <div align="center">
 
-**[Continue](https://docs.continue.dev) enables developers to create, share, and use custom AI code assistants with our open-source [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains](https://plugins.jetbrains.com/plugin/22707-continue-extension) extensions and [hub of models, rules, prompts, docs, and other building blocks](https://hub.continue.dev)**
+**[Epico Pilot](https://docs.continue.dev) enables developers to create, share, and use custom AI code assistants with our open-source [VS Code](https://marketplace.visualstudio.com/items?itemName=Epico Pilot.continue) and [JetBrains](https://plugins.jetbrains.com/plugin/22707-continue-extension) extensions and [hub of models, rules, prompts, docs, and other building blocks](https://hub.continue.dev)**
 
 </div>
 
@@ -54,12 +54,12 @@
 
 ## Getting Started
 
-Learn about how to install and use Continue in the docs [here](https://continue.dev/docs/getting-started/install)
+Learn about how to install and use Epico Pilot in the docs [here](https://continue.dev/docs/getting-started/install)
 
 ## Contributing
 
-Check out the [contribution ideas board](https://github.com/orgs/continuedev/projects/2), read the [contributing guide](https://github.com/continuedev/continue/blob/main/CONTRIBUTING.md), and join [#contribute on Discord](https://discord.gg/vapESyrFmJ)
+Check out the [contribution ideas board](https://github.com/orgs/continuedev/projects/2), read the [contributing guide](https://github.com/Mindbowser/co-pilot/blob/main/CONTRIBUTING.md), and join [#contribute on Discord](https://discord.gg/vapESyrFmJ)
 
 ## License
 
-[Apache 2.0 © 2023-2024 Continue Dev, Inc.](./LICENSE)
+[Apache 2.0 © 2023-2024 Epico Pilot Dev, Inc.](./LICENSE)

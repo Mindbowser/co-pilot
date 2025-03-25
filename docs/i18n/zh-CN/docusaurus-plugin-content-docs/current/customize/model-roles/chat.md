@@ -5,7 +5,7 @@ keywords: [聊天]
 sidebar_position: 2
 ---
 
-"聊天模型" 是一个训练为在交谈格式中响应的 LLM 。因为它们应该回答通用问题和生成复杂代码，最好的聊天模型通常是很大的，通常 405B+ 参数。在 Continue 中，这些模型用来 [聊天](../../chat/how-to-use-it.md) ， [编辑](../../edit/how-to-use-it.md) 和 [Actions](../../actions/how-to-use-it.md) 。
+"聊天模型" 是一个训练为在交谈格式中响应的 LLM 。因为它们应该回答通用问题和生成复杂代码，最好的聊天模型通常是很大的，通常 405B+ 参数。在 Epico Pilot 中，这些模型用来 [聊天](../../chat/how-to-use-it.md) ， [编辑](../../edit/how-to-use-it.md) 和 [Actions](../../actions/how-to-use-it.md) 。
 
 ## 推荐的聊天模型
 

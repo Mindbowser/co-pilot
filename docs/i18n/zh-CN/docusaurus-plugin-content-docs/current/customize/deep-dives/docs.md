@@ -1,12 +1,12 @@
 ---
-description: 了解如何在 Continue 中访问和搜索你的项目文档
+description: 了解如何在 Epico Pilot 中访问和搜索你的项目文档
 keywords: [文档, 索引, 上下文提供者, 嵌入, 文档]
 toc_max_heading_level: 5
 ---
 
 # @Docs
 
-[`@Docs` 上下文提供者](http://localhost:3000/customization/context-providers#documentation) 允许你直接通过 Continue 与自己的文档交互。这个特性运行你索引任何静态网站或 Github markdown 页面，让你在编码时访问和利用你的文档更方便。
+[`@Docs` 上下文提供者](http://localhost:3000/customization/context-providers#documentation) 允许你直接通过 Epico Pilot 与自己的文档交互。这个特性运行你索引任何静态网站或 Github markdown 页面，让你在编码时访问和利用你的文档更方便。
 
 ## 启用 `@Docs` 上下文提供者
 
@@ -33,7 +33,7 @@ toc_max_heading_level: 5
 
 ## 预先索引文档网站
 
-我们提供一个流行的框架和库的预先索引文档网站的选择。你可以 [在这里查看可用的预先索引网站和请求附加内容](https://github.com/continuedev/continue/blob/main/core/indexing/docs/preIndexedDocs.ts) 列表。
+我们提供一个流行的框架和库的预先索引文档网站的选择。你可以 [在这里查看可用的预先索引网站和请求附加内容](https://github.com/Mindbowser/co-pilot/blob/main/core/indexing/docs/preIndexedDocs.ts) 列表。
 
 ## 索引你自己的文档
 
@@ -51,12 +51,12 @@ toc_max_heading_level: 5
 
 为了添加多个文档网站，我们推荐批量添加它们到你的 `config.json` 文件中。索引将在文件保存后开始。
 
-[docs 的配置 schema](https://github.com/continuedev/continue/blob/v0.9.212-vscode/extensions/vscode/config_schema.json#L1943-L1973) 如下：
+[docs 的配置 schema](https://github.com/Mindbowser/co-pilot/blob/v0.9.212-vscode/extensions/vscode/config_schema.json#L1943-L1973) 如下：
 
 ```json
 "docs": [
     {
-    "title": "Continue",
+    "title": "Epico Pilot",
     "startUrl": "https://docs.continue.dev/intro",
     "faviconUrl": "https://docs.continue.dev/favicon.ico",
   }
@@ -86,4 +86,4 @@ If you want to crawl a site that is dynamically generated, or you get an error w
 
 ### 索引内容多长时间更新？
 
-当前，我们没有自动地重新索引你的文档。如果你想要强制重新刷新，你可以使用下面的命令： `Continue: Docs Force Re-Index` 。
+当前，我们没有自动地重新索引你的文档。如果你想要强制重新刷新，你可以使用下面的命令： `Epico Pilot: Docs Force Re-Index` 。

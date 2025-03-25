@@ -86,7 +86,7 @@ export class Core {
     private readonly ide: IDE,
     private readonly onWrite: (text: string) => Promise<void> = async () => {},
   ) {
-    // Ensure .continue directory is created
+    // Ensure .epico-pilot directory is created
     migrateV1DevDataFiles();
 
     this.codebaseIndexingState = {
@@ -457,7 +457,7 @@ export class Core {
           //     .then((userSelection) => {
           //       if (userSelection === toastOption) {
           //         void this.ide.openUrl(
-          //           "https://docs.continue.dev/customize/model-roles/embeddings",
+          //           "https://docs.epico-pilot.dev/customize/model-roles/embeddings",
           //         );
           //       }
           //     });

@@ -1,10 +1,10 @@
 import { BaseContextProvider } from "../";
 import {
-  ContextItem,
-  ContextProviderDescription,
-  ContextProviderExtras,
-  ContextSubmenuItem,
-  LoadSubmenuItemsArgs,
+    ContextItem,
+    ContextProviderDescription,
+    ContextProviderExtras,
+    ContextSubmenuItem,
+    LoadSubmenuItemsArgs,
 } from "../../";
 import { MCPManagerSingleton } from "../mcp";
 
@@ -54,7 +54,7 @@ class MCPContextProvider extends BaseContextProvider {
         const content = resource.text;
         if (typeof content !== "string") {
           throw new Error(
-            "Continue currently only supports text resources from MCP",
+            "Epico Pilot currently only supports text resources from MCP",
           );
         }
 

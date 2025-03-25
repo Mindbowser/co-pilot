@@ -30,7 +30,7 @@ class ContinueSettingsComponent : DumbAware {
     val remoteConfigSyncPeriod: JTextField = JTextField()
     val userToken: JTextField = JTextField()
     val enableTabAutocomplete: JCheckBox = JCheckBox("Enable Tab Autocomplete")
-    val enableContinueTeamsBeta: JCheckBox = JCheckBox("Enable Continue for Teams Beta")
+    val enableContinueTeamsBeta: JCheckBox = JCheckBox("Enable Epico Pilot for Teams Beta")
     val enableOSR: JCheckBox = JCheckBox("Enable Off-Screen Rendering")
     val displayEditorTooltip: JCheckBox = JCheckBox("Display Editor Tooltip")
     val showIDECompletionSideBySide: JCheckBox = JCheckBox("Show IDE completions side-by-side")
@@ -255,7 +255,7 @@ class ContinueExtensionConfigurable : Configurable {
     }
 
     override fun getDisplayName(): String {
-        return "Continue Extension Settings"
+        return "Epico Pilot Extension Settings"
     }
 }
 

@@ -2,12 +2,12 @@ import fs from "fs";
 import os from "os";
 
 import {
-  ContextProviderWithParams,
-  ContinueConfig,
-  IDE,
-  ILLM,
-  ModelDescription,
-  ExperimentalModelRoles,
+    ContextProviderWithParams,
+    ContinueConfig,
+    ExperimentalModelRoles,
+    IDE,
+    ILLM,
+    ModelDescription,
 } from "../";
 import { GlobalContext } from "../util/GlobalContext";
 import { editConfigJson } from "../util/paths";
@@ -119,7 +119,7 @@ export function getModelByRole<T extends keyof ExperimentalModelRoles>(
  * This check is to determine if the user is on an unsupported CPU
  * target for our Lance DB binaries.
  *
- * See here for details: https://github.com/continuedev/continue/issues/940
+ * See here for details: https://github.com/Mindbowser/co-pilot/issues/940
  */
 export function isSupportedLanceDbCpuTargetForLinux(ide?: IDE) {
   const CPU_FEATURES_TO_CHECK = ["avx2", "fma"] as const;
@@ -179,7 +179,7 @@ async function showUnsupportedCpuToast(ide: IDE) {
 
   if (shouldOpenLink) {
     void ide.openUrl(
-      "https://docs.continue.dev/troubleshooting#i-received-a-codebase-indexing-disabled---your-linux-system-lacks-required-cpu-features-avx2-fma-notification",
+      "https://docs.epico-pilot.dev/troubleshooting#i-received-a-codebase-indexing-disabled---your-linux-system-lacks-required-cpu-features-avx2-fma-notification",
     );
   }
 }

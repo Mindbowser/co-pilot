@@ -44,7 +44,7 @@ const ShareSlashCommand: SlashCommand = {
   run: async function* ({ ide, history, params }) {
     const now = new Date();
 
-    let content = `### [Continue](https://continue.dev) session transcript\n Exported: ${now.toLocaleString()}`;
+    let content = `### [Epico Pilot](https://epico-pilot.dev) session transcript\n Exported: ${now.toLocaleString()}`;
 
     // As currently implemented, the /share command is by definition the last
     // message in the chat history, this will omit it

@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import com.github.continuedev.continueintellijextension.services.TelemetryService
 import com.github.continuedev.continueintellijextension.utils.getMachineUniqueID
@@ -49,7 +49,7 @@ class CoreMessengerManager(
             val corePath = Paths.get(pluginPath.toString(), "core").toString()
             val targetPath = Paths.get(corePath, target).toString()
             val continueCorePath =
-                Paths.get(targetPath, "continue-binary" + (if (os == "win32") ".exe" else "")).toString()
+                Paths.get(targetPath, "epico-pilot-binary" + (if (os == "win32") ".exe" else "")).toString()
 
             setupCoreMessenger(continueCorePath)
         }

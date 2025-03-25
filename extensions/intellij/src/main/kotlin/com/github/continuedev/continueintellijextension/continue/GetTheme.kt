@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import com.intellij.openapi.editor.colors.EditorColors
 import com.intellij.openapi.editor.colors.EditorColorsManager

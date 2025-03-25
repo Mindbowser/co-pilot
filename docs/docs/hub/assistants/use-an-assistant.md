@@ -1,7 +1,7 @@
 ---
 title: Use an assistant
 sidebar_label: Use an assistant
-description: Guide to using assistants in your Continue workflow.
+description: Guide to using assistants in your Epico Pilot workflow.
 keywords: [assistants, usage, use, guide]
 ---
 

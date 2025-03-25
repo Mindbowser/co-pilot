@@ -1,6 +1,6 @@
 # Msty
 
-[Msty](https://msty.app/) 是一个 Windows, Mac 和 Linux 的应用，让运行本地开源模型上线很容易，包括 Llama-2, DeepSeek Coder 等。不需要使用你的终端，运行命令或任何东西。只需要从网站下载应用，点击按钮，就会启动和运行。然后， Continue 可以配置使用 `Msty` LLM 类：
+[Msty](https://msty.app/) 是一个 Windows, Mac 和 Linux 的应用，让运行本地开源模型上线很容易，包括 Llama-2, DeepSeek Coder 等。不需要使用你的终端，运行命令或任何东西。只需要从网站下载应用，点击按钮，就会启动和运行。然后， Epico Pilot 可以配置使用 `Msty` LLM 类：
 
 ```json title="config.json"
 {
@@ -46,4 +46,4 @@
 }
 ```
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/Msty.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/Msty.ts)

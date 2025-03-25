@@ -135,7 +135,7 @@ describe("lineStream", () => {
       expect(mockFullStop).toHaveBeenCalledTimes(1);
     });
 
-    it("should continue on bracket ending lines", async () => {
+    it("should epico-pilot on bracket ending lines", async () => {
       const linesGenerator = await getLineGenerator([
         " if (x > 0) {",
         "   console.log(x);",

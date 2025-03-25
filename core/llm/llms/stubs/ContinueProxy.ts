@@ -33,7 +33,7 @@ class ContinueProxy extends OpenAI {
     }
   }
 
-  static providerName = "continue-proxy";
+  static providerName = "epico-pilot-proxy";
   static defaultOptions: Partial<LLMOptions> = {
     useLegacyCompletionsEndpoint: false,
   };
@@ -51,7 +51,7 @@ class ContinueProxy extends OpenAI {
 
   protected _getHeaders() {
     const headers: any = super._getHeaders();
-    headers["x-continue-unique-id"] = Telemetry.uniqueId;
+    headers["x-epico-pilot-unique-id"] = Telemetry.uniqueId;
     return headers;
   }
 

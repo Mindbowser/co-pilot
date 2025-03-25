@@ -7,7 +7,7 @@ sidebar_position: 3
 
 "嵌入模型" 是训练用来转换一部分文本为向量，可以在之后快速的与其他向量比较，决定部分文本的相似性。嵌入模型通常比 LLM 小得多，在比较中非常快速和便宜。
 
-在 Continue 中，嵌入是在索引是生成的，然后由 [@Codebase](../deep-dives/codebase.md) 使用，来实现对你的代码库的相似性搜索。
+在 Epico Pilot 中，嵌入是在索引是生成的，然后由 [@Codebase](../deep-dives/codebase.md) 使用，来实现对你的代码库的相似性搜索。
 
 ## 推荐的嵌入模型
 
@@ -35,7 +35,7 @@ sidebar_position: 3
 
 ### Transformers.js (当前只有 VS Code)
 
-[Transformers.js](https://huggingface.co/docs/transformers.js/index) 是流行的 [Transformers](https://huggingface.co/transformers/) 库一个 JavaScript 移植。它允许嵌入完全在本地计算。模型使用的是 `all-MiniLM-L6-v2` ，与 Continue 扩展一起，当你没有明确配置嵌入提供者时，作为默认使用。
+[Transformers.js](https://huggingface.co/docs/transformers.js/index) 是流行的 [Transformers](https://huggingface.co/transformers/) 库一个 JavaScript 移植。它允许嵌入完全在本地计算。模型使用的是 `all-MiniLM-L6-v2` ，与 Epico Pilot 扩展一起，当你没有明确配置嵌入提供者时，作为默认使用。
 
 ```json title="config.json"
 {

@@ -13,7 +13,7 @@ import Types from "../config/types";
 dotenv.config();
 
 const CONTINUE_GLOBAL_DIR =
-  process.env.CONTINUE_GLOBAL_DIR ?? path.join(os.homedir(), ".continue");
+  process.env.CONTINUE_GLOBAL_DIR ?? path.join(os.homedir(), ".epico-pilot");
 
 // export const DEFAULT_CONFIG_TS_CONTENTS = `import { Config } from "./types"\n\nexport function modifyConfig(config: Config): Config {
 //   return config;
@@ -47,7 +47,7 @@ export function getGlobalContinueIgnorePath(): string {
 }
 
 export function getContinueGlobalPath(): string {
-  // This is ~/.continue on mac/linux
+  // This is ~/.epico-pilot on mac/linux
   const continuePath = CONTINUE_GLOBAL_DIR;
   if (!fs.existsSync(continuePath)) {
     fs.mkdirSync(continuePath);
@@ -142,9 +142,9 @@ export function getConfigTsPath(): string {
     fs.writeFileSync(
       packageJsonPath,
       JSON.stringify({
-        name: "continue-config",
+        name: "epico-pilot-config",
         version: "1.0.0",
-        description: "My Continue Configuration",
+        description: "My Epico Pilot Configuration",
         main: "config.js",
       }),
     );

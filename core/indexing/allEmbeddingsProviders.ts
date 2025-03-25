@@ -38,7 +38,7 @@ export const allEmbeddingsProviders: Record<
   "function-network": FunctionNetwork,
   "huggingface-tei": HuggingFaceTEIEmbeddingsProvider,
   gemini: Gemini,
-  "continue-proxy": ContinueProxy,
+  "epico-pilot-proxy": ContinueProxy,
   deepinfra: DeepInfra,
   ncompass: NCompass,
   nvidia: Nvidia,

@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import com.github.continuedev.continueintellijextension.constants.MessageTypes
 import com.github.continuedev.continueintellijextension.services.ContinueExtensionSettings
@@ -34,7 +34,7 @@ class CoreMessenger(
             writer?.write(message + "\r\n")
             writer?.flush()
         } catch (e: Exception) {
-            println("Error writing to Continue core: $e")
+            println("Error writing to Epico Pilot core: $e")
         }
     }
 

@@ -13,11 +13,11 @@
   },
   "link.item.label.VS Code": {
     "message": "VS Code",
-    "description": "The label of footer link with label=VS Code linking to https://marketplace.visualstudio.com/items?itemName=Continue.continue"
+    "description": "The label of footer link with label=VS Code linking to https://marketplace.visualstudio.com/items?itemName=Epico Pilot.epico-pilot"
   },
   "link.item.label.JetBrains": {
     "message": "JetBrains",
-    "description": "The label of footer link with label=JetBrains linking to https://plugins.jetbrains.com/plugin/22707-continue-extension"
+    "description": "The label of footer link with label=JetBrains linking to https://plugins.jetbrains.com/plugin/22707-epico-pilot-extension"
   },
   "link.item.label.Discord": {
     "message": "Discord",
@@ -25,7 +25,7 @@
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/continuedev/continue"
+    "description": "The label of footer link with label=GitHub linking to https://github.com/Mindbowser/co-pilot"
   },
   "link.item.label.Twitter": {
     "message": "Twitter",
@@ -36,7 +36,7 @@
     "description": "The label of footer link with label=LinkedIn linking to https://linkedin.com/company/continuedev"
   },
   "copyright": {
-    "message": "Copyright © 2024 Continue Dev, Inc.",
+    "message": "Copyright © 2024 Mindbowser.",
     "description": "The footer copyright"
   }
 }

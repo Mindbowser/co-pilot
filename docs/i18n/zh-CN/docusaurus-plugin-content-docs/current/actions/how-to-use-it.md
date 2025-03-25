@@ -18,7 +18,7 @@ Actions 是常见用例的快捷方式。例如，你可能想要审查代码，
 
 ![slash-commands](/img/slash-commands.png)
 
-一些最常用的斜杠命令默认是可用的，比如 "/edit", "/comment" 和 "/share" ，但是 Continue 有大量内置的其他选择的库。要启用它们，[在这里](../customize/slash-commands.md) 了解更多。
+一些最常用的斜杠命令默认是可用的，比如 "/edit", "/comment" 和 "/share" ，但是 Epico Pilot 有大量内置的其他选择的库。要启用它们，[在这里](../customize/slash-commands.md) 了解更多。
 
 ### prompt 文件
 
@@ -48,7 +48,7 @@ Write unit tests for the above selected code, following each of these instructio
 - Don't explain how to set up `jest`
 ```
 
-现在要使用这个提示词，你可以高亮代码，并使用 `cmd/ctrl+L` 来选择它到 Continue 侧边栏中。
+现在要使用这个提示词，你可以高亮代码，并使用 `cmd/ctrl+L` 来选择它到 Epico Pilot 侧边栏中。
 
 然后，输入 "/" 来查看斜杠命令列表，选择名为 "test" 的那个。按下回车， LLM 会响应你的 prompt 文件中给出的指令。
 
@@ -66,7 +66,7 @@ Write unit tests for the above selected code, following each of these instructio
 
 ![quick-actions](/img/quick-actions.png)
 
-默认情况下，快速 action 是禁用的，但是可以在 VS Code 的设置中通过 "Continue: Enable Quick Actions" 启用。
+默认情况下，快速 action 是禁用的，但是可以在 VS Code 的设置中通过 "Epico Pilot: Enable Quick Actions" 启用。
 
 #### 右击 action
 
@@ -80,6 +80,6 @@ Write unit tests for the above selected code, following each of these instructio
 
 #### 快速修复
 
-无论何时在你的代码中看到红色/黄色下划线表示错误，你可以把光标放到附近， VS Code 会显示一个灯泡图标。无论点击灯泡，或使用 `cmd/ctrl+.` 快捷键，将会显示一个快速修复的下拉菜单。其中之一是 "Ask Continue" action 。无论单击或再次使用 `cmd/ctrl+.` ， Continue 将尝试帮助解决问题。
+无论何时在你的代码中看到红色/黄色下划线表示错误，你可以把光标放到附近， VS Code 会显示一个灯泡图标。无论点击灯泡，或使用 `cmd/ctrl+.` 快捷键，将会显示一个快速修复的下拉菜单。其中之一是 "Ask Epico Pilot" action 。无论单击或再次使用 `cmd/ctrl+.` ， Epico Pilot 将尝试帮助解决问题。
 
 ![ask-continue](/img/ask-continue.png)

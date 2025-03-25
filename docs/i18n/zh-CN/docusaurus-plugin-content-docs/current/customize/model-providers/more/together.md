@@ -15,4 +15,4 @@ Together API 是一个运行大 AI 模型的云平台。你可以在 [这里](ht
 }
 ```
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/Together.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/Together.ts)

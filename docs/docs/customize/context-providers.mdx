@@ -9,13 +9,13 @@ import Tabs from "@theme/Tabs";
 
 Context Providers allow you to type '@' and see a dropdown of content that can all be fed to the LLM as context. Every context provider is a plugin, which means if you want to reference some source of information that you don't see here, you can request (or build!) a new context provider.
 
-As an example, say you are working on solving a new GitHub Issue. You type '@Issue' and select the one you are working on. Continue can now see the issue title and contents. You also know that the issue is related to the files 'readme.md' and 'helloNested.py', so you type '@readme' and '@hello' to find and select them. Now these 3 "Context Items" are displayed inline with the rest of your input.
+As an example, say you are working on solving a new GitHub Issue. You type '@Issue' and select the one you are working on. Epico Pilot can now see the issue title and contents. You also know that the issue is related to the files 'readme.md' and 'helloNested.py', so you type '@readme' and '@hello' to find and select them. Now these 3 "Context Items" are displayed inline with the rest of your input.
 
 ![Context Items](/img/context-provider-example.png)
 
 ## Context blocks
 
-You can add context providers to assistants using [`context` blocks](../hub/blocks/block-types.md#context). Explore available context blocks in [the hub](https://hub.continue.dev/explore/context).
+You can add context providers to assistants using [`context` blocks](../hub/blocks/block-types.md#context). Explore available context blocks in [the hub](https://hub.epico-pilot.dev/explore/context).
 
 ## Built-in Context Providers
 
@@ -495,7 +495,7 @@ Reference the architecture and platform of your current operating system.
 
 ### Model Context Protocol
 
-The [Model Context Protocol](https://modelcontextprotocol.io/introduction) is a standard proposed by Anthropic to unify prompts, context, and tool use. Continue supports any MCP server with the MCP context provider. Read their [quickstart](https://modelcontextprotocol.io/quickstart) to learn how to set up a local server and then set up your configuration like this:
+The [Model Context Protocol](https://modelcontextprotocol.io/introduction) is a standard proposed by Anthropic to unify prompts, context, and tool use. Epico Pilot supports any MCP server with the MCP context provider. Read their [quickstart](https://modelcontextprotocol.io/quickstart) to learn how to set up a local server and then set up your configuration like this:
 
 <Tabs groupId="config-example">
   <TabItem value="yaml" label="YAML">
@@ -546,7 +546,7 @@ Reference the conversation in a GitHub issue.
       params:
         repos:
           - owner: continuedev
-            repo: continue
+            repo: epico-pilot
         githubToken: ghp_xxx
   ```
   </TabItem>
@@ -560,7 +560,7 @@ Reference the conversation in a GitHub issue.
           "repos": [
             {
               "owner": "continuedev",
-              "repo": "continue"
+              "repo": "epico-pilot"
             }
           ],
           "githubToken": "ghp_xxx"
@@ -704,7 +704,7 @@ The only required settings are those for creating the database connection: `host
 
 By default, the `schema` filter is set to `public`, and the `sampleRows` is set to 3. You may unset the schema if you want to include tables from all schemas.
 
-[Here is a short demo.](https://github.com/continuedev/continue/pull/859)
+[Here is a short demo.](https://github.com/Mindbowser/co-pilot/pull/859)
 
 ### `@Google`
 
@@ -1056,4 +1056,4 @@ Query a [Greptile](https://www.greptile.com/) index of the current repo/branch.
 
 ### Requesting Context Providers
 
-Not seeing what you want? Create an issue [here](https://github.com/continuedev/continue/issues/new?assignees=TyDunn&labels=enhancement&projects=&template=feature-request-%F0%9F%92%AA.md&title=) to request a new Context Provider.
+Not seeing what you want? Create an issue [here](https://github.com/Mindbowser/co-pilot/issues/new?assignees=TyDunn&labels=enhancement&projects=&template=feature-request-%F0%9F%92%AA.md&title=) to request a new Context Provider.

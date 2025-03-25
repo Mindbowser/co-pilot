@@ -1,12 +1,12 @@
 import { BaseContextProvider } from "../";
 import {
-  Chunk,
-  ContextItem,
-  ContextProviderDescription,
-  ContextProviderExtras,
-  ContextSubmenuItem,
-  IDE,
-  LoadSubmenuItemsArgs,
+    Chunk,
+    ContextItem,
+    ContextProviderDescription,
+    ContextProviderExtras,
+    ContextSubmenuItem,
+    IDE,
+    LoadSubmenuItemsArgs,
 } from "../..";
 import DocsService from "../../indexing/docs/DocsService";
 import preIndexedDocs from "../../indexing/docs/preIndexedDocs";

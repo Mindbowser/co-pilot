@@ -1,6 +1,6 @@
 # LM Studio
 
-[LM Studio](https://lmstudio.ai) 是一个 Mac, Windows 和 Linux 的应用，让本地运行开源模型更简单，并提供很好的 UI 。要开始使用 LM Studio ，从网站上下载它，使用 UI 下载一个模型，然后打开本地推理服务器。 Continue 可以配置来使用 `LMStudio` LLM 类：
+[LM Studio](https://lmstudio.ai) 是一个 Mac, Windows 和 Linux 的应用，让本地运行开源模型更简单，并提供很好的 UI 。要开始使用 LM Studio ，从网站上下载它，使用 UI 下载一个模型，然后打开本地推理服务器。 Epico Pilot 可以配置来使用 `LMStudio` LLM 类：
 
 ```json title="config.json"
 {
@@ -29,4 +29,4 @@
 
 `apiBase` 现在将会代替默认的 `http://localhost:1234/v1` 。
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/LMStudio.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/LMStudio.ts)

@@ -1,8 +1,8 @@
 import { countTokens } from "../../llm/countTokens";
 import { SnippetPayload } from "../snippets";
 import {
-  AutocompleteCodeSnippet,
-  AutocompleteSnippet,
+    AutocompleteCodeSnippet,
+    AutocompleteSnippet,
 } from "../snippets/types";
 import { HelperVars } from "../util/HelperVars";
 
@@ -126,10 +126,10 @@ export const getSnippets = (
     .sort((a, b) => a.priority - b.priority)
     .map(({ snippet }) => snippet);
 
-  // Exclude Continue's own output as it makes it super-hard for users to test the autocomplete feature
-  // while looking at the prompts in the Continue's output
+  // Exclude Epico Pilot's own output as it makes it super-hard for users to test the autocomplete feature
+  // while looking at the prompts in the Epico Pilot's output
   prioritizedSnippets = prioritizedSnippets.filter((snippet) =>
-    !(snippet as AutocompleteCodeSnippet).filepath?.startsWith("output:extension-output-Continue.continue"));
+    !(snippet as AutocompleteCodeSnippet).filepath?.startsWith("output:extension-output-Epico Pilot.epico-pilot"));
 
   const finalSnippets = [];
   let remainingTokenCount = getRemainingTokenCount(helper);

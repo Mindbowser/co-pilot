@@ -2,11 +2,11 @@ export const PROVIDER_TOOL_SUPPORT: Record<
   string,
   (model: string) => boolean | undefined
 > = {
-  "continue-proxy": (model) => {
+  "epico-pilot-proxy": (model) => {
     // see getContinueProxyModelName
     const provider = model.split("/")[2];
     const _model = model.split("/")[3];
-    if (provider && _model && provider !== "continue-proxy") {
+    if (provider && _model && provider !== "epico-pilot-proxy") {
       const fn = PROVIDER_TOOL_SUPPORT[provider];
       if (fn) {
         return fn(_model);

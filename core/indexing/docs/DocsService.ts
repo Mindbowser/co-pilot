@@ -3,19 +3,19 @@ import { open, type Database } from "sqlite";
 import sqlite3 from "sqlite3";
 
 import {
-  Chunk,
-  ContinueConfig,
-  DocsIndexingDetails,
-  IDE,
-  IdeInfo,
-  ILLM,
-  IndexingStatus,
-  SiteIndexingConfig,
+    Chunk,
+    ContinueConfig,
+    DocsIndexingDetails,
+    IDE,
+    IdeInfo,
+    ILLM,
+    IndexingStatus,
+    SiteIndexingConfig,
 } from "../..";
 import { ConfigHandler } from "../../config/ConfigHandler";
 import {
-  addContextProvider,
-  isSupportedLanceDbCpuTargetForLinux,
+    addContextProvider,
+    isSupportedLanceDbCpuTargetForLinux,
 } from "../../config/util";
 import DocsContextProvider from "../../context/providers/DocsContextProvider";
 import TransformersJsEmbeddingsProvider from "../../llm/llms/TransformersJsEmbeddingsProvider";
@@ -24,24 +24,24 @@ import { IMessenger } from "../../protocol/messenger";
 import { fetchFavicon, getFaviconBase64 } from "../../util/fetchFavicon";
 import { GlobalContext } from "../../util/GlobalContext";
 import {
-  editConfigJson,
-  getDocsSqlitePath,
-  getLanceDbPath,
+    editConfigJson,
+    getDocsSqlitePath,
+    getLanceDbPath,
 } from "../../util/paths";
 import { Telemetry } from "../../util/posthog";
 
 import {
-  ArticleWithChunks,
-  htmlPageToArticleWithChunks,
-  markdownPageToArticleWithChunks,
+    ArticleWithChunks,
+    htmlPageToArticleWithChunks,
+    markdownPageToArticleWithChunks,
 } from "./article";
 import DocsCrawler, { DocsCrawlerType, PageData } from "./crawlers/DocsCrawler";
 import { runLanceMigrations, runSqliteMigrations } from "./migrations";
 import {
-  downloadFromS3,
-  getS3Filename,
-  S3Buckets,
-  SiteIndexingResults,
+    downloadFromS3,
+    getS3Filename,
+    S3Buckets,
+    SiteIndexingResults,
 } from "./preIndexed";
 import preIndexedDocs from "./preIndexedDocs";
 
@@ -460,7 +460,7 @@ export default class DocsService {
     // This particular failure will not mark as a failed config in global context
     // Since SiteIndexingConfig is likely to be valid
     try {
-      await provider.embed(["continue-test-run"]);
+      await provider.embed(["epico-pilot-test-run"]);
     } catch (e) {
       console.error("Failed to test embeddings connection", e);
       return;
@@ -750,7 +750,7 @@ export default class DocsService {
       void this.ide.showToast(
         "error",
         "Set up an embeddings model to use the @docs context provider. See: " +
-          "https://docs.continue.dev/customize/model-roles/embeddings",
+          "https://docs.epico-pilot.dev/customize/model-roles/embeddings",
       );
       return [];
     }

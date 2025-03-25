@@ -7,11 +7,11 @@ import Tabs from "@theme/Tabs";
 
 # Build Your Own Context Provider
 
-Continue offers several way to provide your custom context to the extension.
+Epico Pilot offers several way to provide your custom context to the extension.
 
 ## HTTP Context Provider
 
-Continue can retrieve context from a custom HTTP server that you create and serve. Add the `@HTTP` context provider to your configuration like this:
+Epico Pilot can retrieve context from a custom HTTP server that you create and serve. Add the `@HTTP` context provider to your configuration like this:
 
 <Tabs groupId="config-example">
   <TabItem value="yaml" label="YAML">
@@ -45,7 +45,7 @@ Continue can retrieve context from a custom HTTP server that you create and serv
   </TabItem>
 </Tabs>
 
-Then, create a server that responds to requests as are made from [HttpContextProvider.ts](https://github.com/continuedev/continue/blob/main/core/context/providers/HttpContextProvider.ts). See the `hello` endpoint in [context_provider_server.py](https://github.com/continuedev/continue/blob/main/core/context/providers/context_provider_server.py) for an example that uses FastAPI.
+Then, create a server that responds to requests as are made from [HttpContextProvider.ts](https://github.com/Mindbowser/co-pilot/blob/main/core/context/providers/HttpContextProvider.ts). See the `hello` endpoint in [context_provider_server.py](https://github.com/Mindbowser/co-pilot/blob/main/core/context/providers/context_provider_server.py) for an example that uses FastAPI.
 
 The `"options"` property can be used to send additional parameters to your endpoint, which will be included in the request body.
 
@@ -55,7 +55,7 @@ The following methods for creating custom context providers are deprecated. We r
 
 ## Using CustomContextProvider
 
-Custom context providers can be implemented in a `config.ts` placed in your Continue global directory (`~/.continue` for MacOS, `%USERPROFILE%/.continue` for Windows). You can implement the `CustomContextProvider` interface in your `config.ts`
+Custom context providers can be implemented in a `config.ts` placed in your Epico Pilot global directory (`~/.epico-pilot` for MacOS, `%USERPROFILE%/.epico-pilot` for Windows). You can implement the `CustomContextProvider` interface in your `config.ts`
 
 ```typescript
 interface CustomContextProvider {
@@ -80,7 +80,7 @@ As an example, let's say you have a set of internal documents that have been ind
 - `description`: A longer description of the context item
 - `content`: The actual content of the context item, which will be fed to the LLM as context
 
-```typescript title="~/.continue/config.ts"
+```typescript title="~/.epico-pilot/config.ts"
 const RagContextProvider: CustomContextProvider = {
   title: "rag",
   displayTitle: "RAG",
@@ -109,7 +109,7 @@ const RagContextProvider: CustomContextProvider = {
 
 It can then be added in `config.ts` like so:
 
-```typescript title="~/.continue/config.ts"
+```typescript title="~/.epico-pilot/config.ts"
 export function modifyConfig(config: Config): Config {
   if (!config.contextProviders) {
     config.contextProviders = [];
@@ -129,7 +129,7 @@ The **"query"** type is used when you want to display a text box to the user, an
 
 The **"submenu"** type is used when you want to display a list of searchable items in the dropdown. Built-in examples include "issue" and "folder". To implement a "submenu" context provider, set `"type": "submenu"` and implement the `loadSubmenuItems` and `getContextItems` functions. Here is an example that shows a list of all README files in the current workspace:
 
-```typescript title="~/.continue/config.ts"
+```typescript title="~/.epico-pilot/config.ts"
 const ReadMeContextProvider: CustomContextProvider = {
   title: "readme",
   displayTitle: "README",
@@ -211,9 +211,9 @@ The flow of information in the above example is as follows:
 
 ### Importing outside modules
 
-To include outside Node modules in your config.ts, run `npm install <module_name>` from the `~/.continue` directory, and then import them in config.ts.
+To include outside Node modules in your config.ts, run `npm install <module_name>` from the `~/.epico-pilot` directory, and then import them in config.ts.
 
-Continue will use [esbuild](https://esbuild.github.io/) to bundle your `config.ts` and any dependencies into a single Javascript file. The exact configuration used can be found [here](https://github.com/continuedev/continue/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52).
+Epico Pilot will use [esbuild](https://esbuild.github.io/) to bundle your `config.ts` and any dependencies into a single Javascript file. The exact configuration used can be found [here](https://github.com/Mindbowser/co-pilot/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52).
 
 ### `CustomContextProvider` Reference
 
@@ -233,21 +233,21 @@ Continue will use [esbuild](https://esbuild.github.io/) to bundle your `config.t
 
 ## Extension API for VSCode
 
-Continue exposes an API for registering context providers from a 3rd party VSCode extension. This is useful if you have a VSCode extension that provides some additional context that you would like to use in Continue. To use this API, add the following to your `package.json`:
+Epico Pilot exposes an API for registering context providers from a 3rd party VSCode extension. This is useful if you have a VSCode extension that provides some additional context that you would like to use in Epico Pilot. To use this API, add the following to your `package.json`:
 
 ```json title="package.json"
 {
-  "extensionDependencies": ["continue.continue"]
+  "extensionDependencies": ["epico-pilot.epico-pilot"]
 }
 ```
 
-Or install the Continue Core module from npm:
+Or install the Epico Pilot Core module from npm:
 
 ```bash
 npm i @continuedev/core
 ```
 
-You can add the Continue core module as a dev dependency in your `package.json`:
+You can add the Epico Pilot core module as a dev dependency in your `package.json`:
 
 ```json title="package.json"
 {
@@ -304,8 +304,8 @@ class MyCustomProvider implements IContextProvider {
 // create an instance of your custom provider
 const customProvider = new MyCustomProvider();
 
-// get Continue extension using vscode API
-const continueExt = vscode.extensions.getExtension("Continue.continue");
+// get Epico Pilot extension using vscode API
+const continueExt = vscode.extensions.getExtension("Epico Pilot.epico-pilot");
 
 // get the API from the extension
 const continueApi = continueExt?.exports;
@@ -314,6 +314,6 @@ const continueApi = continueExt?.exports;
 continueApi?.registerCustomContextProvider(customProvider);
 ```
 
-This will register `MyCustomProvider` with Continue!
+This will register `MyCustomProvider` with Epico Pilot!
 
 ![alt text](./assets/image.png)

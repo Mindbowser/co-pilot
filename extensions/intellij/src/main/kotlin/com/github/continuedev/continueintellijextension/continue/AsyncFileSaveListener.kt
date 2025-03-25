@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import com.github.continuedev.continueintellijextension.services.ContinuePluginService
 import com.intellij.openapi.vfs.AsyncFileListener
@@ -6,9 +6,9 @@ import com.intellij.openapi.vfs.newvfs.events.VFileEvent
 
 class AsyncFileSaveListener(private val continuePluginService: ContinuePluginService) : AsyncFileListener {
     private val configFilePatterns = listOf(
-        ".continue/config.json",
-        ".continue/config.ts",
-        ".continue/config.yaml",
+        ".epico-pilot/config.json",
+        ".epico-pilot/config.ts",
+        ".epico-pilot/config.yaml",
         ".continuerc.json"
     )
 

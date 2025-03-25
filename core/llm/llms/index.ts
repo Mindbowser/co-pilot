@@ -1,9 +1,9 @@
 import {
-  BaseCompletionOptions,
-  IdeSettings,
-  ILLM,
-  LLMOptions,
-  ModelDescription,
+    BaseCompletionOptions,
+    IdeSettings,
+    ILLM,
+    LLMOptions,
+    ModelDescription,
 } from "../..";
 import { renderTemplatedString } from "../../promptFiles/v1/renderTemplatedString";
 import { BaseLLM } from "../index";
@@ -145,7 +145,7 @@ export async function llmFromDescription(
     uniqueId,
   };
 
-  if (desc.provider === "continue-proxy") {
+  if (desc.provider === "epico-pilot-proxy") {
     options.apiKey = ideSettings.userToken;
     if (ideSettings.remoteConfigServerUrl) {
       options.apiBase = new URL(

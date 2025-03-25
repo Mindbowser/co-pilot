@@ -1,21 +1,21 @@
 import {
-  AssistantChatMessage,
-  ChatMessage,
-  CompletionOptions,
-  LLMOptions,
-  MessagePart,
-  ToolCallDelta,
+    AssistantChatMessage,
+    ChatMessage,
+    CompletionOptions,
+    LLMOptions,
+    MessagePart,
+    ToolCallDelta,
 } from "../../index.js";
 import { findLast } from "../../util/findLast.js";
 import { renderChatMessage } from "../../util/messageContent.js";
 import { BaseLLM } from "../index.js";
 import { streamResponse } from "../stream.js";
 import {
-  GeminiChatContentPart,
-  GeminiChatRequestBody,
-  GeminiChatResponse,
-  GeminiGenerationConfig,
-  GeminiToolFunctionDeclaration,
+    GeminiChatContentPart,
+    GeminiChatRequestBody,
+    GeminiChatResponse,
+    GeminiGenerationConfig,
+    GeminiToolFunctionDeclaration,
 } from "./gemini-types.js";
 
 class Gemini extends BaseLLM {

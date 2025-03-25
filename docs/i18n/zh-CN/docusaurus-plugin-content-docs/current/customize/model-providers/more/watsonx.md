@@ -10,7 +10,7 @@ watsonx, 由 IBM 开发，提供不同的预训练 AI 基础模型，可以用�
 
 为了开始使用 watsonx SaaS ，访问 [注册页面](https://dataplatform.cloud.ibm.com/registration/stepone?context=wx) 。如果你没有已有的 IBM 云帐号，可以注册免费试用。
 
-为了使用 Continue 认证 watsonx.ai SaaS ，你需要创建一个项目，然后 [设置 API key](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=cli-creating-your-cloud-api-key) 。然后，在 Continue 中：
+为了使用 Epico Pilot 认证 watsonx.ai SaaS ，你需要创建一个项目，然后 [设置 API key](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=cli-creating-your-cloud-api-key) 。然后，在 Epico Pilot 中：
 
 - 设置 **watsonx URL** 为你的 watsonx SaaS 端点，例如 `https://us-south.ml.cloud.ibm.com` 使用 US 南方区域。
 - 设置 **watsonx Project ID** 为你的 watsonx 项目 ID 。
@@ -18,7 +18,7 @@ watsonx, 由 IBM 开发，提供不同的预训练 AI 基础模型，可以用�
 
 ### watsonx.ai 软件
 
-为了使用 Continue 认证你的 watsonx.ai 软件实例，你可以使用 `username/password` 或 `ZenApiKey` 方法：
+为了使用 Epico Pilot 认证你的 watsonx.ai 软件实例，你可以使用 `username/password` 或 `ZenApiKey` 方法：
 
 1. _选项 1_ (推荐)： 使用 `ZenApiKey` 认证：
    - 设置 **watsonx URL** 为你的 watsonx 软件端点，例如 `https://cpd-watsonx.apps.example.com` 。

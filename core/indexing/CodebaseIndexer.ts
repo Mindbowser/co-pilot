@@ -13,10 +13,10 @@ import { FullTextSearchCodebaseIndex } from "./FullTextSearchCodebaseIndex.js";
 import { LanceDbIndex } from "./LanceDbIndex.js";
 import { getComputeDeleteAddRemove } from "./refreshIndex.js";
 import {
-  CodebaseIndex,
-  IndexResultType,
-  PathAndCacheKey,
-  RefreshIndexResults,
+    CodebaseIndex,
+    IndexResultType,
+    PathAndCacheKey,
+    RefreshIndexResults,
 } from "./types.js";
 import { walkDirAsync } from "./walkDir.js";
 

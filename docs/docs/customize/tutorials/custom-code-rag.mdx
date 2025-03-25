@@ -3,7 +3,7 @@ import TabItem from "@theme/TabItem";
 
 # Custom code RAG
 
-While Continue comes with [@Codebase](../deep-dives/codebase.mdx) out of the box, you might wish to set up your own vector database and build a custom retrieval-augmented generation (RAG) system. This can allow you to access code that is not available locally, to index code a single time across all users, or to include custom logic. In this guide, we'll walk you through the steps it takes to build this.
+While Epico Pilot comes with [@Codebase](../deep-dives/codebase.mdx) out of the box, you might wish to set up your own vector database and build a custom retrieval-augmented generation (RAG) system. This can allow you to access code that is not available locally, to index code a single time across all users, or to include custom logic. In this guide, we'll walk you through the steps it takes to build this.
 
 ## Step 1: Choose an embeddings model
 
@@ -23,7 +23,7 @@ If you use `voyage-code-3`, it has a maximum context length of 16,000 tokens, wh
 
 1. Truncate the file when it goes over the context length: in this case you will always have 1 chunk per file.
 2. Split the file into chunks of a fixed length: starting at the top of the file, add lines you your current chunk until it reaches the limit, then start a new chunk.
-3. Use a recursive, abstract syntax tree (AST)-based strategy: this is the most exact, but most complex. In most cases you can achieve high quality results by using (1) or (2), but if you'd like to try this you can find a reference example in [our code chunker](https://github.com/continuedev/continue/blob/main/core/indexing/chunk/code.ts) or in [LlamaIndex](https://docs.llamaindex.ai/en/stable/api_reference/node_parsers/code/).
+3. Use a recursive, abstract syntax tree (AST)-based strategy: this is the most exact, but most complex. In most cases you can achieve high quality results by using (1) or (2), but if you'd like to try this you can find a reference example in [our code chunker](https://github.com/Mindbowser/co-pilot/blob/main/core/indexing/chunk/code.ts) or in [LlamaIndex](https://docs.llamaindex.ai/en/stable/api_reference/node_parsers/code/).
 
 As usual in this guide, we recommend starting with the strategy that gives 80% of the benefit with 20% of the effort.
 
@@ -88,9 +88,9 @@ In the beginning, you should probably run it by hand. Once you are confident tha
 
 ## Step 6: Set up your server
 
-In order for the Continue extension to access your custom RAG system, you'll need to set up a server. This server is responsible for recieving a query from the extension, querying the vector database, and returning the results in the format expected by Continue.
+In order for the Epico Pilot extension to access your custom RAG system, you'll need to set up a server. This server is responsible for recieving a query from the extension, querying the vector database, and returning the results in the format expected by Epico Pilot.
 
-Here is a reference implementation using FastAPI that is capable of handling requests from Continue's "http" context provider.
+Here is a reference implementation using FastAPI that is capable of handling requests from Epico Pilot's "http" context provider.
 
 ```python
 """
@@ -113,7 +113,7 @@ app = FastAPI()
 async def create_item(item: ContextProviderInput):
     results = [] # TODO: Query your vector database here.
 
-    # Construct the "context item" format expected by Continue
+    # Construct the "context item" format expected by Epico Pilot
     context_items = []
     for result in results:
         context_items.append({
@@ -125,7 +125,7 @@ async def create_item(item: ContextProviderInput):
     return context_items
 ```
 
-After you've set up your server, you can configure Continue to use it by adding the "http" context provider to your `contextProviders` array in your configuration:
+After you've set up your server, you can configure Epico Pilot to use it by adding the "http" context provider to your `contextProviders` array in your configuration:
 
 <Tabs groupId="config-example">
 <TabItem value="yaml" label="YAML">

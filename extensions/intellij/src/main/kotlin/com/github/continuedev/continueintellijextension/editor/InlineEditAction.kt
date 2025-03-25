@@ -1,6 +1,6 @@
 package com.github.continuedev.continueintellijextension.editor
 
-import com.github.continuedev.continueintellijextension.`continue`.GetTheme
+import com.github.continuedev.continueintellijextension.`epico-pilot`.GetTheme
 import com.github.continuedev.continueintellijextension.services.ContinueExtensionSettings
 import com.github.continuedev.continueintellijextension.services.ContinuePluginService
 import com.github.continuedev.continueintellijextension.utils.getMetaKeyLabel
@@ -157,7 +157,7 @@ fun openInlineEdit(project: Project?, editor: Editor) {
     // newlines.
     // The only case this matters is when a user double-clicks to highlight a full line. Without this
     // check.
-    // the highlighted range will continue to the following line.
+    // the highlighted range will epico-pilot to the following line.
     val isSingleLineSelection =
         endLineNumber > startLineNumber &&
                 endLineNumber < editor.document.lineCount &&

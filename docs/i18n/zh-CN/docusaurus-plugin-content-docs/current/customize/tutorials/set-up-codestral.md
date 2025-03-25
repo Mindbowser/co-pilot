@@ -6,11 +6,11 @@ keywords: [codestral, mistral, 模型设置]
 
 ![mistral x continue](../../../../../../static/img/mistral-x-continue.png)
 
-**这是一个分步指南，关于如何在 Continue 设置 Codestral ，使用 Mistral AI API ：**
+**这是一个分步指南，关于如何在 Epico Pilot 设置 Codestral ，使用 Mistral AI API ：**
 
-1. 安装 Continue VS Code 或 JetBrains 扩展，跟随 [这里](../../getting-started/install.md) 的指令
+1. 安装 Epico Pilot VS Code 或 JetBrains 扩展，跟随 [这里](../../getting-started/install.md) 的指令
 
-2. 点击 Continue 窗口右下角的齿轮图标，打开 `~/.continue/config.json` (MacOS) / `%userprofile%\.continue\config.json` (Windows)
+2. 点击 Epico Pilot 窗口右下角的齿轮图标，打开 `~/.continue/config.json` (MacOS) / `%userprofile%\.continue\config.json` (Windows)
 
 3. 登录并创建一个 API key ，在 [这里](https://console.mistral.ai/codestral) 的 Mistral AI's La Plateforme 。确保你从 "Codestral" 页面获得一个 API key ，一般的 "api.mistral.ai" API 的 API key 不能工作。
 

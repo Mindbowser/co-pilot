@@ -9,9 +9,9 @@
 
 # ————————————————————————————————————————————————     Setup      ————————————————————————————————————————————————- 
 
-# First, open the Continue sidebar by pressing [Cmd + L] or clicking the Continue icon.
+# First, open the Epico Pilot sidebar by pressing [Cmd + L] or clicking the Epico Pilot icon.
 
-# See an example at https://docs.continue.dev/getting-started/install
+# See an example at https://docs.epico-pilot.dev/getting-started/install
 
 # Follow the instructions in the sidebar to set up a Chat/Edit modela and an Autocomplete model.
 
@@ -19,7 +19,7 @@
 
 ## Highlight the code below
 ## Press [Cmd + L] to add to Chat
-## Try asking Continue "what sorting algorithm is this?"
+## Try asking Epico Pilot "what sorting algorithm is this?"
 def sorting_algorithm(x):
     for i in range(len(x)):
         for j in range(len(x) - 1):
@@ -34,7 +34,7 @@ def sorting_algorithm(x):
 
 ## Highlight the code below
 ## Press [Cmd + I] to Edit
-## Try asking Continue to "make this more readable"
+## Try asking Epico Pilot to "make this more readable"
 def sorting_algorithm(x):
     for i in range(len(x)):
         for j in range(len(x) - 1):
@@ -54,4 +54,4 @@ def sorting_algorithm(x):
 
 # —————————————————————————————————————————————-     Learn More     -—————————————————————————————————————————————— 
 
-# Visit the Continue Docs at https://docs.continue.dev/getting-started/overview
+# Visit the Epico Pilot Docs at https://docs.epico-pilot.dev/getting-started/overview

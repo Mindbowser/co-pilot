@@ -1,17 +1,17 @@
 import {
-  BedrockRuntimeClient,
-  ContentBlock,
-  ConverseStreamCommand,
-  InvokeModelCommand,
-  Message
+    BedrockRuntimeClient,
+    ContentBlock,
+    ConverseStreamCommand,
+    InvokeModelCommand,
+    Message
 } from "@aws-sdk/client-bedrock-runtime";
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 
 import {
-  ChatMessage,
-  Chunk,
-  CompletionOptions,
-  LLMOptions
+    ChatMessage,
+    Chunk,
+    CompletionOptions,
+    LLMOptions
 } from "../../index.js";
 import { renderChatMessage } from "../../util/messageContent.js";
 import { BaseLLM } from "../index.js";

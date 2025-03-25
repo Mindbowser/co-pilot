@@ -1,7 +1,7 @@
 import type {
-  ArtifactType,
-  EmbeddingsCacheResponse,
-  IContinueServerClient,
+    ArtifactType,
+    EmbeddingsCacheResponse,
+    IContinueServerClient,
 } from "../interface.js";
 
 export class ContinueServerClient implements IContinueServerClient {
@@ -17,7 +17,7 @@ export class ContinueServerClient implements IContinueServerClient {
           ? undefined
           : new URL(serverUrl.endsWith("/") ? serverUrl : `${serverUrl}/`);
     } catch (e) {
-      console.warn("Invalid Continue server url", e);
+      console.warn("Invalid Epico Pilot server url", e);
       this.url = undefined;
     }
   }

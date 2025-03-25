@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import IntelliJIDE
 import com.github.continuedev.continueintellijextension.*
@@ -77,7 +77,7 @@ class IdeProtocolClient(
                             "windowId" to continuePluginService.windowId,
                             "workspacePaths" to continuePluginService.workspacePaths,
                             "vscMachineId" to getMachineUniqueID(),
-                            "vscMediaUrl" to "http://continue",
+                            "vscMediaUrl" to "http://epico-pilot",
                         )
                         respond(jsonData)
                     }

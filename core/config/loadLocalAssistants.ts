@@ -1,15 +1,15 @@
 import ignore from "ignore";
 import { IDE } from "..";
 import {
-  DEFAULT_IGNORE_DIRS,
-  DEFAULT_IGNORE_FILETYPES,
+    DEFAULT_IGNORE_DIRS,
+    DEFAULT_IGNORE_FILETYPES,
 } from "../indexing/ignore";
 import { walkDir } from "../indexing/walkDir";
 import { getGlobalAssistantsPath } from "../util/paths";
 import { localPathToUri } from "../util/pathToUri";
 import { joinPathsToUri } from "../util/uri";
 
-export const ASSISTANTS_FOLDER = ".continue/assistants";
+export const ASSISTANTS_FOLDER = ".epico-pilot/assistants";
 
 export function isLocalAssistantFile(uri: string): boolean {
   if (!uri.endsWith(".yaml") && !uri.endsWith(".yml")) {

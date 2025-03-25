@@ -58,13 +58,13 @@ class Onboarding {
             }
 
             // TODO: Need a good way to ensure this is the first test ran in the entire suite
-//            step("Verify Continue tutorial file is loaded") {
+//            step("Verify Epico Pilot tutorial file is loaded") {
 //                find<ComponentFixture>(byXpath("//div[@visible_text='continue_tutorial.java']"))
 //            }
 
             step("Manually open the webview") {
                 // Manually open the webview
-                find<ComponentFixture>(byXpath("//div[@text='Continue']"), ofSeconds((10))).click()
+                find<ComponentFixture>(byXpath("//div[@text='Epico Pilot']"), ofSeconds((10))).click()
 
                 waitFor(ofSeconds(10)) {
                     browser().isShowing

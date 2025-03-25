@@ -42,7 +42,7 @@ class AutocompleteSpinnerWidget(project: Project) : EditorBasedWidget(project), 
 
     override fun getTooltipText(): String {
         val enabled = service<ContinueExtensionSettings>().state.enableTabAutocomplete
-        return if (enabled) "Continue autocomplete enabled" else "Continue autocomplete disabled"
+        return if (enabled) "Epico Pilot autocomplete enabled" else "Epico Pilot autocomplete disabled"
     }
 
     override fun getClickConsumer(): Consumer<MouseEvent>? {
@@ -50,7 +50,7 @@ class AutocompleteSpinnerWidget(project: Project) : EditorBasedWidget(project), 
     }
 
     override fun getIcon(): Icon = if (isLoading) animatedIcon else
-        IconLoader.getIcon("/icons/continue.svg", javaClass)
+        IconLoader.getIcon("/icons/epico-pilot.svg", javaClass)
 
     fun setLoading(loading: Boolean) {
         isLoading = loading
@@ -89,7 +89,7 @@ class AutocompleteSpinnerWidgetFactory : StatusBarWidgetFactory {
     }
 
     override fun getDisplayName(): String {
-        return "Continue Autocomplete"
+        return "Epico Pilot Autocomplete"
     }
 
     override fun isAvailable(p0: Project): Boolean {

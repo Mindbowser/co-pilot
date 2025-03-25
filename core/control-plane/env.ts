@@ -1,8 +1,8 @@
 import * as fs from "node:fs";
 import { IdeSettings } from "..";
 import {
-  getLocalEnvironmentDotFilePath,
-  getStagingEnvironmentDotFilePath,
+    getLocalEnvironmentDotFilePath,
+    getStagingEnvironmentDotFilePath,
 } from "../util/paths";
 
 export interface ControlPlaneEnv {
@@ -13,13 +13,13 @@ export interface ControlPlaneEnv {
   APP_URL: string;
 }
 
-export const EXTENSION_NAME = "continue";
+export const EXTENSION_NAME = "epico-pilot";
 
 const WORKOS_CLIENT_ID_PRODUCTION = "client_01J0FW6XN8N2XJAECF7NE0Y65J";
 const WORKOS_CLIENT_ID_STAGING = "client_01J0FW6XCPMJMQ3CG51RB4HBZQ";
 
-const WORKOS_ENV_ID_PRODUCTION = "continue";
-const WORKOS_ENV_ID_STAGING = "continue-staging";
+const WORKOS_ENV_ID_PRODUCTION = "epico-pilot";
+const WORKOS_ENV_ID_STAGING = "epico-pilot-staging";
 
 export const PRODUCTION_ENV: ControlPlaneEnv = {
   DEFAULT_CONTROL_PLANE_PROXY_URL:
@@ -28,31 +28,31 @@ export const PRODUCTION_ENV: ControlPlaneEnv = {
     "https://control-plane-api-service-i3dqylpbqa-uc.a.run.app/",
   AUTH_TYPE: WORKOS_ENV_ID_PRODUCTION,
   WORKOS_CLIENT_ID: WORKOS_CLIENT_ID_PRODUCTION,
-  APP_URL: "https://app.continue.dev/",
+  APP_URL: "https://app.epico-pilot.dev/",
 };
 
 const PRODUCTION_HUB_ENV: ControlPlaneEnv = {
-  DEFAULT_CONTROL_PLANE_PROXY_URL: "https://api.continue.dev/",
-  CONTROL_PLANE_URL: "https://api.continue.dev/",
+  DEFAULT_CONTROL_PLANE_PROXY_URL: "https://api.epico-pilot.dev/",
+  CONTROL_PLANE_URL: "https://api.epico-pilot.dev/",
   AUTH_TYPE: WORKOS_ENV_ID_PRODUCTION,
   WORKOS_CLIENT_ID: WORKOS_CLIENT_ID_PRODUCTION,
-  APP_URL: "https://hub.continue.dev/",
+  APP_URL: "https://hub.epico-pilot.dev/",
 };
 
 const STAGING_ENV: ControlPlaneEnv = {
-  DEFAULT_CONTROL_PLANE_PROXY_URL: "https://api.continue-stage.tools/",
-  CONTROL_PLANE_URL: "https://api.continue-stage.tools/",
+  DEFAULT_CONTROL_PLANE_PROXY_URL: "https://api.epico-pilot-stage.tools/",
+  CONTROL_PLANE_URL: "https://api.epico-pilot-stage.tools/",
   AUTH_TYPE: WORKOS_ENV_ID_STAGING,
   WORKOS_CLIENT_ID: WORKOS_CLIENT_ID_STAGING,
-  APP_URL: "https://hub.continue-stage.tools/",
+  APP_URL: "https://hub.epico-pilot-stage.tools/",
 };
 
 const TEST_ENV: ControlPlaneEnv = {
-  DEFAULT_CONTROL_PLANE_PROXY_URL: "https://api-test.continue.dev/",
-  CONTROL_PLANE_URL: "https://api-test.continue.dev/",
+  DEFAULT_CONTROL_PLANE_PROXY_URL: "https://api-test.epico-pilot.dev/",
+  CONTROL_PLANE_URL: "https://api-test.epico-pilot.dev/",
   AUTH_TYPE: WORKOS_ENV_ID_STAGING,
   WORKOS_CLIENT_ID: WORKOS_CLIENT_ID_STAGING,
-  APP_URL: "https://app-test.continue.dev/",
+  APP_URL: "https://app-test.epico-pilot.dev/",
 };
 
 const LOCAL_ENV: ControlPlaneEnv = {

@@ -7,16 +7,16 @@ keywords: [config, settings, customize]
 
 ## YAML Config
 
-Continue can be deeply customized. Local user-level configuration is stored and can be edited in your home directory in `config.yaml`:
+Epico Pilot can be deeply customized. Local user-level configuration is stored and can be edited in your home directory in `config.yaml`:
 
-To open `config.yaml`, you can click the "gear" icon in the header of the Continue Chat sidebar to open the settings page, and then click `Open Assistant configuration` to open the file. When editing this file, you can see the available options suggested as you type, or check the reference below.
+To open `config.yaml`, you can click the "gear" icon in the header of the Epico Pilot Chat sidebar to open the settings page, and then click `Open Assistant configuration` to open the file. When editing this file, you can see the available options suggested as you type, or check the reference below.
 
 - `~/.continue/config.yaml` (MacOS / Linux)
 - `%USERPROFILE%\.continue\config.yaml` (Windows)
 
-To open your configuration file, you can click the "gear" icon in the bottom right corner of the Continue Chat sidebar. When editing this file, you can see the available options suggested as you type, or check the reference below.
+To open your configuration file, you can click the "gear" icon in the bottom right corner of the Epico Pilot Chat sidebar. When editing this file, you can see the available options suggested as you type, or check the reference below.
 
-When you save a config file from the IDE, Continue will automatically refresh to take into account your changes. A config file is automatically created the first time you use Continue, and always automatically generated with default values if it doesn't exist.
+When you save a config file from the IDE, Epico Pilot will automatically refresh to take into account your changes. A config file is automatically created the first time you use Epico Pilot, and always automatically generated with default values if it doesn't exist.
 
 See the full reference for `config.yaml` [here](../../yaml-reference.md).
 

@@ -1,10 +1,10 @@
 import {
-  InputBox,
-  Key,
-  WebDriver,
-  WebElement,
-  WebView,
-  Workbench,
+    InputBox,
+    Key,
+    WebDriver,
+    WebElement,
+    WebView,
+    Workbench,
 } from "vscode-extension-tester";
 
 import { DEFAULT_TIMEOUT } from "../constants";
@@ -38,14 +38,14 @@ export class GUIActions {
     for (let i = 0; i < iframes.length; i++) {
       const iframe = iframes[i];
       const src = await iframe.getAttribute("src");
-      if (src.includes("extensionId=Continue.continue")) {
+      if (src.includes("extensionId=Epico Pilot.epico-pilot")) {
         continueIFrame = iframe;
         break;
       }
     }
 
     if (!continueIFrame) {
-      throw new Error("Could not find Continue iframe");
+      throw new Error("Could not find Epico Pilot iframe");
     }
 
     await driver.switchTo().frame(continueIFrame);
@@ -69,7 +69,7 @@ export class GUIActions {
 
   public static toggleGui = async () => {
     return TestUtils.waitForSuccess(() =>
-      new Workbench().executeCommand("continue.focusContinueInput"),
+      new Workbench().executeCommand("epico-pilot.focusContinueInput"),
     );
   };
 

@@ -4,7 +4,7 @@ out/
 .vscode-test/
 data/
 src/client
-.continue
+.epico-pilot
 
 exe
 bin
@@ -21,7 +21,7 @@ e2e/_output
 e2e/.test-extensions
 e2e/storage
 e2e/vsix
-e2e/test-continue/*
-!e2e/test-continue/config.json
-e2e/test-continue-yaml/*
-!e2e/test-continue-yaml/config.yaml
+e2e/test-epico-pilot/*
+!e2e/test-epico-pilot/config.json
+e2e/test-epico-pilot-yaml/*
+!e2e/test-epico-pilot-yaml/config.yaml

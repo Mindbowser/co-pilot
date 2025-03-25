@@ -1,6 +1,6 @@
 # 定制代码 RAG
 
-虽然 Continue 的 [@Codebase](../deep-dives/codebase.md) 开箱即用，你可能想要设置自己的向量数据库，并构建一个定制的检索增强生成（RAG）系统。这允许你访问不在本地可用的代码，对每个用户每次索引代码，或者包含定制的逻辑。在这个指南中，我们将展示构建这个的步骤。
+虽然 Epico Pilot 的 [@Codebase](../deep-dives/codebase.md) 开箱即用，你可能想要设置自己的向量数据库，并构建一个定制的检索增强生成（RAG）系统。这允许你访问不在本地可用的代码，对每个用户每次索引代码，或者包含定制的逻辑。在这个指南中，我们将展示构建这个的步骤。
 
 ## 步骤 1 ：选择嵌入模型
 
@@ -20,7 +20,7 @@
 
 1. 截断文件，当它超过上下文长度：在这种情况下，你总是每个文件有 1 个分块。
 2. 拆分文件到一个固定长度的分块：从文件的最上面开始，添加你当前分块的行，直到它到达限制，然后开始一个新的分块。
-3. 使用一个递归的，基于抽象语法树（AST）的策略：这是最准确的，但是最复杂的。在大多数情况下，通过使用 (1) 或 (2) ，你可以获得好的质量结果，但是如果你想要尝试这个，你可以查找一个参考示例，在 [我们的代码 chunker](https://github.com/continuedev/continue/blob/main/core/indexing/chunk/code.ts) 或在 [LlamaIndex](https://docs.llamaindex.ai/en/stable/api_reference/node_parsers/code/) 。
+3. 使用一个递归的，基于抽象语法树（AST）的策略：这是最准确的，但是最复杂的。在大多数情况下，通过使用 (1) 或 (2) ，你可以获得好的质量结果，但是如果你想要尝试这个，你可以查找一个参考示例，在 [我们的代码 chunker](https://github.com/Mindbowser/co-pilot/blob/main/core/indexing/chunk/code.ts) 或在 [LlamaIndex](https://docs.llamaindex.ai/en/stable/api_reference/node_parsers/code/) 。
 
 像往常一样，在这个指南中，我们推荐开始的策略，使用 20% 的努力获得 80% 的收益。
 
@@ -84,9 +84,9 @@ print(actual.text)
 
 ## 步骤 6 ：设置你的服务器
 
-为了 Continue 扩展能够访问你的定制 RAG 系统，你需要设置服务器。这个服务器负责接收来自扩展的查询，查询向量数据库，返回 Continue 想要的格式的结果。
+为了 Epico Pilot 扩展能够访问你的定制 RAG 系统，你需要设置服务器。这个服务器负责接收来自扩展的查询，查询向量数据库，返回 Epico Pilot 想要的格式的结果。
 
-这是一个使用 FastAPI 的参考实现，适用于处理来自 Continue 的 "http" 上下文提供者的请求。
+这是一个使用 FastAPI 的参考实现，适用于处理来自 Epico Pilot 的 "http" 上下文提供者的请求。
 
 ```python
 """
@@ -109,7 +109,7 @@ app = FastAPI()
 async def create_item(item: ContextProviderInput):
     results = [] # TODO: Query your vector database here.
 
-    # Construct the "context item" format expected by Continue
+    # Construct the "context item" format expected by Epico Pilot
     context_items = []
     for result in results:
         context_items.append({
@@ -121,7 +121,7 @@ async def create_item(item: ContextProviderInput):
     return context_items
 ```
 
-在你设置服务器之后，你可以配置 Continue 使用它，通过添加 "http" 上下文提供者到你的 `config.json` 中的 `contextProviders` 列表：
+在你设置服务器之后，你可以配置 Epico Pilot 使用它，通过添加 "http" 上下文提供者到你的 `config.json` 中的 `contextProviders` 列表：
 
 ```json title="config.json"
 {

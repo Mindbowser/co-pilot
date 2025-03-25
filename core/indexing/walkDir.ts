@@ -4,9 +4,9 @@ import type { FileType, IDE } from "..";
 
 import { joinPathsToUri } from "../util/uri";
 import {
-  defaultIgnoreFileAndDir,
-  getGlobalContinueIgArray,
-  gitIgArrayFromFile,
+    defaultIgnoreFileAndDir,
+    getGlobalContinueIgArray,
+    gitIgArrayFromFile,
 } from "./ignore";
 
 export interface WalkerOptions {

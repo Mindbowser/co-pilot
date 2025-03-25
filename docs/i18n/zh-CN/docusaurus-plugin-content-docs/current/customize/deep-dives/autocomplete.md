@@ -56,7 +56,7 @@ ollama run starcoder2:3b
 
 ### `tabAutocompleteOptions`
 
-这个对象允许你定制 tab 自动补全的行为。可用的选项显示在下面，你可以在 [这里](https://github.com/continuedev/continue/blob/fbeb2e4fe15d4b434a30a136f74b672485c852d9/core/util/parameters.ts) 找到它们的默认值。
+这个对象允许你定制 tab 自动补全的行为。可用的选项显示在下面，你可以在 [这里](https://github.com/Mindbowser/co-pilot/blob/fbeb2e4fe15d4b434a30a136f74b672485c852d9/core/util/parameters.ts) 找到它们的默认值。
 
 - `disable`: 禁用自动补全（也可以在 IDE 配置中完成）
 - `template`: 一个用来自动补全的可选的模板字符串。它使用 Mustache 模板语言渲染，并且传递 'prefix' 和 'suffix' 变量。（字符串）
@@ -91,13 +91,13 @@ ollama run starcoder2:3b
 
 ### 我想要更好的补全，是否应该使用 GPT-4 ？
 
-可能出乎意料，答案是否定的。我们推荐的自动补全模型是通过高度特定提示词格式训练的，这运行它们响应请求来补全代码(在 [这里](https://github.com/continuedev/continue/blob/d2bc6359e8ebf647892ec953e418042dc7f8a685/core/autocomplete/templates.ts) 查看这些提示词的示例)。一些最好的商业化模型，比如 GPT-4 或 Claude 不是通过这种提示词格式训练的，这意味着它们不能生成有用的补全。幸运地，好的自动补全不需要很大的模型。大多数先进的自动补全模型不大于 10b 参数，增加超过这个没有明显地提高性能。
+可能出乎意料，答案是否定的。我们推荐的自动补全模型是通过高度特定提示词格式训练的，这运行它们响应请求来补全代码(在 [这里](https://github.com/Mindbowser/co-pilot/blob/d2bc6359e8ebf647892ec953e418042dc7f8a685/core/autocomplete/templates.ts) 查看这些提示词的示例)。一些最好的商业化模型，比如 GPT-4 或 Claude 不是通过这种提示词格式训练的，这意味着它们不能生成有用的补全。幸运地，好的自动补全不需要很大的模型。大多数先进的自动补全模型不大于 10b 参数，增加超过这个没有明显地提高性能。
 
 ### 我没有看到任何补全
 
 查看下面的步骤，确认所有东西设置正确：
 
-1. 确保你有 "Enable Tab Autocomplete" 设置勾选，（在 VS Code 中，你可以切换，通过点击状态栏中的 "Continue" 按钮，在 JetBrains 中，通过 Settings -> Tools -> Continue ）。
+1. 确保你有 "Enable Tab Autocomplete" 设置勾选，（在 VS Code 中，你可以切换，通过点击状态栏中的 "Epico Pilot" 按钮，在 JetBrains 中，通过 Settings -> Tools -> Epico Pilot ）。
 2. 确保你下载了 Ollama 。
 3. 运行 `ollama run starcoder2:3b` 确认模型下载完成。
 4. 确保任何其他补全提供者被禁用（例如 Copilot ），它们可能会干扰。
@@ -131,13 +131,13 @@ ollama run starcoder2:3b
 
 #### VS Code
 
-点击屏幕右下角状态栏中的 "Continue" 按钮。选择标志会变成 "cancel" 符号，你将不会再看到补全。你可以再次点击它，重新打开补全。
+点击屏幕右下角状态栏中的 "Epico Pilot" 按钮。选择标志会变成 "cancel" 符号，你将不会再看到补全。你可以再次点击它，重新打开补全。
 
-另外，打开 VS Code 设置，搜索 "Continue" 并取消勾选 "Enable Tab Autocomplete" 方框。
+另外，打开 VS Code 设置，搜索 "Epico Pilot" 并取消勾选 "Enable Tab Autocomplete" 方框。
 
 #### JetBrains
 
-打开 Settings -> Tools -> Continue 并取消勾选 "Enable Tab Autocomplete" 方框。
+打开 Settings -> Tools -> Epico Pilot 并取消勾选 "Enable Tab Autocomplete" 方框。
 
 #### 反馈
 

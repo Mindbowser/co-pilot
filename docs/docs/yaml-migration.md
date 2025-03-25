@@ -1,22 +1,22 @@
 ---
 title: Config Migration to YAML
-description: Reference for migrating from JSON to YAML Continue configuration.
+description: Reference for migrating from JSON to YAML Epico Pilot configuration.
 keywords: [config, yaml, configuration, customize, customization, migration]
 ---
 
 # Migrating Config to YAML
 
-Continue's YAML configuration format provides more readable, maintainable, consistent configuration files, as well as new configuration options and removal of some old configuration options. YAML is the preferred format and will be used to integrate with future Continue products. Below is a brief guide for migration from `config.json` to `config.yaml`.
+Epico Pilot's YAML configuration format provides more readable, maintainable, consistent configuration files, as well as new configuration options and removal of some old configuration options. YAML is the preferred format and will be used to integrate with future Epico Pilot products. Below is a brief guide for migration from `config.json` to `config.yaml`.
 
 See also
 
 - [Intro to YAML](https://yaml.org/)
-- [JSON Continue Config Reference](/json-reference)
-- [YAML Continue Config Reference](/yaml-reference)
+- [JSON Epico Pilot Config Reference](/json-reference)
+- [YAML Epico Pilot Config Reference](/yaml-reference)
 
 ## Create YAML file
 
-Create a `config.yaml` file in your Continue Global Directory (`~/.continue` on Mac, `%USERPROFILE%\.continue`) alongside your current `config.json` file. If a `config.yaml` file is present, it will be loaded instead of `config.json`.
+Create a `config.yaml` file in your Epico Pilot Global Directory (`~/.continue` on Mac, `%USERPROFILE%\.continue`) alongside your current `config.json` file. If a `config.yaml` file is present, it will be loaded instead of `config.json`.
 
 Give your configuration a `name` and a `version`:
 
@@ -38,9 +38,9 @@ Add all model configurations in `config.json`, including models in `models`, `ta
   - `inlineEdit` -> e.g. `roles: [chat, edit]`
   - `applyCodeBlock` -> e.g. `roles: [chat, apply]`
 
-Model-level `requestOptions` remain, with minor changes. See [YAML Continue Config Reference](/yaml-reference#requestoptions)
+Model-level `requestOptions` remain, with minor changes. See [YAML Epico Pilot Config Reference](/yaml-reference#requestoptions)
 
-Model-level `completionOptions` are replaced by `defaultCompletionOptions`, with minor changes. See [YAML Continue Config Reference](/yaml-reference#completionoptions)
+Model-level `completionOptions` are replaced by `defaultCompletionOptions`, with minor changes. See [YAML Epico Pilot Config Reference](/yaml-reference#completionoptions)
 
 <!-- TODO - ollama autodetect supported? -->
 

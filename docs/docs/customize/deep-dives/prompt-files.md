@@ -23,7 +23,7 @@ description: Information about this project
 Attached is a summary of the current Ruby on Rails application, including the @Gemfile and database schema in @db/schema.rb
 ```
 
-Now to use this prompt, you can highlight code and use <kbd>cmd/ctrl</kbd> + <kbd>L</kbd> to select it in the Continue sidebar.
+Now to use this prompt, you can highlight code and use <kbd>cmd/ctrl</kbd> + <kbd>L</kbd> to select it in the Epico Pilot sidebar.
 
 Then, type <kbd>/</kbd> and choose the "Rails Project" prompt. You can now ask any question as usual and the LLM will have the information from your .prompt file.
 
@@ -59,7 +59,7 @@ Many [context provider](../context-providers.mdx) can be referenced by typing "@
 
 Or you can directly type URLs and file paths:
 
-- `@https://github.com/continuedev/continue` - The contents of a URL
+- `@https://github.com/Mindbowser/co-pilot` - The contents of a URL
 - `@src/index.ts` - The contents of a file (VS Code only)
 
 All references will be attached as context items, rather than injected directly inline.

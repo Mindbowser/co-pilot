@@ -16,7 +16,7 @@ sidebar_position: 4
 
 ## 上下文
 
-就像 [上下文选择](context-selection.md) 页面解释的那样， Continue 使用了大量的检索方法，来查找你的代码库中相关的片断，包含在提示词中。
+就像 [上下文选择](context-selection.md) 页面解释的那样， Epico Pilot 使用了大量的检索方法，来查找你的代码库中相关的片断，包含在提示词中。
 
 ## 过滤
 

@@ -1073,13 +1073,13 @@ export class PreTrainedModel extends Callable {
                 if (beam.done) {
                     // Add this beam back into the pool
                     newest_beams.push(beam);
-                    continue
+                    epico-pilot
                 }
                 if (useMaxLength && beam.output_token_ids.length >= generation_config.max_length) {
                     // Set this beam to done and add it back into the pool
                     beam.done = true;
                     newest_beams.push(beam);
-                    continue
+                    epico-pilot
                 }
 
                 // @ts-ignore

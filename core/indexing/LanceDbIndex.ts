@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 
 import { isSupportedLanceDbCpuTargetForLinux } from "../config/util";
 import {
-  BranchAndDir,
-  Chunk,
-  ILLM,
-  IndexTag,
-  IndexingProgressUpdate,
+    BranchAndDir,
+    Chunk,
+    ILLM,
+    IndexTag,
+    IndexingProgressUpdate,
 } from "../index";
 import { getLanceDbPath, migrate } from "../util/paths";
 import { getUriPathBasename } from "../util/uri";
@@ -16,11 +16,11 @@ import { basicChunker } from "./chunk/basic.js";
 import { chunkDocument, shouldChunk } from "./chunk/chunk.js";
 import { DatabaseConnection, SqliteDb, tagToString } from "./refreshIndex.js";
 import {
-  CodebaseIndex,
-  IndexResultType,
-  MarkCompleteCallback,
-  PathAndCacheKey,
-  RefreshIndexResults,
+    CodebaseIndex,
+    IndexResultType,
+    MarkCompleteCallback,
+    PathAndCacheKey,
+    RefreshIndexResults,
 } from "./types";
 
 import type * as LanceType from "vectordb";

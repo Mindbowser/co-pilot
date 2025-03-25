@@ -1,4 +1,4 @@
-package com.github.continuedev.continueintellijextension.`continue`
+package com.github.continuedev.continueintellijextension.`epico-pilot`
 
 import com.github.continuedev.continueintellijextension.activities.ContinuePluginStartupActivity
 import com.github.continuedev.continueintellijextension.constants.getContinueGlobalPath
@@ -22,7 +22,7 @@ class ConfigJsonSchemaProviderFactory : JsonSchemaProviderFactory {
 
 class ConfigJsonSchemaFileProvider : JsonSchemaFileProvider {
     override fun isAvailable(file: VirtualFile): Boolean {
-        return file.path.endsWith("/.continue/config.json") || file.path.endsWith("\\.continue\\config.json")
+        return file.path.endsWith("/.epico-pilot/config.json") || file.path.endsWith("\\.epico-pilot\\config.json")
     }
 
     override fun getName(): String {

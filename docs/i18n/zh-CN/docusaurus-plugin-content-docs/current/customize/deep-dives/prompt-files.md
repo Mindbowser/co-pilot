@@ -35,7 +35,7 @@ Write unit tests for the above selected code, following each of these instructio
 - Don't explain how to set up `jest`
 ```
 
-现在使用这个提示词，你可以高亮代码，并使用 `cmd/ctrl+L` 来选择它到 Continue 侧边栏中。
+现在使用这个提示词，你可以高亮代码，并使用 `cmd/ctrl+L` 来选择它到 Epico Pilot 侧边栏中。
 
 然后，输入 "/" 来查看斜杠命令列表，选择名为 "test" 的那个。按下 enter ，LLM 会响应你的 prompt 文件中给出的指令。
 
@@ -82,7 +82,7 @@ Write unit tests for the above selected code, following each of these instructio
 任何你添加到配置中的 [上下文提供者](../context-providers.mdx) ，可以使用上下文提供者的名称引用。接收输入的上下文提供者也支持。
 
 - `{{{ terminal }}}` - 终端的内容
-- `{{{ url "https://github.com/continuedev/continue" }}}` - URL 的内容
+- `{{{ url "https://github.com/Mindbowser/co-pilot" }}}` - URL 的内容
 
 ## 反馈
 

@@ -1,10 +1,10 @@
 {
   "title": {
-    "message": "Continue",
+    "message": "Epico Pilot",
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "Continue Logo",
+    "message": "Epico Pilot Logo",
     "description": "The alt text of navbar logo"
   },
   "item.label.Docs": {

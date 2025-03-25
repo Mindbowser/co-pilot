@@ -57,7 +57,7 @@ function llama2TemplateMessages(msgs: ChatMessage[]): string {
 
   if (msgs[0].role === "assistant") {
     // These models aren't trained to handle assistant message coming first,
-    // and typically these are just introduction messages from Continue
+    // and typically these are just introduction messages from Epico Pilot
     msgs.shift();
   }
 
@@ -284,20 +284,21 @@ const graniteTemplateMessages = templateFactory(
 );
 
 export {
-  anthropicTemplateMessages,
-  chatmlTemplateMessages,
-  codeLlama70bTemplateMessages,
-  deepseekTemplateMessages,
-  gemmaTemplateMessage,
-  graniteTemplateMessages,
-  llama2TemplateMessages,
-  llama3TemplateMessages,
-  llavaTemplateMessages,
-  neuralChatTemplateMessages,
-  openchatTemplateMessages,
-  phi2TemplateMessages,
-  phindTemplateMessages,
-  templateAlpacaMessages,
-  xWinCoderTemplateMessages,
-  zephyrTemplateMessages,
+    anthropicTemplateMessages,
+    chatmlTemplateMessages,
+    codeLlama70bTemplateMessages,
+    deepseekTemplateMessages,
+    gemmaTemplateMessage,
+    graniteTemplateMessages,
+    llama2TemplateMessages,
+    llama3TemplateMessages,
+    llavaTemplateMessages,
+    neuralChatTemplateMessages,
+    openchatTemplateMessages,
+    phi2TemplateMessages,
+    phindTemplateMessages,
+    templateAlpacaMessages,
+    xWinCoderTemplateMessages,
+    zephyrTemplateMessages
 };
+

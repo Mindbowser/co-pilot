@@ -15,4 +15,4 @@ SambaNova 云是一个运行大型 AI 模型的云平台，有 Llama 3.1 70B/405
 }
 ```
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/SambaNova.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/SambaNova.ts)

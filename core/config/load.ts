@@ -4,38 +4,38 @@ import os from "os";
 import path from "path";
 
 import {
-  ConfigResult,
-  ConfigValidationError,
-  ModelRole,
+    ConfigResult,
+    ConfigValidationError,
+    ModelRole,
 } from "@continuedev/config-yaml";
 import { fetchwithRequestOptions } from "@continuedev/fetch";
 import * as JSONC from "comment-json";
 import * as tar from "tar";
 
 import {
-  BrowserSerializedContinueConfig,
-  Config,
-  ContextProviderWithParams,
-  ContinueConfig,
-  ContinueRcJson,
-  CustomContextProvider,
-  CustomLLM,
-  EmbeddingsProviderDescription,
-  IContextProvider,
-  IDE,
-  IdeInfo,
-  IdeSettings,
-  IdeType,
-  ILLM,
-  LLMOptions,
-  ModelDescription,
-  RerankerDescription,
-  SerializedContinueConfig,
-  SlashCommand,
+    BrowserSerializedContinueConfig,
+    Config,
+    ContextProviderWithParams,
+    ContinueConfig,
+    ContinueRcJson,
+    CustomContextProvider,
+    CustomLLM,
+    EmbeddingsProviderDescription,
+    IContextProvider,
+    IDE,
+    IdeInfo,
+    IdeSettings,
+    IdeType,
+    ILLM,
+    LLMOptions,
+    ModelDescription,
+    RerankerDescription,
+    SerializedContinueConfig,
+    SlashCommand,
 } from "..";
 import {
-  slashCommandFromDescription,
-  slashFromCustomCommand,
+    slashCommandFromDescription,
+    slashFromCustomCommand,
 } from "../commands/index";
 import { AllRerankers } from "../context/allRerankers";
 import { MCPManagerSingleton } from "../context/mcp";
@@ -59,22 +59,22 @@ import { copyOf } from "../util";
 import { GlobalContext } from "../util/GlobalContext";
 import mergeJson from "../util/merge";
 import {
-  DEFAULT_CONFIG_TS_CONTENTS,
-  getConfigJsonPath,
-  getConfigJsonPathForRemote,
-  getConfigJsPath,
-  getConfigJsPathForRemote,
-  getConfigTsPath,
-  getContinueDotEnv,
-  getEsbuildBinaryPath,
+    DEFAULT_CONFIG_TS_CONTENTS,
+    getConfigJsonPath,
+    getConfigJsonPathForRemote,
+    getConfigJsPath,
+    getConfigJsPathForRemote,
+    getConfigTsPath,
+    getContinueDotEnv,
+    getEsbuildBinaryPath,
 } from "../util/paths";
 import { localPathToUri } from "../util/pathToUri";
 
 import {
-  defaultContextProvidersJetBrains,
-  defaultContextProvidersVsCode,
-  defaultSlashCommandsJetBrains,
-  defaultSlashCommandsVscode,
+    defaultContextProvidersJetBrains,
+    defaultContextProvidersVsCode,
+    defaultSlashCommandsJetBrains,
+    defaultSlashCommandsVscode,
 } from "./default";
 import { getSystemPromptDotFile } from "./getSystemPromptDotFile";
 import { modifyAnyConfigWithSharedConfig } from "./sharedConfig";
@@ -420,8 +420,8 @@ async function intermediateToFinalConfig(
       }
       const instance: IContextProvider = new cls(provider.params);
 
-      // Handle continue-proxy
-      if (instance.description.title === "continue-proxy") {
+      // Handle epico-pilot-proxy
+      if (instance.description.title === "epico-pilot-proxy") {
         (instance as ContinueProxyContextProvider).workOsAccessToken =
           workOsAccessToken;
       }
@@ -544,7 +544,7 @@ async function intermediateToFinalConfig(
   mcpManager.setConnections(
     (config.experimental?.modelContextProtocolServers ?? []).map(
       (server, index) => ({
-        id: `continue-mcp-server-${index + 1}`,
+        id: `epico-pilot-mcp-server-${index + 1}`,
         name: `MCP Server ${index + 1}`,
         ...server,
       }),
@@ -773,7 +773,7 @@ async function tryBuildConfigTs() {
     }
   } catch (e) {
     console.log(
-      `Build error. Please check your ~/.continue/config.ts file: ${e}`,
+      `Build error. Please check your ~/.epico-pilot/config.ts file: ${e}`,
     );
   }
 }
@@ -958,8 +958,9 @@ async function loadContinueConfigFromJson(
 }
 
 export {
-  finalToBrowserConfig,
-  intermediateToFinalConfig,
-  loadContinueConfigFromJson,
-  type BrowserSerializedContinueConfig,
+    finalToBrowserConfig,
+    intermediateToFinalConfig,
+    loadContinueConfigFromJson,
+    type BrowserSerializedContinueConfig
 };
+

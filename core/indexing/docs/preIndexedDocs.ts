@@ -167,11 +167,11 @@ const preIndexedDocs: Record<
     rootUrl: "https://code.visualstudio.com/api",
     faviconUrl: "https://code.visualstudio.com/favicon.ico",
   },
-  "https://docs.continue.dev/intro": {
-    title: "Continue",
-    startUrl: "https://docs.continue.dev/intro",
-    rootUrl: "https://docs.continue.dev",
-    faviconUrl: "https://docs.continue.dev/favicon.ico",
+  "https://docs.epico-pilot.dev/intro": {
+    title: "Epico Pilot",
+    startUrl: "https://docs.epico-pilot.dev/intro",
+    rootUrl: "https://docs.epico-pilot.dev",
+    faviconUrl: "https://docs.epico-pilot.dev/favicon.ico",
   },
   "https://api.jquery.com/": {
     title: "jQuery",

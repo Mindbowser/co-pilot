@@ -15,5 +15,5 @@ export const AllRerankers: { [key: string]: any } = {
   watsonx: WatsonX,
   "free-trial": FreeTrial,
   "huggingface-tei": HuggingFaceTEI,
-  "continue-proxy": ContinueProxy,
+  "epico-pilot-proxy": ContinueProxy,
 };

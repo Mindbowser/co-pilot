@@ -199,7 +199,7 @@ export function migrateJsonSharedConfig(filepath: string, ide: IDE): void {
       editConfigJson(() => config);
       // void ide.showToast(
       //   "warning",
-      //   "Migrated deprecated Continue JSON settings. Edit in the Settings Page",
+      //   "Migrated deprecated Epico Pilot JSON settings. Edit in the Settings Page",
       // );
     }
   } catch (e) {

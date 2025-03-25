@@ -157,7 +157,7 @@ Icon?
 notes.md
 
 manual-testing-sandbox/.idea/**
-manual-testing-sandbox/.continue/**
+manual-testing-sandbox/.epico-pilot/**
 extensions/intellij/.idea/**
 
 **/.idea/workspace.xml
@@ -168,9 +168,9 @@ extensions/intellij/.idea/**
 
 
 extensions/intellij/bin
-extensions/.continue-debug/
+extensions/.epico-pilot-debug/
 
 *.vsix
 
 .continuerules
-**/.continue/assistants/
+**/.epico-pilot/assistants/

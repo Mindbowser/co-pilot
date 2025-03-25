@@ -22,10 +22,10 @@
 
 import {
     Callable,
-    reverseDictionary,
     escapeRegExp,
     isIntegralNumber,
     mergeArrays,
+    reverseDictionary,
 } from './utils/core.js';
 
 import {
@@ -36,9 +36,9 @@ import { max, min, round } from './utils/maths.js';
 import { Tensor } from './utils/tensor.js';
 
 import {
+    CharTrie,
     PriorityQueue,
     TokenLattice,
-    CharTrie,
 } from './utils/data-structures.js';
 
 import { Template } from '@huggingface/jinja';

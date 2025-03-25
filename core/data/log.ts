@@ -2,10 +2,10 @@ import fs from "fs";
 import path from "path";
 
 import {
-  allDevEventNames,
-  DataLogLevel,
-  DevDataLogEvent,
-  devDataVersionedSchemas,
+    allDevEventNames,
+    DataLogLevel,
+    DevDataLogEvent,
+    devDataVersionedSchemas,
 } from "@continuedev/config-yaml";
 import { fetchwithRequestOptions } from "@continuedev/fetch";
 import * as URI from "uri-js";
@@ -54,8 +54,8 @@ export class DataLogger {
     }
     if ("userAgent" in zodSchema.shape) {
       newBody.userAgent = ideInfo
-        ? `${ideInfo.name}/${ideInfo.version} (Continue/${ideInfo.extensionVersion})`
-        : "Unknown/Unknown (Continue/Unknown)";
+        ? `${ideInfo.name}/${ideInfo.version} (Epico Pilot/${ideInfo.extensionVersion})`
+        : "Unknown/Unknown (Epico Pilot/Unknown)";
     }
     if ("selectedProfileId" in zodSchema.shape) {
       newBody.selectedProfileId =
@@ -167,10 +167,10 @@ export class DataLogger {
                 headers["Authorization"] = `Bearer ${dataConfig.apiKey}`;
               }
 
-              // For events going to Continue, overwrite the access token
+              // For events going to Epico Pilot, overwrite the access token
               if (
-                uriComponents.host?.endsWith(".continue.dev") ||
-                uriComponents.host === "continue.dev"
+                uriComponents.host?.endsWith(".epico-pilot.dev") ||
+                uriComponents.host === "epico-pilot.dev"
               ) {
                 //
                 const accessToken =

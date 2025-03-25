@@ -5,12 +5,12 @@ import { WebSocketClientTransport } from "@modelcontextprotocol/sdk/client/webso
 import { Transport } from "@modelcontextprotocol/sdk/shared/transport.js";
 
 import {
-  MCPConnectionStatus,
-  MCPOptions,
-  MCPPrompt,
-  MCPResource,
-  MCPServerStatus,
-  MCPTool,
+    MCPConnectionStatus,
+    MCPOptions,
+    MCPPrompt,
+    MCPResource,
+    MCPServerStatus,
+    MCPTool,
 } from "../..";
 
 export class MCPManagerSingleton {
@@ -142,7 +142,7 @@ class MCPConnection {
 
     this.client = new Client(
       {
-        name: "continue-client",
+        name: "epico-pilot-client",
         version: "1.0.0",
       },
       {

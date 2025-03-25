@@ -1,8 +1,8 @@
 import {
-  filterLeadingAndTrailingNewLineInsertion,
-  filterLeadingNewline,
-  removeTrailingWhitespace,
-  stopAtLines,
+    filterLeadingAndTrailingNewLineInsertion,
+    filterLeadingNewline,
+    removeTrailingWhitespace,
+    stopAtLines,
 } from "../../autocomplete/filtering/streamTransforms/lineStream.js";
 import { streamDiff } from "../../diff/streamDiff.js";
 import { LineStream, streamLines } from "../../diff/util.js";
@@ -86,7 +86,7 @@ async function* streamFillUnchangedCode(
       buffer.push(line);
 
       if (buffer.length >= BUFFER_LINES_BELOW) {
-        // Find the replacement and continue streaming once we have it
+        // Find the replacement and epico-pilot streaming once we have it
         const replacementLines = replacementFunction(oldCode, newLines, buffer);
         let replacement = "";
         for await (const replacementLine of replacementLines) {

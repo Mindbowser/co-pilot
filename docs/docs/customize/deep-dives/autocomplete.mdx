@@ -12,7 +12,7 @@ If you want to have the best autocomplete experience, we recommend using Codestr
 
 <Tabs groupId="hub-config-example">
   <TabItem value="hub" label="Hub">
-  [Mistral Codestral model block](https://hub.continue.dev/mistral/codestral)
+  [Mistral Codestral model block](https://hub.epico-pilot.dev/mistral/codestral)
   </TabItem>
   <TabItem value="yaml" label="YAML">
   ```yaml title="config.yaml"
@@ -55,7 +55,7 @@ Then, add the model to your configuration:
 
 <Tabs groupId="hub-config-example">
   <TabItem value="hub" label="Hub">
-  [Ollama Qwen 2.5 Coder 1.5B model block](https://hub.continue.dev/ollama/qwen2.5-coder-1.5b)
+  [Ollama Qwen 2.5 Coder 1.5B model block](https://hub.epico-pilot.dev/ollama/qwen2.5-coder-1.5b)
   </TabItem>
   <TabItem value="yaml" label="YAML">
   ```yaml title="config.yaml"
@@ -86,7 +86,7 @@ Once the model has been downloaded, you should begin to see completions in VS Co
 
 ### Hub Autocomplete models
 
-Explore autocomplete model configurations on [the hub](https://hub.continue.dev/explore/models?roles=autocomplete)
+Explore autocomplete model configurations on [the hub](https://hub.epico-pilot.dev/explore/models?roles=autocomplete)
 
 ### Autocomplete User Settings
 
@@ -104,17 +104,17 @@ The `config.json` configuration format (deprecated) offers further configuration
 
 ### I want better completions, should I use GPT-4?
 
-Perhaps surprisingly, the answer is no. The models that we suggest for autocomplete are trained with a highly specific prompt format, which allows them to respond to requests for completing code (see examples of these prompts [here](https://github.com/continuedev/continue/blob/main/core/autocomplete/templating/AutocompleteTemplate.ts)). Some of the best commercial models like GPT-4 or Claude are not trained with this prompt format, which means that they won't generate useful completions. Luckily, a huge model is not required for great autocomplete. Most of the state-of-the-art autocomplete models are no more than 10b parameters, and increasing beyond this does not significantly improve performance.
+Perhaps surprisingly, the answer is no. The models that we suggest for autocomplete are trained with a highly specific prompt format, which allows them to respond to requests for completing code (see examples of these prompts [here](https://github.com/Mindbowser/co-pilot/blob/main/core/autocomplete/templating/AutocompleteTemplate.ts)). Some of the best commercial models like GPT-4 or Claude are not trained with this prompt format, which means that they won't generate useful completions. Luckily, a huge model is not required for great autocomplete. Most of the state-of-the-art autocomplete models are no more than 10b parameters, and increasing beyond this does not significantly improve performance.
 
 ### I'm not seeing any completions
 
 Follow these steps to ensure that everything is set up correctly:
 
-1. Make sure you have the "Enable Tab Autocomplete" setting checked (in VS Code, you can toggle by clicking the "Continue" button in the status bar, and in JetBrains by going to Settings -> Tools -> Continue).
+1. Make sure you have the "Enable Tab Autocomplete" setting checked (in VS Code, you can toggle by clicking the "Epico Pilot" button in the status bar, and in JetBrains by going to Settings -> Tools -> Epico Pilot).
 2. Make sure you have downloaded Ollama.
 3. Run `ollama run qwen2.5-coder:1.5b` to verify that the model is downloaded.
 4. Make sure that any other completion providers are disabled (e.g. Copilot), as they may interfere.
-5. Check the output of the logs to find any potential errors: <kbd>cmd/ctrl</kbd> + <kbd>shift</kbd> + <kbd>P</kbd> -> "Toggle Developer Tools" -> "Console" tab in VS Code, ~/.continue/logs/core.log in JetBrains.
+5. Check the output of the logs to find any potential errors: <kbd>cmd/ctrl</kbd> + <kbd>shift</kbd> + <kbd>P</kbd> -> "Toggle Developer Tools" -> "Console" tab in VS Code, ~/.epico-pilot/logs/core.log in JetBrains.
 6. Check VS Code settings to make sure that `"editor.inlineSuggest.enabled"` is set to `true` (use <kbd>cmd/ctrl</kbd> + <kbd>,</kbd> then search for this and check the box)
 7. If you are still having issues, please let us know in our [Discord](https://discord.gg/vapESyrFmJ) and we'll help as soon as possible.
 
@@ -140,15 +140,15 @@ This is a built-in feature of VS Code, but it's just a bit hidden. See this grea
 
 #### VS Code
 
-Click the "Continue" button in the status panel at the bottom right of the screen. The checkmark will become a "cancel" symbol and you will no longer see completions. You can click again to turn it back on.
+Click the "Epico Pilot" button in the status panel at the bottom right of the screen. The checkmark will become a "cancel" symbol and you will no longer see completions. You can click again to turn it back on.
 
-Alternatively, open VS Code settings, search for "Continue" and uncheck the box for "Enable Tab Autocomplete".
+Alternatively, open VS Code settings, search for "Epico Pilot" and uncheck the box for "Enable Tab Autocomplete".
 
-You can also use the default shortcut to disable autocomplete directly using a chord: press and hold <kbd>ctrl/cmd</kbd> + <kbd>K</kbd> (continue holding <kbd>ctrl/cmd</kbd>) and press <kbd>ctrl/cmd</kbd> + <kbd>A</kbd>. This will turn off autocomplete without navigating through settings.
+You can also use the default shortcut to disable autocomplete directly using a chord: press and hold <kbd>ctrl/cmd</kbd> + <kbd>K</kbd> (epico-pilot holding <kbd>ctrl/cmd</kbd>) and press <kbd>ctrl/cmd</kbd> + <kbd>A</kbd>. This will turn off autocomplete without navigating through settings.
 
 #### JetBrains
 
-Open Settings -> Tools -> Continue and uncheck the box for "Enable Tab Autocomplete".
+Open Settings -> Tools -> Epico Pilot and uncheck the box for "Enable Tab Autocomplete".
 
 #### Feedback
 

@@ -6,7 +6,7 @@ keywords: [config, settings, configuration, customize, customization, sidebar]
 
 # The User Settings Page
 
-The **User Settings page** can be accessed by clicking the gear icon in the header of the Continue sidebar.
+The **User Settings page** can be accessed by clicking the gear icon in the header of the Epico Pilot sidebar.
 
 ![slash-commands](/img/header-buttons.png)
 
@@ -20,7 +20,7 @@ Below that, the following settings which are not part of a configuration file ar
 
 - `Wrap Codeblocks`: If on, enables text wrapping in code blocks. Off by default.
 - `Display Raw Markdown`: If on, shows raw markdown in responses. Off by default.
-- `Allow Anonymous Telemetry`: If on, allows Continue to send anonymous telemetry. **On** by default.
+- `Allow Anonymous Telemetry`: If on, allows Epico Pilot to send anonymous telemetry. **On** by default.
 - `Disable Indexing`: Prevents indexing of the codebase, useful primarily for debugging purposes. Off by default.
 - `Disable Session Titles`: Prevents generating summary titles for each chat session when turned on. Off by default
 - `Response Text to Speech`: If on, reads LLM responses aloud with TTS. Off by default.

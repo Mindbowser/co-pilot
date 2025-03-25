@@ -151,7 +151,7 @@ function getFolderAndBasename(path: string): string {
 
 为了包含外部的 Node 模块在你的 config.ts 中，在 `~/.continue` 文件夹运行 `npm install <module_name>` ，然后在 config.ts 中导入它们。
 
-Continue 将使用 [esbuild](https://esbuild.github.io/) 打包你的 `config.ts` 和任何依赖到一个单独的 Javascript 文件。确切使用的配置可以在 [这里](https://github.com/continuedev/continue/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52) 找到。
+Epico Pilot 将使用 [esbuild](https://esbuild.github.io/) 打包你的 `config.ts` 和任何依赖到一个单独的 Javascript 文件。确切使用的配置可以在 [这里](https://github.com/Mindbowser/co-pilot/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52) 找到。
 
 ## `CustomContextProvider` 参考
 
@@ -190,7 +190,7 @@ Continue 将使用 [esbuild](https://esbuild.github.io/) 打包你的 `config.ts
 
 ## VSCode 的扩展 API
 
-Continue 暴露一个 API ，从第三方 VSCode 扩展注册上下文提供者。这是有用的，如果你有一个 VSCode 扩展，提供一些额外的上下文，你想要在 Continue 中使用。为了使用这个 API ，添加以下内容到你的 `package.json` ：
+Epico Pilot 暴露一个 API ，从第三方 VSCode 扩展注册上下文提供者。这是有用的，如果你有一个 VSCode 扩展，提供一些额外的上下文，你想要在 Epico Pilot 中使用。为了使用这个 API ，添加以下内容到你的 `package.json` ：
 
 ```json
 {
@@ -239,7 +239,7 @@ class MyCustomProvider implements IContextProvider {
 // create an instance of your custom provider
 const customProvider = new MyCustomProvider();
 
-// get Continue extension using vscode API
+// get Epico Pilot extension using vscode API
 const continueExt = vscode.extensions.getExtension("continue.continue");
 
 // get the API from the extension

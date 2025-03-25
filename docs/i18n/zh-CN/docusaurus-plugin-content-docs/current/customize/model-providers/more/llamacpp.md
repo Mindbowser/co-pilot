@@ -21,4 +21,4 @@
 }
 ```
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/LlamaCpp.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/LlamaCpp.ts)

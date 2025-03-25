@@ -1,11 +1,11 @@
 import { JSONSchema7, JSONSchema7Object } from "json-schema";
 
 import {
-  ChatMessage,
-  ChatMessageRole,
-  CompletionOptions,
-  LLMOptions,
-  ModelInstaller,
+    ChatMessage,
+    ChatMessageRole,
+    CompletionOptions,
+    LLMOptions,
+    ModelInstaller,
 } from "../../index.js";
 import { renderChatMessage } from "../../util/messageContent.js";
 import { getRemoteModelInfo } from "../../util/ollamaHelper.js";
@@ -212,7 +212,7 @@ class Ollama extends BaseLLM implements ModelInstaller {
       });
   }
 
-  // Map of "continue model name" to Ollama actual model name
+  // Map of "epico-pilot model name" to Ollama actual model name
   private modelMap: Record<string, string> = {
     "mistral-7b": "mistral:7b",
     "mixtral-8x7b": "mixtral:8x7b",
@@ -430,7 +430,7 @@ class Ollama extends BaseLLM implements ModelInstaller {
           content: res.message.content,
         };
         if (res.message.tool_calls) {
-          // Continue handles the response as a tool call delta but
+          // Epico Pilot handles the response as a tool call delta but
           // But ollama returns the full object in one response with no streaming
           chatMessage.toolCalls = res.message.tool_calls.map((tc) => ({
             type: "function",

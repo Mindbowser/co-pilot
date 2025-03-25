@@ -1,16 +1,16 @@
 import {
-  EditorView,
-  InputBox,
-  TextEditor,
-  VSBrowser,
-  Workbench,
+    EditorView,
+    InputBox,
+    TextEditor,
+    VSBrowser,
+    Workbench,
 } from "vscode-extension-tester";
 
 import { DEFAULT_TIMEOUT } from "../constants";
 
 export class GlobalActions {
   public static async openTestWorkspace() {
-    return VSBrowser.instance.openResources("e2e/test-continue");
+    return VSBrowser.instance.openResources("e2e/test-epico-pilot");
   }
 
   public static async createAndOpenNewTextFile(): Promise<{

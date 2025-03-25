@@ -9,7 +9,7 @@ Slash commands can currently only be added using [`config.json`](../../reference
 There are two ways to add custom slash commands:
 
 1. With natural language prompts - this is simpler and only requires writing a string or string template.
-2. With a custom function - this gives you full access to the Continue SDK and allows you to write arbitrary Typescript code.
+2. With a custom function - this gives you full access to the Epico Pilot SDK and allows you to write arbitrary Typescript code.
 
 ### "Custom Commands" (Use Natural Language)
 

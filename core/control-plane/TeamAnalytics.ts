@@ -1,14 +1,14 @@
 import os from "node:os";
 
+import { AnalyticsConfig } from "../index.js";
 import ContinueProxyAnalyticsProvider from "./analytics/ContinueProxyAnalyticsProvider.js";
 import {
-  ControlPlaneProxyInfo,
-  IAnalyticsProvider,
+    ControlPlaneProxyInfo,
+    IAnalyticsProvider,
 } from "./analytics/IAnalyticsProvider.js";
 import LogStashAnalyticsProvider from "./analytics/LogStashAnalyticsProvider.js";
 import PostHogAnalyticsProvider from "./analytics/PostHogAnalyticsProvider.js";
 import { ControlPlaneClient } from "./client.js";
-import { AnalyticsConfig } from "../index.js";
 
 function createAnalyticsProvider(
   config: AnalyticsConfig,
@@ -19,7 +19,7 @@ function createAnalyticsProvider(
       return new PostHogAnalyticsProvider();
     case "logstash":
       return new LogStashAnalyticsProvider();
-    case "continue-proxy":
+    case "epico-pilot-proxy":
       return new ContinueProxyAnalyticsProvider();
     default:
       return undefined;
@@ -58,7 +58,7 @@ export class TeamAnalytics {
       controlPlaneProxyInfo,
     );
 
-    if (config.provider === "continue-proxy") {
+    if (config.provider === "epico-pilot-proxy") {
       (
         TeamAnalytics.provider as ContinueProxyAnalyticsProvider
       ).controlPlaneClient = controlPlaneClient;

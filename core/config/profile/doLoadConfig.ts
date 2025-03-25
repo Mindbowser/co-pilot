@@ -1,19 +1,19 @@
 import fs from "fs";
 
 import {
-  AssistantUnrolled,
-  ConfigResult,
-  ConfigValidationError,
-  ModelRole,
+    AssistantUnrolled,
+    ConfigResult,
+    ConfigValidationError,
+    ModelRole,
 } from "@continuedev/config-yaml";
 
 import {
-  ContinueConfig,
-  ContinueRcJson,
-  IDE,
-  IdeSettings,
-  SerializedContinueConfig,
-  Tool,
+    ContinueConfig,
+    ContinueRcJson,
+    IDE,
+    IdeSettings,
+    SerializedContinueConfig,
+    Tool,
 } from "../../";
 import { constructMcpSlashCommand } from "../../commands/slash/mcp";
 import { MCPManagerSingleton } from "../../context/mcp";
@@ -243,7 +243,7 @@ async function injectControlPlaneProxyInfo(
 ): Promise<ContinueConfig> {
   Object.keys(config.modelsByRole).forEach((key) => {
     config.modelsByRole[key as ModelRole].forEach((model) => {
-      if (model.providerName === "continue-proxy") {
+      if (model.providerName === "epico-pilot-proxy") {
         (model as ContinueProxy).controlPlaneProxyInfo = info;
       }
     });
@@ -251,13 +251,13 @@ async function injectControlPlaneProxyInfo(
 
   Object.keys(config.selectedModelByRole).forEach((key) => {
     const model = config.selectedModelByRole[key as ModelRole];
-    if (model?.providerName === "continue-proxy") {
+    if (model?.providerName === "epico-pilot-proxy") {
       (model as ContinueProxy).controlPlaneProxyInfo = info;
     }
   });
 
   config.models.forEach((model) => {
-    if (model.providerName === "continue-proxy") {
+    if (model.providerName === "epico-pilot-proxy") {
       (model as ContinueProxy).controlPlaneProxyInfo = info;
     }
   });

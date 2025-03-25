@@ -41,7 +41,7 @@ class ContinuePluginToolWindowFactory : ToolWindowFactory, DumbAware {
   override fun shouldBeAvailable(project: Project) = true
 
   class ContinuePluginWindow(project: Project) {
-    private val defaultGUIUrl = "http://continue/index.html"
+    private val defaultGUIUrl = "http://epico-pilot/index.html"
 
     val browser: ContinueBrowser by lazy {
       val url = System.getenv("GUI_URL")?.toString() ?: defaultGUIUrl

@@ -19,4 +19,4 @@ If you don't specify the `model` parameter, it will default to `replicate/llama-
 
 如果你没有指定 `model` 参数，它将默认是 `replicate/llama-2-70b-chat:58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781`.
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/Replicate.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/Replicate.ts)

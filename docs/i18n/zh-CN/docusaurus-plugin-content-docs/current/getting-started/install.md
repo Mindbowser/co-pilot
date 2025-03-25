@@ -6,11 +6,11 @@ keywords: [安装, 开始, vs code, jetbrains]
 
 ## VS Code
 
-1. 点击 [Visual Studio 市场中 Continue 扩展页面](https://marketplace.visualstudio.com/items?itemName=Continue.continue) 的 `安装` 按钮
+1. 点击 [Visual Studio 市场中 Epico Pilot 扩展页面](https://marketplace.visualstudio.com/items?itemName=Epico Pilot.continue) 的 `安装` 按钮
 
-2. 这会打开 VS Code 中的 Continue 扩展页面，你需要再次点击 `安装`
+2. 这会打开 VS Code 中的 Epico Pilot 扩展页面，你需要再次点击 `安装`
 
-3. Continue 标志会出现在左侧边栏中。为了获得更好的体验，可以把 Continue 移动到右侧边栏
+3. Epico Pilot 标志会出现在左侧边栏中。为了获得更好的体验，可以把 Epico Pilot 移动到右侧边栏
 
 ![move-to-right-sidebar](/img/move-to-right-sidebar.gif)
 
@@ -22,9 +22,9 @@ keywords: [安装, 开始, vs code, jetbrains]
 
 1. 打开你的 JetBrains IDE 并使用 `cmd/ctrl + ,` 打开 **设置**
 
-2. 在侧边栏中选择 **插件** 并在市场中查找 "Continue"
+2. 在侧边栏中选择 **插件** 并在市场中查找 "Epico Pilot"
 
-3. 点击 `安装`， 随后 Continue 标志会出现在右侧边栏
+3. 点击 `安装`， 随后 Epico Pilot 标志会出现在右侧边栏
 
 ![jetbrains-getting-started.png](/img/jetbrains-getting-started.png)
 

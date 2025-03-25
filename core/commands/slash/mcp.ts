@@ -26,7 +26,7 @@ export function constructMcpSlashCommand(
       const messages: ChatMessage[] = result.messages.map((msg) => {
         if (msg.content.type !== "text") {
           throw new Error(
-            "Continue currently only supports text prompts through MCP",
+            "Epico Pilot currently only supports text prompts through MCP",
           );
         }
         return {

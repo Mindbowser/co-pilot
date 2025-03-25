@@ -7,7 +7,7 @@ sidebar_label: Types
 
 # Secret Types
 
-The Continue Hub comes with secrets management built-in. Secrets are values such as API keys or endpoints that can be shared across assistants and within organizations.
+The Epico Pilot Hub comes with secrets management built-in. Secrets are values such as API keys or endpoints that can be shared across assistants and within organizations.
 
 ## User secrets
 

@@ -10,7 +10,7 @@ function MigrationPage() {
       </h1>
 
       <p>
-        Continue now uses a .json config file. We hope that this takes the
+        Epico Pilot now uses a .json config file. We hope that this takes the
         guesswork out of setting up.
       </p>
 
@@ -23,7 +23,7 @@ function MigrationPage() {
         For a summary of what changed and examples of <code>config.json</code>,
         please see the{" "}
         <a
-          href="https://docs.continue.dev/walkthroughs/config-file-migration"
+          href="https://docs.epico-pilot.dev/walkthroughs/config-file-migration"
           target="_blank"
         >
           migration walkthrough
@@ -67,7 +67,7 @@ function MigrationPage() {
       </h1>
 
       <p className="text-sm">
-        Continue now uses a .json config file. We hope that this takes the
+        Epico Pilot now uses a .json config file. We hope that this takes the
         guesswork out of setting up.
       </p>
 
@@ -80,7 +80,7 @@ function MigrationPage() {
         For a summary of what changed and examples of <code>config.json</code>,
         please see the{" "}
         <a
-          href="https://docs.continue.dev/walkthroughs/config-file-migration"
+          href="https://docs.epico-pilot.dev/walkthroughs/config-file-migration"
           target="_blank"
         >
           migration walkthrough
@@ -119,7 +119,7 @@ function MigrationPage() {
 
 -       <p>
 +       <p className="text-sm">
-        Continue now uses a .json config file. We hope that this takes the
+        Epico Pilot now uses a .json config file. We hope that this takes the
         guesswork out of setting up.
       </p>
 
@@ -134,7 +134,7 @@ function MigrationPage() {
         For a summary of what changed and examples of <code>config.json</code>,
         please see the{" "}
         <a
-          href="https://docs.continue.dev/walkthroughs/config-file-migration"
+          href="https://docs.epico-pilot.dev/walkthroughs/config-file-migration"
           target="_blank"
         >
           migration walkthrough

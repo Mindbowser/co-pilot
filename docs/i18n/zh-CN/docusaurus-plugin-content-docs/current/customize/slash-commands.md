@@ -14,7 +14,7 @@ keywords: [斜杠命令, 自定义命令, 步骤]
 
 ### `/Edit`
 
-使用 `ctrl/cmd + L` (VS Code) 或 `ctrl/cmd + J` (JetBrains) 选择代码，然后输入 `/Edit` ，跟着编辑的指令。 Continue 将会流式地在一个并排 diff 编辑器中修改。
+使用 `ctrl/cmd + L` (VS Code) 或 `ctrl/cmd + J` (JetBrains) 选择代码，然后输入 `/Edit` ，跟着编辑的指令。 Epico Pilot 将会流式地在一个并排 diff 编辑器中修改。
 
 ```json title="config.json"
 {
@@ -92,7 +92,7 @@ Comment 工作就像 `/Edit` ，除了它将自动地给 LLM 注释代码的提�
 
 ### `/Http`
 
-编写一个自定义的斜杠命令，在你自己的 HTTP 端点。在参数对象中对于你设置的端点设置 'url' 。端点应该返回一个字符串更新序列，将会流式地输出到 Continue 侧边栏。查看我们基本的 [FastAPI 示例](https://github.com/continuedev/continue/blob/74002369a5e435735b83278fb965e004ae38a97d/core/context/providers/context_provider_server.py#L34-L45) 作为参考。
+编写一个自定义的斜杠命令，在你自己的 HTTP 端点。在参数对象中对于你设置的端点设置 'url' 。端点应该返回一个字符串更新序列，将会流式地输出到 Epico Pilot 侧边栏。查看我们基本的 [FastAPI 示例](https://github.com/Mindbowser/co-pilot/blob/74002369a5e435735b83278fb965e004ae38a97d/core/context/providers/context_provider_server.py#L34-L45) 作为参考。
 
 ```json title="config.json"
 {
@@ -108,7 +108,7 @@ Comment 工作就像 `/Edit` ，除了它将自动地给 LLM 注释代码的提�
 
 ### `/Issue`
 
-描述你想要生成的 issue ， Continue 会转换为格式良好的标题和正文，然后给你一个草稿的链接，让你可以提交。确保设置你想要生成 issue 的仓库的 URL 。
+描述你想要生成的 issue ， Epico Pilot 会转换为格式良好的标题和正文，然后给你一个草稿的链接，让你可以提交。确保设置你想要生成 issue 的仓库的 URL 。
 
 ```json title="config.json"
 {
@@ -116,7 +116,7 @@ Comment 工作就像 `/Edit` ，除了它将自动地给 LLM 注释代码的提�
     {
       "name": "issue",
       "description": "Generate a link to a drafted GitHub issue",
-      "params": { "repositoryUrl": "https://github.com/continuedev/continue" }
+      "params": { "repositoryUrl": "https://github.com/Mindbowser/co-pilot" }
     }
   ]
 }

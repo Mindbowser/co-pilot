@@ -6,7 +6,7 @@
 vllm serve NousResearch/Meta-Llama-3-8B-Instruct --max-model-len 1024
 ```
 
-Continue 底层实现使用 [OpenAI](../top-level/openai.md) 并自动选择可用的模型。你只需要设置 `apiBase` ，像这样：
+Epico Pilot 底层实现使用 [OpenAI](../top-level/openai.md) 并自动选择可用的模型。你只需要设置 `apiBase` ，像这样：
 
 ```json title="config.json"
 {
@@ -19,4 +19,4 @@ Continue 底层实现使用 [OpenAI](../top-level/openai.md) 并自动选择可�
 }
 ```
 
-[查看代码](https://github.com/continuedev/continue/blob/main/core/llm/llms/Vllm.ts)
+[查看代码](https://github.com/Mindbowser/co-pilot/blob/main/core/llm/llms/Vllm.ts)

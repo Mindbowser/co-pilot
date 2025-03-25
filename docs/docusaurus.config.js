@@ -13,13 +13,13 @@ const config = {
     experimental_faster: true,
   },
 
-  title: "Continue",
+  title: "Epico Pilot",
   tagline:
     "the open-source library for accelerating software development with language models",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://docs.continue.dev",
+  url: "https://docs.epico-pilot.dev",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -27,7 +27,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "continuedev", // Usually your GitHub org/user name.
-  projectName: "continue", // Usually your repo name.
+  projectName: "epico-pilot", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -53,7 +53,7 @@ const config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/continuedev/continue/tree/main/docs",
+          editUrl: "https://github.com/Mindbowser/co-pilot/tree/main/docs",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -76,13 +76,13 @@ const config = {
         },
       ],
       // Replace with your project's social card
-      image: "https://docs.continue.dev/img/continue-social-card.png",
+      image: "https://docs.epico-pilot.dev/img/epico-pilot-social-card.png",
       navbar: {
-        title: "Continue",
+        title: "Epico Pilot",
         logo: {
-          alt: "Continue Logo",
+          alt: "Epico Pilot Logo",
           src: "img/logo.png",
-          href: "https://continue.dev",
+          href: "https://epico-pilot.dev",
           target: "_blank",
         },
         items: [
@@ -115,7 +115,7 @@ const config = {
             href: "/hub/introduction",
           },
           {
-            to: "https://github.com/continuedev/continue",
+            to: "https://github.com/Mindbowser/co-pilot",
             label: "GitHub",
             position: "right",
             className: "github-navbar",
@@ -140,11 +140,11 @@ const config = {
             items: [
               {
                 label: "VS Code",
-                to: "https://marketplace.visualstudio.com/items?itemName=Continue.continue",
+                to: "https://marketplace.visualstudio.com/items?itemName=Epico Pilot.epico-pilot",
               },
               {
                 label: "JetBrains",
-                to: "https://plugins.jetbrains.com/plugin/22707-continue-extension",
+                to: "https://plugins.jetbrains.com/plugin/22707-epico-pilot-extension",
               },
             ],
           },
@@ -157,7 +157,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                to: "https://github.com/continuedev/continue",
+                to: "https://github.com/Mindbowser/co-pilot",
               },
             ],
           },
@@ -175,7 +175,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Continue Dev, Inc.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Mindbowser.`,
       },
       prism: {
         theme: lightCodeTheme,
@@ -189,7 +189,7 @@ const config = {
         // Public API key: it is safe to commit it
         apiKey: "6795de0f612eebe17018f8061a9ef18e",
 
-        indexName: "continue",
+        indexName: "epico-pilot",
 
         // Optional: see doc section below
         contextualSearch: true,
@@ -263,7 +263,7 @@ const config = {
               "/model-setup/select-model",
               "/model-setup/configuration",
               "/quickstart",
-              "/how-to-use-continue",
+              "/how-to-use-epico-pilot",
             ],
           },
           {
@@ -361,8 +361,8 @@ const config = {
             from: "/walkthroughs/llama3.1",
           },
           {
-            to: "/customize/tutorials/running-continue-without-internet",
-            from: "/walkthroughs/running-continue-without-internet",
+            to: "/customize/tutorials/running-epico-pilot-without-internet",
+            from: "/walkthroughs/running-epico-pilot-without-internet",
           },
           {
             to: "/customize/tutorials/set-up-codestral",

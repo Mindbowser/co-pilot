@@ -35,7 +35,7 @@ import WebContextProvider from "./WebContextProvider";
  * - `CodeOutlineContextProvider`
  * - `CodeHighlightsContextProvider`
  *
- * See this issue for details: https://github.com/continuedev/continue/issues/1365
+ * See this issue for details: https://github.com/Mindbowser/co-pilot/issues/1365
  */
 export const Providers: (typeof BaseContextProvider)[] = [
   DiffContextProvider,
