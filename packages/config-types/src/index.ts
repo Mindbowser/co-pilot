@@ -55,7 +55,7 @@ export const modelDescriptionSchema = z.object({
     "sagemaker",
     "cloudflare",
     "azure",
-    "continue-proxy",
+    "epico-pilot-proxy",
     "nebius",
     "scaleway",
     "watsonx"
@@ -109,7 +109,7 @@ export const embeddingsProviderSchema = z.object({
     "cohere",
     "free-trial",
     "gemini",
-    "continue-proxy",
+    "epico-pilot-proxy",
     "nebius",
     "scaleway",
     "watsonx"
@@ -175,7 +175,7 @@ export const contextProviderSchema = z.object({
 export type ContextProvider = z.infer<typeof contextProviderSchema>;
 
 export const rerankerSchema = z.object({
-  name: z.enum(["cohere", "voyage", "watsonx", "llm", "continue-proxy"]),
+  name: z.enum(["cohere", "voyage", "watsonx", "llm", "epico-pilot-proxy"]),
   params: z.record(z.any()).optional(),
 });
 export type Reranker = z.infer<typeof rerankerSchema>;
@@ -189,7 +189,7 @@ export const analyticsSchema = z.object({
     "mixpanel",
     "splunk",
     "datadog",
-    "continue-proxy",
+    "epico-pilot-proxy",
   ]),
   url: z.string().optional(),
   clientKey: z.string().optional(),

@@ -599,7 +599,7 @@
 					"name": "keyword.control.ternary.java"
 				},
 				{
-					"match": "\\b(return|break|case|continue|default|do|while|for|switch|if|else)\\b",
+					"match": "\\b(return|break|case|epico-pilot|default|do|while|for|switch|if|else)\\b",
 					"name": "keyword.control.java"
 				},
 				{

@@ -19,7 +19,7 @@ const continueGlobalDir = path.resolve(
   "src",
   "test",
   "fixtures",
-  ".continue",
+  ".epico-pilot",
 );
 
 function setupTestWorkspace() {

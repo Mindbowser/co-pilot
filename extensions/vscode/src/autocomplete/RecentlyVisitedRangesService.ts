@@ -1,7 +1,7 @@
 import { IDE } from "core";
 import {
-  AutocompleteCodeSnippet,
-  AutocompleteSnippetType,
+    AutocompleteCodeSnippet,
+    AutocompleteSnippetType,
 } from "core/autocomplete/snippets/types";
 import { PosthogFeatureFlag, Telemetry } from "core/util/posthog";
 import { LRUCache } from "lru-cache";
@@ -114,9 +114,9 @@ export class RecentlyVisitedRangesService {
 
     return allSnippets
       .filter((s) => !currentFilepath || (s.filepath !== currentFilepath &&
-        // Exclude Continue's own output as it makes it super-hard for users to test the autocomplete feature
-        // while looking at the prompts in the Continue's output
-        !s.filepath.startsWith("output:extension-output-Continue.continue")))
+        // Exclude Epico Pilot's own output as it makes it super-hard for users to test the autocomplete feature
+        // while looking at the prompts in the Epico Pilot's output
+        !s.filepath.startsWith("output:extension-output-Epico Pilot.epico-pilot")))
       .sort((a, b) => b.timestamp - a.timestamp)
       .map(({ timestamp, ...snippet }) => snippet);
   }

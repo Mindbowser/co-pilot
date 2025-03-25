@@ -421,7 +421,7 @@ const GLOBAL_IGNORE_PATTERNS: &[&str] = &[
 
 fn global_ignore_path() -> PathBuf {
     let mut path = get_my_home().unwrap().unwrap();
-    path.push(".continue");
+    path.push(".epico-pilot");
     path.push(".continueignore");
     path
 }
@@ -602,7 +602,7 @@ mod tests {
             .add("dir1/file1.txt", "Hello, world!")
             .add("dir1/file2.txt", "Hello, world!")
             .add("dir2/file3.txt", "Hello, world!")
-            .add("dir2/subdir/continue.py", "[continue for i in range(10)]")
+            .add("dir2/subdir/epico-pilot.py", "[epico-pilot for i in range(10)]")
             .add("__init__.py", "a = 5")
             .create();
 
@@ -637,7 +637,7 @@ mod tests {
             .add("dir1/file1.txt", "Hello, world!")
             .add("dir1/file2.txt", "Hello, world!")
             .add("dir2/file3.txt", "Hello, world!")
-            .add("dir2/subdir/continue.py", "[continue for i in range(11)]") // Difference here
+            .add("dir2/subdir/epico-pilot.py", "[epico-pilot for i in range(11)]") // Difference here
             .add("__init__.py", "a = 5")
             .create();
 
@@ -652,12 +652,12 @@ mod tests {
         assert_eq!(tree.children[2].hash(), tree2.children[2].hash());
 
         // Make a small change and recompute the tree
-        let path = temp_dir.path().join("dir2/subdir/continue.py");
-        fs::write(path, "[continue for i in range(11)]").expect("Failed to write to file");
+        let path = temp_dir.path().join("dir2/subdir/epico-pilot.py");
+        fs::write(path, "[epico-pilot for i in range(11)]").expect("Failed to write to file");
         let tree_prime =
             compute_tree_for_dir(temp_dir.path(), None).expect("Failed to compute tree");
 
-        // All nodes up the tree from dir2/subdir/continue.py should be marked as changed
+        // All nodes up the tree from dir2/subdir/epico-pilot.py should be marked as changed
         let (add, remove) = diff(&tree, &tree_prime);
         assert_eq!(add.len(), 4);
         assert_eq!(remove.len(), 4);

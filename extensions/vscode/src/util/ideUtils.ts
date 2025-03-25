@@ -1,20 +1,20 @@
 import { EXTENSION_NAME } from "core/control-plane/env";
 import _ from "lodash";
-import * as vscode from "vscode";
 import * as URI from "uri-js";
+import * as vscode from "vscode";
 import { threadStopped } from "../debug/debug";
 import { VsCodeExtension } from "../extension/VsCodeExtension";
 import { GitExtension, Repository } from "../otherExtensions/git";
 import {
-  SuggestionRanges,
-  acceptSuggestionCommand,
-  rejectSuggestionCommand,
-  showSuggestion as showSuggestionInEditor,
+    SuggestionRanges,
+    acceptSuggestionCommand,
+    rejectSuggestionCommand,
+    showSuggestion as showSuggestionInEditor,
 } from "../suggestions";
 
 import { getUniqueId, openEditorAndRevealRange } from "./vscode";
 
-import type { Range, RangeInFile, Thread } from "core";
+import type { Range, Thread } from "core";
 import { findUriInDirs } from "core/util/uri";
 
 const util = require("node:util");
@@ -129,7 +129,7 @@ export class VsCodeIdeUtils {
 
     // If not, ask user for secret
     secret = await vscode.window.showInputBox({
-      prompt: `Either enter secret for ${key} or press enter to try Continue for free.`,
+      prompt: `Either enter secret for ${key} or press enter to try Epico Pilot for free.`,
       password: true,
     });
 

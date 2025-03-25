@@ -9,7 +9,7 @@ app.use(cors());
 app.use((req, res, next) => {
   // Proxy the request
   const { origin, host, ...headers } = req.headers;
-  const url = req.headers["x-continue-url"] as string;
+  const url = req.headers["x-epico-pilot-url"] as string;
   const parsedUrl = new URL(url);
   const protocolString = url.split("://")[0];
   const protocol = protocolString === "https" ? https : http;
@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 // http-middleware-proxy
 // app.use("/", (req, res, next) => {
 //   // Extract the target from the request URL
-//   const target = req.headers["x-continue-url"] as string;
+//   const target = req.headers["x-epico-pilot-url"] as string;
 //   const { origin, ...headers } = req.headers;
 
 //   // Create a new proxy middleware for this request

@@ -300,7 +300,7 @@ async function copyNodeModules() {
 //     rimrafSync("node_modules/@esbuild");
 //     fs.mkdirSync("node_modules/@esbuild", { recursive: true });
 //     execCmdSync(
-//       `curl -o node_modules/@esbuild/esbuild.zip https://continue-server-binaries.s3.us-west-1.amazonaws.com/${target}/esbuild.zip`,
+//       `curl -o node_modules/@esbuild/esbuild.zip https://epico-pilot-server-binaries.s3.us-west-1.amazonaws.com/${target}/esbuild.zip`,
 //     );
 //     execCmdSync(`cd node_modules/@esbuild && unzip esbuild.zip`);
 //     fs.unlinkSync("node_modules/@esbuild/esbuild.zip");
@@ -448,7 +448,7 @@ async function installNodeModuleInTempDirAndCopyToCurrent(packageName, toCopy) {
   // Create a temporary directory for installing the package
   const adjustedName = packageName.replace(/@/g, "").replace("/", "-");
 
-  const tempDir = `/tmp/continue-node_modules-${adjustedName}`;
+  const tempDir = `/tmp/epico-pilot-node_modules-${adjustedName}`;
   const currentDir = process.cwd();
 
   // Remove the dir we will be copying to

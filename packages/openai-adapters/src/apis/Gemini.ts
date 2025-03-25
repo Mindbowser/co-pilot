@@ -1,32 +1,32 @@
 import { streamResponse } from "@continuedev/fetch";
 import { OpenAI } from "openai/index";
 import {
-  ChatCompletion,
-  ChatCompletionChunk,
-  ChatCompletionCreateParams,
-  ChatCompletionCreateParamsNonStreaming,
-  ChatCompletionCreateParamsStreaming,
-  Completion,
-  CompletionCreateParamsNonStreaming,
-  CompletionCreateParamsStreaming,
-  CreateEmbeddingResponse,
-  EmbeddingCreateParams,
-  Model,
+    ChatCompletion,
+    ChatCompletionChunk,
+    ChatCompletionCreateParams,
+    ChatCompletionCreateParamsNonStreaming,
+    ChatCompletionCreateParamsStreaming,
+    Completion,
+    CompletionCreateParamsNonStreaming,
+    CompletionCreateParamsStreaming,
+    CreateEmbeddingResponse,
+    EmbeddingCreateParams,
+    Model,
 } from "openai/resources/index";
 
 import { GeminiConfig } from "../types.js";
 import {
-  chatChunk,
-  chatChunkFromDelta,
-  customFetch,
-  embedding,
+    chatChunk,
+    chatChunkFromDelta,
+    customFetch,
+    embedding,
 } from "../util.js";
 import { GeminiToolFunctionDeclaration } from "../util/gemini-types.js";
 import {
-  BaseLlmApi,
-  CreateRerankResponse,
-  FimCreateParamsStreaming,
-  RerankCreateParams,
+    BaseLlmApi,
+    CreateRerankResponse,
+    FimCreateParamsStreaming,
+    RerankCreateParams,
 } from "./base.js";
 
 export class GeminiApi implements BaseLlmApi {

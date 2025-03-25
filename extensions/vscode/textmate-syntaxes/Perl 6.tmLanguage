@@ -330,7 +330,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(take|do|when|next|last|redo|return|contend|maybe|defer|default|exit|make|continue|break|goto|leave|async|lift)\b</string>
+			<string>\b(take|do|when|next|last|redo|return|contend|maybe|defer|default|exit|make|epico-pilot|break|goto|leave|async|lift)\b</string>
 			<key>name</key>
 			<string>keyword.control.flowcontrol.perl</string>
 		</dict>

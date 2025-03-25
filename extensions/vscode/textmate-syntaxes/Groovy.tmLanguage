@@ -891,7 +891,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b((?&lt;!\.)(?:return|break|continue|default|do|while|for|switch|if|else))\b</string>
+					<string>\b((?&lt;!\.)(?:return|break|epico-pilot|default|do|while|for|switch|if|else))\b</string>
 					<key>name</key>
 					<string>keyword.control.groovy</string>
 				</dict>

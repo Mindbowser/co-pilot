@@ -1366,7 +1366,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!-&gt;)\b(continue|die|do|else|elsif|exit|for|foreach|goto|if|last|next|redo|return|select|unless|until|wait|while|switch|case|require|use|eval)\b</string>
+			<string>(?&lt;!-&gt;)\b(epico-pilot|die|do|else|elsif|exit|for|foreach|goto|if|last|next|redo|return|select|unless|until|wait|while|switch|case|require|use|eval)\b</string>
 			<key>name</key>
 			<string>keyword.control.perl</string>
 		</dict>

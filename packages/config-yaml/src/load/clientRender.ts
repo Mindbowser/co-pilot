@@ -1,21 +1,21 @@
 import { z } from "zod";
 import { PlatformClient, SecretStore } from "../interfaces/index.js";
 import {
-  decodeSecretLocation,
-  encodeSecretLocation,
-  SecretLocation,
+    decodeSecretLocation,
+    encodeSecretLocation,
+    SecretLocation,
 } from "../interfaces/SecretResult.js";
 import {
-  decodeFQSN,
-  encodeFQSN,
-  FQSN,
-  PackageSlug,
+    decodeFQSN,
+    encodeFQSN,
+    FQSN,
+    PackageSlug,
 } from "../interfaces/slugs.js";
 import { AssistantUnrolled } from "../schemas/index.js";
 import {
-  fillTemplateVariables,
-  getTemplateVariables,
-  parseAssistantUnrolled,
+    fillTemplateVariables,
+    getTemplateVariables,
+    parseAssistantUnrolled,
 } from "./unroll.js";
 
 export async function renderSecrets(
@@ -38,7 +38,7 @@ export async function renderSecrets(
 
   // Don't use platform client in local mode
   if (platformClient) {
-    // 3. For any secrets not found, we send the FQSNs to the Continue Platform at the `/ide/sync-secrets` endpoint. This endpoint replies for each of the FQSNs with the following information (`SecretResult`): `foundAt`: tells which secret store it was found in (this is “user”, “org”, “package” or null if not found anywhere). If it’s found in an org or a package, it tells us the `secretLocation`, which is either just an org slug, or is a full org/package slug. If it’s found in “user” secrets, we send back the `value`. Full definition of `SecretResult` at [2]. The method of resolving an FQSN to a `SecretResult` is detailed at [3]
+    // 3. For any secrets not found, we send the FQSNs to the Epico Pilot Platform at the `/ide/sync-secrets` endpoint. This endpoint replies for each of the FQSNs with the following information (`SecretResult`): `foundAt`: tells which secret store it was found in (this is “user”, “org”, “package” or null if not found anywhere). If it’s found in an org or a package, it tells us the `secretLocation`, which is either just an org slug, or is a full org/package slug. If it’s found in “user” secrets, we send back the `value`. Full definition of `SecretResult` at [2]. The method of resolving an FQSN to a `SecretResult` is detailed at [3]
     const secretResults = await platformClient.resolveFQSNs(unresolvedFQSNs);
 
     // 4. (back to the client) Any “user” secrets that were returned back are added to the local secret store so we don’t have to request them again
@@ -125,7 +125,7 @@ export function useProxyForUnrenderedSecrets(
       if (apiKeyLocation) {
         config.models[i] = {
           ...config.models[i],
-          provider: "continue-proxy",
+          provider: "epico-pilot-proxy",
           model: getContinueProxyModelName(
             packageSlug,
             config.models[i].provider,
@@ -143,7 +143,7 @@ export function useProxyForUnrenderedSecrets(
   return config;
 }
 
-/** The additional properties that are added to the otherwise OpenAI-compatible body when requesting a Continue proxy */
+/** The additional properties that are added to the otherwise OpenAI-compatible body when requesting a Epico Pilot proxy */
 export const continuePropertiesSchema = z.object({
   apiKeyLocation: z.string().optional(),
   apiBase: z.string().optional(),

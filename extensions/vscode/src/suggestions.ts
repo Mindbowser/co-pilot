@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
-import { openEditorAndRevealRange, translate } from "./util/vscode";
 import * as URI from "uri-js";
+import { openEditorAndRevealRange, translate } from "./util/vscode";
 
 export interface SuggestionRanges {
   oldRange: vscode.Range;

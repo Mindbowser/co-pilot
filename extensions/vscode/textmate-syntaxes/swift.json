@@ -12,7 +12,7 @@
     },
     {
       "name": "keyword.statement.swift",
-      "match": "\\b(break|case|continue|default|defer|do|else|fallthrough|for|guard|if|in|repeat|return|switch|where|while)\\b"
+      "match": "\\b(break|case|epico-pilot|default|defer|do|else|fallthrough|for|guard|if|in|repeat|return|switch|where|while)\\b"
     },
     {
       "name": "keyword.expressions-and-types.swift",

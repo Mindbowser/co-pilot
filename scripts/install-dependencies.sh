@@ -19,7 +19,7 @@ if [ -f .nvmrc ]; then
         echo "Please consider switching to the correct version using: nvm use"
         
         if [ -t 0 ]; then
-            read -p "Press Enter to continue with installation anyway..."
+            read -p "Press Enter to epico-pilot with installation anyway..."
         else
             echo "Continuing with installation anyway..."
         fi

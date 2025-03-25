@@ -261,7 +261,7 @@
 				},
 				{
 					"name": "keyword.control.flow.python",
-					"match": "(?x)\n  \\b(?<!\\.)(\n    as | async | continue | del | assert | break | finally | for\n    | from | elif | else | if | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
+					"match": "(?x)\n  \\b(?<!\\.)(\n    as | async | epico-pilot | del | assert | break | finally | for\n    | from | elif | else | if | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
 				},
 				{
 					"name": "storage.modifier.declaration.python",
@@ -1611,7 +1611,7 @@
 		},
 		"illegal-names": {
 			"name": "keyword.control.flow.python",
-			"match": "(?x)\n  \\b(\n    and | as | assert | async | await | break | class | continue | def\n    | del | elif | else | except | exec | finally | for | from | global\n    | if | import | in | is | (?<=\\.)lambda | lambda(?=\\s*[\\.=])\n    | nonlocal | not | or | pass | raise | return | try | while | with\n    | yield\n  )\\b\n"
+			"match": "(?x)\n  \\b(\n    and | as | assert | async | await | break | class | epico-pilot | def\n    | del | elif | else | except | exec | finally | for | from | global\n    | if | import | in | is | (?<=\\.)lambda | lambda(?=\\s*[\\.=])\n    | nonlocal | not | or | pass | raise | return | try | while | with\n    | yield\n  )\\b\n"
 		},
 		"special-variables": {
 			"match": "(?x)\n  \\b (?<!\\.) (?:\n    (self) | (cls)\n  )\\b\n",

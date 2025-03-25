@@ -405,7 +405,7 @@
 				},
 				{
 					"name": "keyword.control.loop.ts",
-					"match": "(?<!\\.|\\$)\\b(break|continue|do|goto|while)\\b(?!\\$)"
+					"match": "(?<!\\.|\\$)\\b(break|epico-pilot|do|goto|while)\\b(?!\\$)"
 				},
 				{
 					"name": "keyword.control.flow.ts",

@@ -408,7 +408,7 @@
 				},
 				{
 					"name": "keyword.control.loop.tsx",
-					"match": "(?<!\\.|\\$)\\b(break|continue|do|goto|while)\\b(?!\\$)"
+					"match": "(?<!\\.|\\$)\\b(break|epico-pilot|do|goto|while)\\b(?!\\$)"
 				},
 				{
 					"name": "keyword.control.flow.tsx",

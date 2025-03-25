@@ -2,33 +2,33 @@ import { ConfigHandler } from "core/config/ConfigHandler";
 import { getModelByRole } from "core/config/util";
 import { applyCodeBlock } from "core/edit/lazy/applyCodeBlock";
 import {
-  FromCoreProtocol,
-  FromWebviewProtocol,
-  ToCoreProtocol,
+    FromCoreProtocol,
+    FromWebviewProtocol,
+    ToCoreProtocol,
 } from "core/protocol";
 import { ToWebviewFromCoreProtocol } from "core/protocol/coreWebview";
 import { ToIdeFromWebviewOrCoreProtocol } from "core/protocol/ide";
 import { ToIdeFromCoreProtocol } from "core/protocol/ideCore";
 import { InProcessMessenger, Message } from "core/protocol/messenger";
 import {
-  CORE_TO_WEBVIEW_PASS_THROUGH,
-  WEBVIEW_TO_CORE_PASS_THROUGH,
+    CORE_TO_WEBVIEW_PASS_THROUGH,
+    WEBVIEW_TO_CORE_PASS_THROUGH,
 } from "core/protocol/passThrough";
 import { stripImages } from "core/util/messageContent";
 import { getUriPathBasename } from "core/util/uri";
 import * as vscode from "vscode";
 
+import { ILLM } from "core";
 import { VerticalDiffManager } from "../diff/vertical/manager";
 import EditDecorationManager from "../quickEdit/EditDecorationManager";
 import {
-  getControlPlaneSessionInfo,
-  WorkOsAuthProvider,
+    getControlPlaneSessionInfo,
+    WorkOsAuthProvider,
 } from "../stubs/WorkOsAuthProvider";
 import { showTutorial } from "../util/tutorial";
 import { getExtensionUri } from "../util/vscode";
 import { VsCodeIde } from "../VsCodeIde";
 import { VsCodeWebviewProtocol } from "../webviewProtocol";
-import { ILLM } from "core";
 
 /**
  * A shared messenger class between Core and Webview
@@ -100,7 +100,7 @@ export class VsCodeMessenger {
     });
 
     this.onWebview("toggleDevTools", (msg) => {
-      vscode.commands.executeCommand("continue.viewLogs");
+      vscode.commands.executeCommand("epico-pilot.viewLogs");
     });
     this.onWebview("reloadWindow", (msg) => {
       vscode.commands.executeCommand("workbench.action.reloadWindow");
@@ -109,12 +109,12 @@ export class VsCodeMessenger {
       vscode.commands.executeCommand("workbench.action.focusActiveEditorGroup");
     });
     this.onWebview("toggleFullScreen", (msg) => {
-      vscode.commands.executeCommand("continue.toggleFullScreen");
+      vscode.commands.executeCommand("epico-pilot.toggleFullScreen");
     });
 
     this.onWebview("acceptDiff", async ({ data: { filepath, streamId } }) => {
       await vscode.commands.executeCommand(
-        "continue.acceptDiff",
+        "epico-pilot.acceptDiff",
         filepath,
         streamId,
       );
@@ -122,7 +122,7 @@ export class VsCodeMessenger {
 
     this.onWebview("rejectDiff", async ({ data: { filepath, streamId } }) => {
       await vscode.commands.executeCommand(
-        "continue.rejectDiff",
+        "epico-pilot.rejectDiff",
         filepath,
         streamId,
       );
@@ -433,7 +433,7 @@ export class VsCodeMessenger {
       );
       vscode.commands.executeCommand(
         "setContext",
-        "continue.isSignedInToControlPlane",
+        "epico-pilot.isSignedInToControlPlane",
         false,
       );
     });

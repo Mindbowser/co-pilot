@@ -1,17 +1,17 @@
 import * as fs from "fs";
 import { decodeSecretLocation, resolveSecretLocationInProxy } from "../dist";
 import {
-  FQSN,
-  FullSlug,
-  PlatformClient,
-  PlatformSecretStore,
-  Registry,
-  resolveFQSN,
-  SecretLocation,
-  SecretResult,
-  SecretStore,
-  SecretType,
-  unrollAssistant,
+    FQSN,
+    FullSlug,
+    PlatformClient,
+    PlatformSecretStore,
+    Registry,
+    resolveFQSN,
+    SecretLocation,
+    SecretResult,
+    SecretStore,
+    SecretType,
+    unrollAssistant,
 } from "../src";
 
 // Test e2e flows from raw yaml -> unroll -> client render -> resolve secrets on proxy
@@ -118,13 +118,13 @@ describe("E2E Scenarios", () => {
     expect(openAiModel.apiKey).toBe("sk-123");
 
     const geminiModel = unrolledConfig.models?.[1]!;
-    expect(geminiModel.provider).toBe("continue-proxy");
+    expect(geminiModel.provider).toBe("epico-pilot-proxy");
     expect(geminiModel.apiKey).toBeUndefined();
     const geminiSecretLocation = "organization:test-org/GEMINI_API_KEY";
     expect((geminiModel as any).apiKeyLocation).toBe(geminiSecretLocation);
 
     const anthropicModel = unrolledConfig.models?.[2]!;
-    expect(anthropicModel.provider).toBe("continue-proxy");
+    expect(anthropicModel.provider).toBe("epico-pilot-proxy");
     expect(anthropicModel.apiKey).toBeUndefined();
     const anthropicSecretLocation =
       "models_add_on:test-org/claude35sonnet/ANTHROPIC_API_KEY";

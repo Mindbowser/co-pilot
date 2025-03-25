@@ -5,25 +5,25 @@ import { EXTENSION_NAME, getControlPlaneEnvSync } from "core/control-plane/env";
 import fetch from "node-fetch";
 import { v4 as uuidv4 } from "uuid";
 import {
-  authentication,
-  AuthenticationProvider,
-  AuthenticationProviderAuthenticationSessionsChangeEvent,
-  AuthenticationSession,
-  Disposable,
-  env,
-  EventEmitter,
-  ExtensionContext,
-  ProgressLocation,
-  Uri,
-  window,
-  workspace,
+    authentication,
+    AuthenticationProvider,
+    AuthenticationProviderAuthenticationSessionsChangeEvent,
+    AuthenticationSession,
+    Disposable,
+    env,
+    EventEmitter,
+    ExtensionContext,
+    ProgressLocation,
+    Uri,
+    window,
+    workspace,
 } from "vscode";
 
 import { PromiseAdapter, promiseFromEvent } from "./promiseUtils";
 import { SecretStorage } from "./SecretStorage";
 import { UriEventHandler } from "./uriHandler";
 
-const AUTH_NAME = "Continue";
+const AUTH_NAME = "Epico Pilot";
 
 const enableControlServerBeta = workspace
   .getConfiguration(EXTENSION_NAME)
@@ -289,7 +289,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
       const codeChallenge = await generateCodeChallenge(codeVerifier);
       const token = await this.login(codeChallenge, scopes);
       if (!token) {
-        throw new Error(`Continue login failure`);
+        throw new Error(`Epico Pilot login failure`);
       }
 
       const userInfo = (await this.getUserInfo(token, codeVerifier)) as any;
@@ -357,13 +357,13 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
   }
 
   /**
-   * Log in to Continue
+   * Log in to Epico Pilot
    */
   private async login(codeChallenge: string, scopes: string[] = []) {
     return await window.withProgress<string>(
       {
         location: ProgressLocation.Notification,
-        title: "Signing in to Continue...",
+        title: "Signing in to Epico Pilot...",
         cancellable: true,
       },
       async (_, token) => {
@@ -430,7 +430,7 @@ export class WorkOsAuthProvider implements AuthenticationProvider, Disposable {
   }
 
   /**
-   * Handle the redirect to VS Code (after sign in from Continue)
+   * Handle the redirect to VS Code (after sign in from Epico Pilot)
    * @param scopes
    * @returns
    */

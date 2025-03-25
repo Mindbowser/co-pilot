@@ -792,7 +792,7 @@
 		"keyword": {
 			"patterns": [
 				{
-					"match": "(?<=^|;|&|\\s)(?:if|then|else|elif|fi|for|in|do|done|select|case|continue|esac|while|until|return|coproc)(?=\\s|;|&|$)",
+					"match": "(?<=^|;|&|\\s)(?:if|then|else|elif|fi|for|in|do|done|select|case|epico-pilot|esac|while|until|return|coproc)(?=\\s|;|&|$)",
 					"name": "keyword.control.shell"
 				},
 				{

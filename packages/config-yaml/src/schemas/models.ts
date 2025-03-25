@@ -82,14 +82,14 @@ const baseModelFields = {
 export const modelSchema = z.union([
   z.object({
     ...baseModelFields,
-    provider: z.literal("continue-proxy"),
+    provider: z.literal("epico-pilot-proxy"),
     apiKeyLocation: z.string(),
     orgScopeId: z.string().nullable(),
     onPremProxyUrl: z.string().nullable(),
   }),
   z.object({
     ...baseModelFields,
-    provider: z.string().refine((val) => val !== "continue-proxy"),
+    provider: z.string().refine((val) => val !== "epico-pilot-proxy"),
   }),
 ]);
 
@@ -97,14 +97,14 @@ export const partialModelSchema = z.union([
   z
     .object({
       ...baseModelFields,
-      provider: z.literal("continue-proxy"),
+      provider: z.literal("epico-pilot-proxy"),
       apiKeyLocation: z.string(),
     })
     .partial(),
   z
     .object({
       ...baseModelFields,
-      provider: z.string().refine((val) => val !== "continue-proxy"),
+      provider: z.string().refine((val) => val !== "epico-pilot-proxy"),
     })
     .partial(),
 ]);

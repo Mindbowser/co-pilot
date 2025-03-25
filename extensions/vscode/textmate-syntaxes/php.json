@@ -2339,7 +2339,7 @@
           "name": "support.function.php_dom.php"
         },
         {
-          "match": "(?i)\\bftp_(s(sl_connect|ystype|i(te|ze)|et_option)|n(list|b_(continue|put|f(put|get)|get))|c(h(dir|mod)|onnect|dup|lose)|delete|p(ut|wd|asv)|exec|quit|f(put|get)|login|alloc|r(ename|aw(list)?|mdir)|get(_option)?|m(dtm|kdir))\\b",
+          "match": "(?i)\\bftp_(s(sl_connect|ystype|i(te|ze)|et_option)|n(list|b_(epico-pilot|put|f(put|get)|get))|c(h(dir|mod)|onnect|dup|lose)|delete|p(ut|wd|asv)|exec|quit|f(put|get)|login|alloc|r(ename|aw(list)?|mdir)|get(_option)?|m(dtm|kdir))\\b",
           "name": "support.function.php_ftp.php"
         },
         {

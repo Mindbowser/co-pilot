@@ -16,18 +16,18 @@ import { getExtensionUri, openEditorAndRevealRange } from "./util/vscode";
 import { VsCodeWebviewProtocol } from "./webviewProtocol";
 
 import type {
-  ContinueRcJson,
-  FileStatsMap,
-  FileType,
-  IDE,
-  IdeInfo,
-  IdeSettings,
-  IndexTag,
-  Location,
-  Problem,
-  RangeInFile,
-  TerminalOptions,
-  Thread,
+    ContinueRcJson,
+    FileStatsMap,
+    FileType,
+    IDE,
+    IdeInfo,
+    IdeSettings,
+    IndexTag,
+    Location,
+    Problem,
+    RangeInFile,
+    TerminalOptions,
+    Thread,
 } from "core";
 
 class VsCodeIde implements IDE {
@@ -139,7 +139,7 @@ class VsCodeIde implements IDE {
       if (!this.askedForAuth) {
         vscode.window
           .showInformationMessage(
-            "Continue will request read access to your GitHub email so that we can prevent abuse of the free trial. If you prefer not to sign in, you can use Continue with your own API keys or local model.",
+            "Epico Pilot will request read access to your GitHub email so that we can prevent abuse of the free trial. If you prefer not to sign in, you can use Epico Pilot with your own API keys or local model.",
             "Sign in",
             "Use API key / local model",
             "Learn more",
@@ -147,7 +147,7 @@ class VsCodeIde implements IDE {
           .then(async (selection) => {
             if (selection === "Use API key / local model") {
               await vscode.commands.executeCommand(
-                "continue.continueGUIView.focus",
+                "epico-pilot.continueGUIView.focus",
               );
               (await this.vscodeWebviewProtocolPromise).request(
                 "openOnboardingCard",
@@ -178,7 +178,7 @@ class VsCodeIde implements IDE {
             } else if (selection === "Learn more") {
               vscode.env.openExternal(
                 vscode.Uri.parse(
-                  "https://docs.continue.dev/reference/Model%20Providers/freetrial",
+                  "https://docs.epico-pilot.dev/reference/Model%20Providers/freetrial",
                 ),
               );
             } else if (selection === "Sign in") {
@@ -294,7 +294,7 @@ class VsCodeIde implements IDE {
       version: vscode.version,
       remoteName: vscode.env.remoteName || "local",
       extensionVersion:
-        vscode.extensions.getExtension("continue.continue")?.packageJSON
+        vscode.extensions.getExtension("epico-pilot.epico-pilot")?.packageJSON
           .version,
     });
   }
@@ -346,7 +346,7 @@ class VsCodeIde implements IDE {
   }
 
   async getClipboardContent() {
-    return this.context.workspaceState.get("continue.copyBuffer", {
+    return this.context.workspaceState.get("epico-pilot.copyBuffer", {
       text: "",
       copiedAt: new Date("1900-01-01").toISOString(),
     });

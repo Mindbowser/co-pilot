@@ -2,26 +2,26 @@ import { AzureKeyCredential, OpenAIClient } from "@azure/openai";
 
 import dotenv from "dotenv";
 import {
-  Completion,
-  CompletionCreateParamsNonStreaming,
-  CompletionCreateParamsStreaming,
+    Completion,
+    CompletionCreateParamsNonStreaming,
+    CompletionCreateParamsStreaming,
 } from "openai/resources/completions.js";
 import {
-  ChatCompletion,
-  ChatCompletionChunk,
-  ChatCompletionCreateParamsNonStreaming,
-  ChatCompletionCreateParamsStreaming,
-  CreateEmbeddingResponse,
-  EmbeddingCreateParams,
-  Model,
+    ChatCompletion,
+    ChatCompletionChunk,
+    ChatCompletionCreateParamsNonStreaming,
+    ChatCompletionCreateParamsStreaming,
+    CreateEmbeddingResponse,
+    EmbeddingCreateParams,
+    Model,
 } from "openai/resources/index.js";
 import { AzureConfig } from "../types.js";
 import { embedding } from "../util.js";
 import {
-  BaseLlmApi,
-  CreateRerankResponse,
-  FimCreateParamsStreaming,
-  RerankCreateParams,
+    BaseLlmApi,
+    CreateRerankResponse,
+    FimCreateParamsStreaming,
+    RerankCreateParams,
 } from "./base.js";
 
 dotenv.config();

@@ -247,7 +247,7 @@
 			]
 		},
 		{
-			"match": "(?x)\n\t\t\t\t\\b\n\t\t\t\t(?<![\\.\\$])\n\t\t\t\t(\n\t\t\t\t\tbreak\n\t\t\t\t  | by\n\t\t\t\t  | catch\n\t\t\t\t  | continue\n\t\t\t\t  | else\n\t\t\t\t  | finally\n\t\t\t\t  | for\n\t\t\t\t  | in\n\t\t\t\t  | of\n\t\t\t\t  | if\n\t\t\t\t  | return\n\t\t\t\t  | switch\n\t\t\t\t  | then\n\t\t\t\t  | throw\n\t\t\t\t  | try\n\t\t\t\t  | unless\n\t\t\t\t  | when\n\t\t\t\t  | while\n\t\t\t\t  | until\n\t\t\t\t  | loop\n\t\t\t\t  | do\n\t\t\t\t  | (?<=for)\\s+own\n\t\t\t\t)\n\t\t\t\t(?!\\s*:)\n\t\t\t\t\\b\n\t\t\t",
+			"match": "(?x)\n\t\t\t\t\\b\n\t\t\t\t(?<![\\.\\$])\n\t\t\t\t(\n\t\t\t\t\tbreak\n\t\t\t\t  | by\n\t\t\t\t  | catch\n\t\t\t\t  | epico-pilot\n\t\t\t\t  | else\n\t\t\t\t  | finally\n\t\t\t\t  | for\n\t\t\t\t  | in\n\t\t\t\t  | of\n\t\t\t\t  | if\n\t\t\t\t  | return\n\t\t\t\t  | switch\n\t\t\t\t  | then\n\t\t\t\t  | throw\n\t\t\t\t  | try\n\t\t\t\t  | unless\n\t\t\t\t  | when\n\t\t\t\t  | while\n\t\t\t\t  | until\n\t\t\t\t  | loop\n\t\t\t\t  | do\n\t\t\t\t  | (?<=for)\\s+own\n\t\t\t\t)\n\t\t\t\t(?!\\s*:)\n\t\t\t\t\\b\n\t\t\t",
 			"name": "keyword.control.coffee"
 		},
 		{
