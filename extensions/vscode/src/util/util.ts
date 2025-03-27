@@ -119,6 +119,6 @@ export function getMetaKeyName() {
 }
 
 export function getExtensionVersion(): string {
-  const extension = vscode.extensions.getExtension("epico-pilot.epico-pilot");
+  const extension = vscode.extensions.getExtension("Mindbowser.epico-pilot");
   return extension?.packageJSON.version || "0.1.0";
 }

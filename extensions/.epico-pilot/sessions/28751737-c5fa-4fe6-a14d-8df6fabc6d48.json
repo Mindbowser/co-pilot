@@ -1,0 +1,101 @@
+{
+  "sessionId": "28751737-c5fa-4fe6-a14d-8df6fabc6d48",
+  "title": "Coding Assistance Exploration",
+  "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox",
+  "history": [
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "hi"
+          }
+        ],
+        "id": "72def628-8e9b-4dae-90a1-38d2c92ac276"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "hi"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "message": {
+        "id": "5e6e3aae-2f23-4943-a858-88e70de0335d",
+        "role": "assistant",
+        "content": "Hello! How can I help you today? Are you looking to work on a coding project, need assistance with programming, or have a specific question?"
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "Claude 3.5 Haiku",
+          "prompt": "<system>\n<important_rules>\n  Always include the language and file name in the info string when you write code blocks. If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'.\n</important_rules>\n\n<user>\nhi\n\n",
+          "completion": "Hello! How can I help you today? Are you looking to work on a coding project, need assistance with programming, or have a specific question?",
+          "completionOptions": {
+            "model": "claude-3-5-haiku-latest",
+            "maxTokens": 8192
+          }
+        }
+      ],
+      "isGatheringContext": false
+    },
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "i want to develop an ecommerce app using wordpress woocommerce"
+          }
+        ],
+        "id": "4664d19e-1aae-4c93-905b-34f98b4f661c"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "i want to develop an ecommerce app using wordpress woocommerce"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "message": {
+        "id": "1fd6668a-1914-4190-ac7d-f57c14e50da0",
+        "role": "assistant",
+        "content": "Great choice! Developing an e-commerce app with WordPress WooCommerce is a popular and effective approach. Here's a comprehensive guide to help you get started:\n\n1. Prerequisites:\n- WordPress (latest version)\n- WooCommerce plugin\n- Web hosting\n- Domain name\n- SSL certificate\n\n2. Setup Steps:\na) Install WordPress\nb) Install WooCommerce plugin\nc) Configure basic settings\nd) Choose a compatible theme\ne) Add products\nf) Set up payment gateways\ng) Configure shipping options\n\n3. Key Recommendations:\n- Use a responsive, WooCommerce-compatible theme\n- Optimize site speed\n- Implement security measures\n- Enable mobile-friendly design\n- Set up smooth checkout process\n\n4. Recommended Plugins:\n- Elementor (page builder)\n- Yoast SEO\n- WooCommerce Payments\n- Cart Abandonment Recovery\n- Product Add-ons\n- Checkout Field Editor\n\n5. Mobile Considerations:\n- Use mobile-responsive theme\n- Consider mobile app solutions:\n  * WooCommerce mobile app\n  * Progressive Web App (PWA)\n  * Native app development\n\nWould you like me to elaborate on any of these points or discuss a specific aspect of your e-commerce project?"
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "Claude 3.5 Haiku",
+          "prompt": "<system>\n<important_rules>\n  Always include the language and file name in the info string when you write code blocks. If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'.\n</important_rules>\n\n<user>\nhi\n\n<assistant>\nHello! How can I help you today? Are you looking to work on a coding project, need assistance with programming, or have a specific question?\n\n<user>\ni want to develop an ecommerce app using wordpress woocommerce\n\n",
+          "completion": "Great choice! Developing an e-commerce app with WordPress WooCommerce is a popular and effective approach. Here's a comprehensive guide to help you get started:\n\n1. Prerequisites:\n- WordPress (latest version)\n- WooCommerce plugin\n- Web hosting\n- Domain name\n- SSL certificate\n\n2. Setup Steps:\na) Install WordPress\nb) Install WooCommerce plugin\nc) Configure basic settings\nd) Choose a compatible theme\ne) Add products\nf) Set up payment gateways\ng) Configure shipping options\n\n3. Key Recommendations:\n- Use a responsive, WooCommerce-compatible theme\n- Optimize site speed\n- Implement security measures\n- Enable mobile-friendly design\n- Set up smooth checkout process\n\n4. Recommended Plugins:\n- Elementor (page builder)\n- Yoast SEO\n- WooCommerce Payments\n- Cart Abandonment Recovery\n- Product Add-ons\n- Checkout Field Editor\n\n5. Mobile Considerations:\n- Use mobile-responsive theme\n- Consider mobile app solutions:\n  * WooCommerce mobile app\n  * Progressive Web App (PWA)\n  * Native app development\n\nWould you like me to elaborate on any of these points or discuss a specific aspect of your e-commerce project?",
+          "completionOptions": {
+            "model": "claude-3-5-haiku-latest",
+            "maxTokens": 8192
+          }
+        }
+      ],
+      "isGatheringContext": false
+    }
+  ]
+}

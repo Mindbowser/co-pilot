@@ -140,7 +140,7 @@ const config = {
             items: [
               {
                 label: "VS Code",
-                to: "https://marketplace.visualstudio.com/items?itemName=Epico Pilot.epico-pilot",
+                to: "https://marketplace.visualstudio.com/items?itemName=Mindbowser.epico-pilot",
               },
               {
                 label: "JetBrains",

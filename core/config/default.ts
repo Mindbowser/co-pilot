@@ -5,6 +5,22 @@ import {
   SlashCommandDescription,
 } from "../";
 
+export const DEFAULT_CHAT_MODEL_CONFIG: ModelDescription[] = [
+  {
+    "model": "claude-3-5-haiku-latest",
+    "title": "Claude 3.5 Haiku",
+    "apiKey": "",
+    "provider": "anthropic"
+  },
+];
+
+export const DEFAULT_AUTOCOMPLETE_MODEL_CONFIG: ModelDescription = {
+  "title": "Tab Autocomplete Model",
+  "model": "claude-3-5-haiku-latest",
+  "apiKey": "",
+  "provider": "anthropic"
+};
+
 export const FREE_TRIAL_MODELS: ModelDescription[] = [
   {
     title: "Claude 3.5 Sonnet (Free Trial)",
@@ -79,14 +95,16 @@ export const defaultSlashCommandsJetBrains = [
 ];
 
 export const defaultConfig: SerializedContinueConfig = {
-  models: [],
+  models: [...DEFAULT_CHAT_MODEL_CONFIG],
+  tabAutocompleteModel: DEFAULT_AUTOCOMPLETE_MODEL_CONFIG,
   contextProviders: defaultContextProvidersVsCode,
   slashCommands: defaultSlashCommandsVscode,
   data: [],
 };
 
 export const defaultConfigJetBrains: SerializedContinueConfig = {
-  models: [],
+  models: [...DEFAULT_CHAT_MODEL_CONFIG],
+  tabAutocompleteModel: DEFAULT_AUTOCOMPLETE_MODEL_CONFIG,
   contextProviders: defaultContextProvidersJetBrains,
   slashCommands: defaultSlashCommandsJetBrains,
   data: [],

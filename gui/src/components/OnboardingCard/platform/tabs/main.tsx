@@ -1,10 +1,8 @@
-import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useContext } from "react";
-import { Button, ButtonSubtext } from "../../..";
+import { Button } from "../../..";
 import { useAuth } from "../../../../context/Auth";
 import { IdeMessengerContext } from "../../../../context/IdeMessenger";
 import { hasPassedFTL } from "../../../../util/freeTrial";
-import ContinueLogo from "../../../gui/ContinueLogo";
 import { useOnboardingCard } from "../../hooks";
 
 export default function MainTab({
@@ -38,67 +36,20 @@ export default function MainTab({
 
   return (
     <div className="xs:px-0 flex w-full max-w-full flex-col items-center justify-center px-4 text-center">
-      <div className="xs:flex hidden">
-        <ContinueLogo height={75} />
+      <div className="hidden xs:flex text-3xl">
+        Epico - Pilot
       </div>
 
-      {pastFreeTrialLimit ? (
-        <>
-          <p className="xs:w-3/4 w-full text-sm">
-            You've reached the free trial limit. Visit the Epico Pilot Platform to
-            select a Coding Assistant.
-          </p>
-          <Button
-            onClick={openPastFreeTrialOnboarding}
-            className="mt-4 grid w-full grid-flow-col items-center gap-2"
-          >
-            Go to Epico Pilot Platform
-          </Button>
-        </>
-      ) : onboardingCard.activeTab === "ExistingUserHubIntro" ? (
-        <>
-          <p className="xs:w-3/4 w-full text-sm">
-            You can now browse and create custom AI code assistants at{" "}
-            <code>hub.epico-pilot.dev</code>
-          </p>
+      <p className="text-sm w-full xs:w-3/4">
+        Welcome to Epico - Pilot! We're excited to have you on board!
+      </p>
 
-          <Button
-            onClick={onGetStarted}
-            className="mt-4 grid w-full grid-flow-col items-center gap-2"
-          >
-            Get started
-          </Button>
-        </>
-      ) : (
-        <>
-          <p className="xs:w-3/4 w-full text-sm">
-            Log in to quickly build your first custom AI code assistant
-          </p>
-
-          <Button
-            onClick={onGetStarted}
-            className="mt-4 grid w-full grid-flow-col items-center gap-2"
-          >
-            Get started
-          </Button>
-        </>
-      )}
-
-      {onboardingCard.activeTab === "ExistingUserHubIntro" ? (
-        <ButtonSubtext onClick={() => onboardingCard.close(isDialog)}>
-          <div className="mt-4 flex cursor-pointer items-center justify-center gap-1">
-            <span>Or, use Epico Pilot as usual</span>
-            <ChevronRightIcon className="h-3 w-3" />
-          </div>
-        </ButtonSubtext>
-      ) : (
-        <ButtonSubtext onClick={onRemainLocal}>
-          <div className="mt-4 flex cursor-pointer items-center justify-center gap-1">
-            <span>Or, remain local</span>
-            <ChevronRightIcon className="h-3 w-3" />
-          </div>
-        </ButtonSubtext>
-      )}
+      <Button
+        onClick={onGetStarted}
+        className="mt-4 grid w-full grid-flow-col items-center gap-2"
+      >
+        Get started
+      </Button>
     </div>
   );
 }

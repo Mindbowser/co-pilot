@@ -4,7 +4,7 @@ import {
   InputModifiers,
   MessageContent,
   SlashCommandDescription,
-  TextMessagePart,
+  TextMessagePart
 } from "core";
 import { constructMessages } from "core/llm/constructMessages";
 import { renderChatMessage } from "core/util/messageContent";
@@ -119,12 +119,20 @@ export const streamResponseThunk = createAsyncThunk<
         // Construct messages from updated history
         const updatedHistory = getState().session.history;
         const messages = constructMessages([...updatedHistory]);
+        const extensionVersion = localStorage.getItem('extensionVersion') ?? "";
 
         posthog.capture("step run", {
           step_name: "User Input",
           params: {},
         });
-        posthog.capture("userInput", {});
+        posthog.capture("userInput", {
+          modelName: defaultModel?.model,
+          modelProvider: defaultModel?.provider,
+          input: (content[0] as TextMessagePart).text,
+          accountEmail: state.config.accountEmail,
+          accountName: state.config.accountName,
+          extensionVersion: JSON.parse(extensionVersion),
+        });
 
         // Determine if the input is a slash command
         let commandAndInput = getSlashCommandForInput(content, slashCommands);

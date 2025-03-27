@@ -4,8 +4,8 @@ import * as vscode from "vscode";
 
 import { Battery } from "../util/battery";
 import {
-    CONTINUE_WORKSPACE_KEY,
-    getContinueWorkspaceConfig,
+  CONTINUE_WORKSPACE_KEY,
+  getContinueWorkspaceConfig,
 } from "../util/workspaceConfig";
 
 export enum StatusBarStatus {
@@ -47,20 +47,20 @@ const statusBarItemText = (
   error?: boolean,
 ) => {
   if (error) {
-    return "$(alert) Epico Pilot (FATAL ERROR)";
+    return "$(alert) Epico-Pilot (FATAL ERROR)";
   }
 
   switch (status) {
     case undefined:
       if (loading) {
-        return "$(loading~spin) Epico Pilot";
+        return "$(loading~spin) Epico-Pilot";
       }
     case StatusBarStatus.Disabled:
-      return "$(circle-slash) Epico Pilot";
+      return "$(circle-slash) Epico-Pilot";
     case StatusBarStatus.Enabled:
-      return "$(check) Epico Pilot";
+      return "$(check) Epico-Pilot";
     case StatusBarStatus.Paused:
-      return "$(debug-pause) Epico Pilot";
+      return "$(debug-pause) Epico-Pilot";
   }
 };
 

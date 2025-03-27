@@ -237,7 +237,7 @@ Epico Pilot exposes an API for registering context providers from a 3rd party VS
 
 ```json title="package.json"
 {
-  "extensionDependencies": ["epico-pilot.epico-pilot"]
+  "extensionDependencies": ["Mindbowser.epico-pilot"]
 }
 ```
 
@@ -305,7 +305,7 @@ class MyCustomProvider implements IContextProvider {
 const customProvider = new MyCustomProvider();
 
 // get Epico Pilot extension using vscode API
-const continueExt = vscode.extensions.getExtension("Epico Pilot.epico-pilot");
+const continueExt = vscode.extensions.getExtension("Mindbowser.epico-pilot");
 
 // get the API from the extension
 const continueApi = continueExt?.exports;

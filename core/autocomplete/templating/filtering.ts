@@ -129,7 +129,7 @@ export const getSnippets = (
   // Exclude Epico Pilot's own output as it makes it super-hard for users to test the autocomplete feature
   // while looking at the prompts in the Epico Pilot's output
   prioritizedSnippets = prioritizedSnippets.filter((snippet) =>
-    !(snippet as AutocompleteCodeSnippet).filepath?.startsWith("output:extension-output-Epico Pilot.epico-pilot"));
+    !(snippet as AutocompleteCodeSnippet).filepath?.startsWith("output:extension-output-Mindbowser.epico-pilot"));
 
   const finalSnippets = [];
   let remainingTokenCount = getRemainingTokenCount(helper);

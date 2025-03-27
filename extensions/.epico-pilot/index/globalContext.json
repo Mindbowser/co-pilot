@@ -1,0 +1,20 @@
+{
+  "isSupportedLanceDbCpuTargetForLinux": true,
+  "selectedModelsByProfileId": {
+    "local": {
+      "chat": null,
+      "edit": "Claude 3.5 Haiku",
+      "apply": "Claude 3.5 Haiku",
+      "embed": "transformers.js",
+      "autocomplete": "Tab Autocomplete Model",
+      "rerank": null,
+      "summarize": null
+    }
+  },
+  "lastSelectedProfileForWorkspace": {
+    "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox": "local"
+  },
+  "sharedConfig": {
+    "showSessionTabs": true
+  }
+}

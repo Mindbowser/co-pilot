@@ -316,31 +316,6 @@ function ModelSelect() {
               />
             ))}
           </div>
-
-          <div className="mt-auto">
-            <Divider className="!my-0" />
-
-            {selectedProfile?.profileType === "local" && (
-              <>
-                <StyledListboxOption
-                  key={options.length}
-                  onClick={onClickAddModel}
-                  value={"addModel" as any}
-                >
-                  <div className="flex items-center py-0.5">
-                    <PlusIcon className="mr-2 h-3 w-3" />
-                    Add Chat model
-                  </div>
-                </StyledListboxOption>
-              </>
-            )}
-
-            <Divider className="!my-0" />
-
-            <span className="block px-3 py-2" style={{ color: lightGray }}>
-              <Shortcut>meta '</Shortcut> to toggle model
-            </span>
-          </div>
         </StyledListboxOptions>
       </div>
     </Listbox>

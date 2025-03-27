@@ -7,6 +7,8 @@ export type ConfigState = {
   configError: ConfigValidationError[] | undefined;
   config: BrowserSerializedContinueConfig;
   defaultModelTitle?: string;
+  accountName: string;
+  accountEmail: string;
 };
 
 const EMPTY_CONFIG: BrowserSerializedContinueConfig = {
@@ -49,6 +51,8 @@ const initialState: ConfigState = {
   configError: undefined,
   defaultModelTitle: undefined,
   config: EMPTY_CONFIG,
+  accountName: "",
+  accountEmail: "",
 };
 
 export const configSlice = createSlice({
@@ -111,6 +115,10 @@ export const configSlice = createSlice({
         defaultModelTitle: state.config.models[nextIndex].title,
       };
     },
+    setAccount: (state, action: PayloadAction<{ accountName: string; accountEmail: string }>) => {
+      state.accountName = action.payload.accountName;
+      state.accountEmail = action.payload.accountEmail;
+    }
   },
   selectors: {
     selectDefaultModel: (state) => {
@@ -135,6 +143,7 @@ export const {
   cycleDefaultModel,
   updateConfig,
   setConfigResult,
+  setAccount,
 } = configSlice.actions;
 
 export const {

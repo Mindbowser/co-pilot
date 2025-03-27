@@ -1,20 +1,23 @@
 import {
-    OrganizationDescription,
-    ProfileDescription,
+  OrganizationDescription,
+  ProfileDescription,
 } from "core/config/ProfileLifecycleManager";
 import { ControlPlaneSessionInfo } from "core/control-plane/client";
 import React, {
-    createContext,
-    useContext,
-    useEffect,
-    useMemo,
-    useState,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
 } from "react";
+import { useNavigate } from "react-router-dom";
 import ConfirmationDialog from "../components/dialogs/ConfirmationDialog";
+import { isNewUserOnboarding, useOnboardingCard } from "../components/OnboardingCard";
 import { useWebviewListener } from "../hooks/useWebviewListener";
 import { updateOrgsThunk, updateProfilesThunk } from "../redux";
 import { selectSelectedProfile } from "../redux/";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { setAccount } from "../redux/slices/configSlice";
 import { setLastControlServerBetaEnabledStatus } from "../redux/slices/miscSlice";
 import { setDialogMessage, setShowDialog } from "../redux/slices/uiSlice";
 import { IdeMessengerContext } from "./IdeMessenger";
@@ -38,6 +41,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const dispatch = useAppDispatch();
   const ideMessenger = useContext(IdeMessengerContext);
+  const navigate = useNavigate();
+  const onboardingCard = useOnboardingCard();
 
   // Session
   const [session, setSession] = useState<ControlPlaneSessionInfo | undefined>(
@@ -90,10 +95,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           text="Are you sure you want to log out of Epico Pilot?"
           onConfirm={() => {
             ideMessenger.post("logoutOfControlPlane", undefined);
-          }}
-          onCancel={() => {
-            dispatch(setDialogMessage(undefined));
-            dispatch(setShowDialog(false));
+            dispatch(setAccount({
+              accountEmail: "",
+              accountName: "",
+            }));
+            isNewUserOnboarding();
+            onboardingCard.open("Quickstart");
+            navigate("/");
           }}
         />,
       ),

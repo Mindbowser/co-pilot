@@ -1,24 +1,28 @@
-import { useEffect, useMemo } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CustomScrollbarDiv, defaultBorderRadius } from ".";
 import { AuthProvider } from "../context/Auth";
+import { IdeMessengerContext } from "../context/IdeMessenger";
 import { useWebviewListener } from "../hooks/useWebviewListener";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { selectUseHub } from "../redux/selectors";
+import { setAccount } from "../redux/slices/configSlice";
 import { focusEdit, setEditStatus } from "../redux/slices/editModeState";
 import {
-    addCodeToEdit,
-    newSession,
-    selectIsInEditMode,
-    setMode,
-    updateApplyState,
+  addCodeToEdit,
+  newSession,
+  selectIsInEditMode,
+  setMode,
+  updateApplyState,
 } from "../redux/slices/sessionSlice";
 import { setShowDialog } from "../redux/slices/uiSlice";
+import { RootState } from "../redux/store";
 import { exitEditMode } from "../redux/thunks";
 import { loadLastSession, saveCurrentSession } from "../redux/thunks/session";
 import { fontSize, isMetaEquivalentKeyPressed } from "../util";
 import { incrementFreeTrialCount } from "../util/freeTrial";
+import { setLocalStorage } from "../util/localStorage";
 import { ROUTES } from "../util/navigation";
 import TextDialog from "./dialogs";
 import Footer from "./Footer";
@@ -41,6 +45,8 @@ const GridDiv = styled.div`
 `;
 
 const Layout = () => {
+  const ideMessenger = useContext(IdeMessengerContext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -48,6 +54,9 @@ const Layout = () => {
   const { pathname } = useLocation();
 
   const configError = useAppSelector((state) => state.config.configError);
+  const accountEmail = useAppSelector(
+    (state: RootState) => state.config?.accountEmail,
+  );
 
   const hasFatalErrors = useMemo(() => {
     return configError?.some((error) => error.fatal);
@@ -241,13 +250,42 @@ const Layout = () => {
   }, []);
 
   useEffect(() => {
-    if (
-      isNewUserOnboarding() &&
-      (location.pathname === "/" || location.pathname === "/index.html")
-    ) {
+    const getAuthSession = async () => {
+      const result = await ideMessenger.request("getAuthSession", null);
+
+      if (result.status === "success") {
+        if (result.content?.account?.id) {
+          dispatch(setAccount({
+            accountEmail: result.content?.account?.id,
+            accountName: result.content?.account?.label,
+          }));
+
+
+          setLocalStorage("onboardingStatus", "Completed");
+          onboardingCard.close()
+
+          return;
+        }
+      }
+      dispatch(setAccount({
+        accountEmail: "",
+        accountName: "",
+      }));
+      isNewUserOnboarding();
       onboardingCard.open("Quickstart");
+      navigate("/");
     }
-  }, [location]);
+
+    setTimeout(() =>{
+      getAuthSession();
+    }, 100);
+
+    const authSessionInterval = setInterval(() =>{
+      getAuthSession();
+    }, 60*1000);
+
+    return () => clearInterval(authSessionInterval);
+  }, []);
 
   const useHub = useAppSelector(selectUseHub);
 

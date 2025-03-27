@@ -1,0 +1,12 @@
+{
+    "id": "7810b09e-0c3f-4d15-979f-310646623505",
+    "accessToken": "eyJraWQiOiJlbzg3Nmprc2h3eGhzOXR2IiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJlcGljbyIsInN1YiI6InJhaHVsLnJveUBtaW5kYm93c2VyLmNvbSIsImV4cCI6MTc0MzA3MjY4NCwidXVpZCI6NjEsImF1dGhvcml0aWVzIjoiVVNFUiJ9.luVMNCpr9suOAxf84_DaCip2xwc91RdJc6Mx70hm8BqOl-ZPmNHNnf4xW7Pebps5G1p7oqp5S2pEeoWT7kJyjbDdz_xbRgfn7Wj41pdv6inZu5jeou2IeWIR-A5AjbHecZfbfy7tIv0CH1fWyNGm8LGST1HLizUmFWM-VKzBhta5uxmFNZdPz5fiUbeMRSyAaz0SU-VXYwfe-KDUbomPx3bENeGwwn2jyy4N57_DF1P_tfmfBzMUJvxLrYEkIfMrk4w3Fu5fFrx2sQXf110uIvJpv4voFDKHGOvrhVVkk0uqWvh4NBKM7K4aWTJIvExlXXETY-cNjQGkUi8VWjvpgQ",
+    "refreshToken": "eyJraWQiOiJlbzg3Nmprc2h3eGhzOXR2IiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJlcGljbyIsInN1YiI6InJhaHVsLnJveUBtaW5kYm93c2VyLmNvbSIsImV4cCI6MTc0MzMxMzg4NCwidXVpZCI6NjF9.KltSOsORmZr4oHmZaaWLzxDYhVHqMopQ7SGnGU520yXaZKPaMFO06RtiAScdqDo5AhZkwfvG91M40sGbeP6MDB-UYldduUbdXSAQNRQHySJna-dB6bdmUgLhZqURtAnUZMKhUz6KNfbxgq97untcYm7rnITR19sC1gTUuDOxiWVnS6qSK9HC12eddOcbIXnX38Y85kIRejNw0H853RSvocNXXi2KNFBF_p2L2zp2BLXUzLh5do6SOlzbUihHOJFJvvtVBIxPaUrqTdZk6d4opwJd2uI4kJhZlizBS_f6B2K_9GB-_pCuEnV6AVPtD4q42wc_ih6TADyBDdD7Stzoug",
+    "expiresInMs": 1743070884745,
+    "loginNeeded": false,
+    "account": {
+        "label": "Rahul Roy",
+        "id": "rahul.roy@mindbowser.com"
+    },
+    "scopes": []
+}

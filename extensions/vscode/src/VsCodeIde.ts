@@ -16,19 +16,20 @@ import { getExtensionUri, openEditorAndRevealRange } from "./util/vscode";
 import { VsCodeWebviewProtocol } from "./webviewProtocol";
 
 import type {
-    ContinueRcJson,
-    FileStatsMap,
-    FileType,
-    IDE,
-    IdeInfo,
-    IdeSettings,
-    IndexTag,
-    Location,
-    Problem,
-    RangeInFile,
-    TerminalOptions,
-    Thread,
+  ContinueRcJson,
+  FileStatsMap,
+  FileType,
+  IDE,
+  IdeInfo,
+  IdeSettings,
+  IndexTag,
+  Location,
+  Problem,
+  RangeInFile,
+  TerminalOptions,
+  Thread,
 } from "core";
+import { WorkOsAuthProvider } from "./stubs/WorkOsAuthProvider";
 
 class VsCodeIde implements IDE {
   ideUtils: VsCodeIdeUtils;
@@ -107,6 +108,18 @@ class VsCodeIde implements IDE {
 
   private authToken: string | undefined;
   private askedForAuth = false;
+
+  async getAuthToken(authProvider: WorkOsAuthProvider) {
+    const session = await authProvider.createSession();
+
+    return session;
+  }
+
+  async getAuthSession(authProvider: WorkOsAuthProvider) {
+    const session = await authProvider.getSession();
+
+    return session;
+  }
 
   async getGitHubAuthToken(args: GetGhTokenArgs): Promise<string | undefined> {
     // Saved auth token
@@ -294,7 +307,7 @@ class VsCodeIde implements IDE {
       version: vscode.version,
       remoteName: vscode.env.remoteName || "local",
       extensionVersion:
-        vscode.extensions.getExtension("epico-pilot.epico-pilot")?.packageJSON
+        vscode.extensions.getExtension("Mindbowser.epico-pilot")?.packageJSON
           .version,
     });
   }

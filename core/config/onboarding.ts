@@ -1,6 +1,6 @@
 import { SerializedContinueConfig } from "../";
 
-import { FREE_TRIAL_MODELS } from "./default";
+import { DEFAULT_AUTOCOMPLETE_MODEL_CONFIG, DEFAULT_CHAT_MODEL_CONFIG } from "./default";
 
 export const TRIAL_FIM_MODEL = "codestral-latest";
 export const LOCAL_ONBOARDING_PROVIDER_TITLE = "Ollama";
@@ -19,7 +19,10 @@ export function setupBestConfig(
 ): SerializedContinueConfig {
   return {
     ...config,
-    models: config.models.filter((model) => model.provider !== "free-trial"),
+    models: [
+      ...DEFAULT_CHAT_MODEL_CONFIG,
+    ],
+    tabAutocompleteModel: DEFAULT_AUTOCOMPLETE_MODEL_CONFIG,
   };
 }
 
@@ -29,22 +32,9 @@ export function setupLocalConfig(
   return {
     ...config,
     models: [
-      {
-        title: LOCAL_ONBOARDING_CHAT_TITLE,
-        provider: "ollama",
-        model: LOCAL_ONBOARDING_CHAT_MODEL,
-      },
-      ...config.models.filter((model) => model.provider !== "free-trial"),
+      ...DEFAULT_CHAT_MODEL_CONFIG,
     ],
-    tabAutocompleteModel: {
-      title: LOCAL_ONBOARDING_FIM_TITLE,
-      provider: "ollama",
-      model: LOCAL_ONBOARDING_FIM_MODEL,
-    },
-    embeddingsProvider: {
-      provider: "ollama",
-      model: LOCAL_ONBOARDING_EMBEDDINGS_MODEL,
-    },
+    tabAutocompleteModel: DEFAULT_AUTOCOMPLETE_MODEL_CONFIG,
   };
 }
 
@@ -54,19 +44,8 @@ export function setupQuickstartConfig(
   return {
     ...config,
     models: [
-      ...FREE_TRIAL_MODELS,
-      ...config.models.filter((model) => model.provider !== "free-trial"),
+      ...DEFAULT_CHAT_MODEL_CONFIG,
     ],
-    tabAutocompleteModel: {
-      title: "Tab Autocomplete",
-      provider: "free-trial",
-      model: TRIAL_FIM_MODEL,
-    },
-    embeddingsProvider: {
-      provider: "free-trial",
-    },
-    reranker: {
-      name: "free-trial",
-    },
+    tabAutocompleteModel: DEFAULT_AUTOCOMPLETE_MODEL_CONFIG,
   };
 }

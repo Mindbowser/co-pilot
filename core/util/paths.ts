@@ -2,7 +2,6 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 
-import { DevEventName } from "@continuedev/config-yaml";
 import * as JSONC from "comment-json";
 import dotenv from "dotenv";
 
@@ -15,6 +14,10 @@ dotenv.config();
 const CONTINUE_GLOBAL_DIR =
   process.env.CONTINUE_GLOBAL_DIR ?? path.join(os.homedir(), ".epico-pilot");
 
+  console.log("CONTINUE_GLOBAL_DIR", CONTINUE_GLOBAL_DIR)
+
+const REMOTE_LANCE_DB_URL = process.env.REMOTE_LANCE_DB_URL ?? "s3://pilot-indexing/lancedb/";
+
 // export const DEFAULT_CONFIG_TS_CONTENTS = `import { Config } from "./types"\n\nexport function modifyConfig(config: Config): Config {
 //   return config;
 // }`;
@@ -22,6 +25,10 @@ const CONTINUE_GLOBAL_DIR =
 export const DEFAULT_CONFIG_TS_CONTENTS = `export function modifyConfig(config: Config): Config {
   return config;
 }`;
+
+export function getRemoteLanceDbPath(): string {
+  return REMOTE_LANCE_DB_URL;
+}
 
 export function getChromiumPath(): string {
   return path.join(getContinueUtilsPath(), ".chromium-browser-snapshots");
@@ -211,7 +218,7 @@ export function getContinueRcPath(): string {
   return continuercPath;
 }
 
-function getDevDataPath(): string {
+export function getDevDataPath(): string {
   const sPath = path.join(getContinueGlobalPath(), "dev_data");
   if (!fs.existsSync(sPath)) {
     fs.mkdirSync(sPath);
@@ -224,7 +231,7 @@ export function getDevDataSqlitePath(): string {
 }
 
 export function getDevDataFilePath(
-  eventName: DevEventName,
+  eventName: string,
   schema: string,
 ): string {
   const versionPath = path.join(getDevDataPath(), schema);
@@ -401,7 +408,7 @@ export function migrateV1DevDataFiles() {
   const devDataPath = getDevDataPath();
   function moveToV1FolderIfExists(
     oldFileName: string,
-    newFileName: DevEventName,
+    newFileName: string,
   ) {
     const oldFilePath = path.join(devDataPath, `${oldFileName}.jsonl`);
     if (fs.existsSync(oldFilePath)) {
@@ -416,6 +423,7 @@ export function migrateV1DevDataFiles() {
   moveToV1FolderIfExists("chat", "chatFeedback");
   moveToV1FolderIfExists("quickEdit", "quickEdit");
   moveToV1FolderIfExists("autocomplete", "autocomplete");
+  moveToV1FolderIfExists("session", "session");
 }
 
 export function getLocalEnvironmentDotFilePath(): string {

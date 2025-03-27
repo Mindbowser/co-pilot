@@ -1,8 +1,8 @@
 import {
-    ArrowLeftIcon,
-    ChatBubbleOvalLeftIcon,
-    CodeBracketSquareIcon,
-    ExclamationTriangleIcon,
+  ArrowLeftIcon,
+  ChatBubbleOvalLeftIcon,
+  CodeBracketSquareIcon,
+  ExclamationTriangleIcon,
 } from "@heroicons/react/24/outline";
 import { Editor, JSONContent } from "@tiptap/react";
 import { InputModifiers, RangeInFileWithContents, ToolCallState } from "core";
@@ -24,7 +24,7 @@ import { NewSessionButton } from "../../components/mainInput/belowMainInput/NewS
 import ThinkingBlockPeek from "../../components/mainInput/belowMainInput/ThinkingBlockPeek";
 import ContinueInputBox from "../../components/mainInput/ContinueInputBox";
 import resolveEditorContent from "../../components/mainInput/tiptap/resolveInput";
-import { useOnboardingCard } from "../../components/OnboardingCard";
+import { OnboardingCard, useOnboardingCard } from "../../components/OnboardingCard";
 import StepContainer from "../../components/StepContainer";
 import AcceptRejectAllButtons from "../../components/StepContainer/AcceptRejectAllButtons";
 import { TabBar } from "../../components/TabBar/TabBar";
@@ -36,14 +36,14 @@ import { selectCurrentToolCall } from "../../redux/selectors/selectCurrentToolCa
 import { selectDefaultModel } from "../../redux/slices/configSlice";
 import { submitEdit } from "../../redux/slices/editModeState";
 import {
-    newSession,
-    selectIsInEditMode,
-    selectIsSingleRangeEditOrInsertion,
+  newSession,
+  selectIsInEditMode,
+  selectIsSingleRangeEditOrInsertion,
 } from "../../redux/slices/sessionSlice";
 import {
-    setDialogEntryOn,
-    setDialogMessage,
-    setShowDialog,
+  setDialogEntryOn,
+  setDialogMessage,
+  setShowDialog,
 } from "../../redux/slices/uiSlice";
 import { RootState } from "../../redux/store";
 import { cancelStream } from "../../redux/thunks/cancelStream";
@@ -52,13 +52,12 @@ import { loadLastSession } from "../../redux/thunks/session";
 import { streamResponseThunk } from "../../redux/thunks/streamResponse";
 import { isMetaEquivalentKeyPressed } from "../../util";
 import {
-    FREE_TRIAL_LIMIT_REQUESTS,
-    incrementFreeTrialCount,
+  FREE_TRIAL_LIMIT_REQUESTS,
+  incrementFreeTrialCount,
 } from "../../util/freeTrial";
 import getMultifileEditPrompt from "../../util/getMultifileEditPrompt";
 import { getLocalStorage, setLocalStorage } from "../../util/localStorage";
 import ConfigErrorIndicator from "./ConfigError";
-import { EmptyChatBody } from "./EmptyChatBody";
 import { ExploreDialogWatcher } from "./ExploreDialogWatcher";
 import { ToolCallDiv } from "./ToolCallDiv";
 import { ToolCallButtons } from "./ToolCallDiv/ToolCallButtonsDiv";
@@ -105,6 +104,9 @@ export function Chat() {
   const onboardingCard = useOnboardingCard();
   const showSessionTabs = useAppSelector(
     (store) => store.config.config.ui?.showSessionTabs,
+  );
+  const accountEmail = useAppSelector(
+    (state: RootState) => state.config?.accountEmail,
   );
   const defaultModel = useAppSelector(selectDefaultModel);
   const isStreaming = useAppSelector((state) => state.session.isStreaming);
@@ -284,6 +286,14 @@ export function Chat() {
 
   const showPageHeader = isInEditMode || useHub;
 
+  if (!accountEmail && onboardingCard.show) {
+    return (
+      <div className="mx-2 mt-10">
+        <OnboardingCard />
+      </div>
+    )
+  }
+
   return (
     <>
       {widget}
@@ -452,13 +462,6 @@ export function Chat() {
           )}
 
           {!hasDismissedExploreDialog && <ExploreDialogWatcher />}
-
-          {history.length === 0 && (
-            <EmptyChatBody
-              useHub={useHub}
-              showOnboardingCard={onboardingCard.show}
-            />
-          )}
         </div>
       </div>
 

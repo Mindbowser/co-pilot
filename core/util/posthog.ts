@@ -86,7 +86,7 @@ export class Telemetry {
   static async getTelemetryClient(): Promise<PostHogType | undefined> {
     try {
       const { PostHog } = await import("posthog-node");
-      return new PostHog("phc_JS6XFROuNbhJtVCEdTSYk6gl5ArRrTNMpCcguAXlSPs", {
+      return new PostHog("phc_fhpVNKE9FlZLxdiBN88s01gBkgoOxHnjtKZuVqX7ZaX", {
         host: "https://app.posthog.com",
       });
     } catch (e) {

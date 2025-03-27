@@ -12,7 +12,6 @@ import { vscBadgeBackground, vscBadgeForeground } from "../..";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { toggleBlockSettingsToolbar } from "../../../redux/slices/uiSlice";
 import { fontSize } from "../../../util";
-import AssistantSelect from "../../modelSelection/platform/AssistantSelect";
 import HoverItem from "../InputToolbar/bottom/HoverItem";
 
 interface BlockSettingsToolbarIcon {
@@ -126,9 +125,6 @@ export function BlockSettingsTopToolbar(props: BlockSettingsTopToolbarProps) {
             ))}
           </div>
         </div>
-      </div>
-      <div className="ml-auto">
-        <AssistantSelect />
       </div>
     </div>
   );

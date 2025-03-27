@@ -13,7 +13,7 @@
   },
   "link.item.label.VS Code": {
     "message": "VS Code",
-    "description": "The label of footer link with label=VS Code linking to https://marketplace.visualstudio.com/items?itemName=Epico Pilot.epico-pilot"
+    "description": "The label of footer link with label=VS Code linking to https://marketplace.visualstudio.com/items?itemName=Mindbowser.epico-pilot"
   },
   "link.item.label.JetBrains": {
     "message": "JetBrains",

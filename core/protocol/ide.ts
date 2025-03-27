@@ -92,6 +92,8 @@ export type ToIdeFromWebviewOrCoreProtocol = {
 
   gotoDefinition: [{ location: Location }, RangeInFile[]];
 
+  getAuthToken: [null, { account: {label: string; id: string; } }];
+  getAuthSession: [null, { account: {label: string; id: string; } } | null];
   getGitHubAuthToken: [GetGhTokenArgs, string | undefined];
   getControlPlaneSessionInfo: [
     { silent: boolean; useOnboarding: boolean },

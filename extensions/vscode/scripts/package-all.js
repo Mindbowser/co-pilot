@@ -7,26 +7,29 @@ const PLATFORMS = [
   "linux-arm64",
   "darwin-x64",
   "darwin-arm64",
-]
+];
 const args = process.argv.slice(2);
 const isPreRelease = args.includes("--pre-release");
+var shouldPatch = true;
 
 (async () => {
   for (const i in PLATFORMS) {
     const platform = PLATFORMS[i];
     const pkgCommand = isPreRelease
-      ? "node scripts/package.js --pre-release --target " + platform // --yarn"
-      : "node scripts/package.js --target " + platform; // --yarn";
+      ? "node scripts/package.js --pre-release --target " +
+        platform +
+        " --patch " +
+        shouldPatch // --yarn"
+      : "node scripts/package.js --target " +
+        platform +
+        " --patch " +
+        shouldPatch; // --yarn";
 
-    execSync(
-      "node scripts/prepackage-cross-platform.js --target "+ platform,
-      {stdio: 'inherit'}
-
-    );
-    execSync(
-      pkgCommand,
-      {stdio: 'inherit'}
-    );
+    execSync("node scripts/prepackage-cross-platform.js --target " + platform, {
+      stdio: "inherit",
+    });
+    execSync(pkgCommand, { stdio: "inherit" });
+    shouldPatch = false;
   }
 })();
 

@@ -2,15 +2,20 @@ import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { PropsWithChildren, useEffect } from "react";
 import { useAppSelector } from "../redux/hooks";
+import { RootState } from "../redux/store";
 
 const CustomPostHogProvider = ({ children }: PropsWithChildren) => {
   const allowAnonymousTelemetry = useAppSelector(
     (store) => store?.config?.config?.allowAnonymousTelemetry,
   );
 
+  const config = useAppSelector(
+    (store: RootState) => store.config
+  )
+
   useEffect(() => {
     if (allowAnonymousTelemetry) {
-      posthog.init("phc_JS6XFROuNbhJtVCEdTSYk6gl5ArRrTNMpCcguAXlSPs", {
+      posthog.init("phc_fhpVNKE9FlZLxdiBN88s01gBkgoOxHnjtKZuVqX7ZaX", {
         api_host: "https://app.posthog.com",
         disable_session_recording: true,
         autocapture: false,
@@ -18,12 +23,16 @@ const CustomPostHogProvider = ({ children }: PropsWithChildren) => {
         capture_pageleave: false,
         capture_pageview: false,
       });
-      posthog.identify(window.vscMachineId);
+      posthog.identify(window.vscMachineId, {
+        accountName: config.accountName,
+        accountEmail: config.accountEmail,
+        lastSeen: new Date().toISOString(),
+      });
       posthog.opt_in_capturing();
     } else {
       posthog.opt_out_capturing();
     }
-  }, [allowAnonymousTelemetry]);
+  }, [allowAnonymousTelemetry, config]);
 
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
 };
