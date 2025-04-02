@@ -9,7 +9,7 @@ export const DEFAULT_CHAT_MODEL_CONFIG: ModelDescription[] = [
   {
     "model": "claude-3-5-haiku-latest",
     "title": "Claude 3.5 Haiku",
-    "apiKey": "",
+    "apiBase": "https://pilot.epico.ai/v1/",
     "provider": "anthropic"
   },
 ];
@@ -17,7 +17,7 @@ export const DEFAULT_CHAT_MODEL_CONFIG: ModelDescription[] = [
 export const DEFAULT_AUTOCOMPLETE_MODEL_CONFIG: ModelDescription = {
   "title": "Tab Autocomplete Model",
   "model": "claude-3-5-haiku-latest",
-  "apiKey": "",
+  "apiBase": "https://pilot.epico.ai/v1/",
   "provider": "anthropic"
 };
 
@@ -60,6 +60,7 @@ export const defaultContextProvidersVsCode: ContextProviderWithParams[] = [
   { name: "problems", params: {} },
   { name: "folder", params: {} },
   { name: "codebase", params: {} },
+  { name: "remote-codebase", params: {} },
 ];
 
 export const defaultContextProvidersJetBrains: ContextProviderWithParams[] = [
@@ -80,6 +81,62 @@ export const defaultSlashCommandsVscode: SlashCommandDescription[] = [
   {
     name: "commit",
     description: "Generate a git commit message",
+  },
+  {
+    name: "review:help",
+    description: "List all the available review commands with description",
+  },
+  {
+    name: "review:codebase",
+    description: "Review entire codebase and give feedback",
+  },
+  {
+    name: "review:stage",
+    description: "Review stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:naming-convention",
+    description: "Review naming convention in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:duplications",
+    description: "Review duplications in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:comments",
+    description: "Review comments in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:memory-leaks",
+    description: "Review memory leaks in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:compliance",
+    description: "Review compliance in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:logging",
+    description: "Review logging in stage difference code and give feedback",
+  },
+  {
+    name: "review:stage:refactoring",
+    description: "Review refactoring in stage difference code and give feedback",
+  },
+  {
+    name: "onboard",
+    description: "Familiarize yourself with the codebase",
+  },
+  {
+    name: "project-flow",
+    description: "Project Flow chart.",
+  },
+  {
+    name: "create-readme",
+    description: "Create readme file context.",
+  },
+  {
+    name: "impact-analysis",
+    description: "Generate a real-time impact analysis report",
   },
 ];
 

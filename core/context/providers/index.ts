@@ -24,6 +24,7 @@ import OpenFilesContextProvider from "./OpenFilesContextProvider";
 import OSContextProvider from "./OSContextProvider";
 import PostgresContextProvider from "./PostgresContextProvider";
 import ProblemsContextProvider from "./ProblemsContextProvider";
+import RemoteCodebaseContextProvider from "./RemoteCodebaseContextProvider";
 import RepoMapContextProvider from "./RepoMapContextProvider";
 import SearchContextProvider from "./SearchContextProvider";
 import TerminalContextProvider from "./TerminalContextProvider";
@@ -66,6 +67,7 @@ export const Providers: (typeof BaseContextProvider)[] = [
   MCPContextProvider,
   GitCommitContextProvider,
   ClipboardContextProvider,
+  RemoteCodebaseContextProvider,
 ];
 
 export function contextProviderClassFromName(

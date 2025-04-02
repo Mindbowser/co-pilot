@@ -90,7 +90,7 @@ export function fillTemplateVariables(
 export interface TemplateData {
   inputs: Record<string, string> | undefined;
   secrets: Record<string, string> | undefined;
-  epico-pilot: {};
+  continue: {};
 }
 
 function flattenTemplateData(
@@ -216,7 +216,7 @@ function renderTemplateData(
   const fullTemplateData: TemplateData = {
     inputs: {},
     secrets: {},
-    epico-pilot: {},
+    continue: {},
     ...templateData,
   };
   const templatedYaml = fillTemplateVariables(

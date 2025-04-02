@@ -108,7 +108,7 @@ class ContinuePluginStartupActivity : StartupActivity, DumbAware {
 
         for (actionId in actionIds) {
             if (actionId.startsWith("epico-pilot")) {
-                epico-pilot
+                continue
             }
             val shortcuts = keymap.getShortcuts(actionId)
             for (shortcut in shortcuts) {

@@ -184,8 +184,7 @@ class Anthropic extends BaseLLM {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "anthropic-version": "2023-06-01",
-        "x-api-key": this.apiKey as string,
+        "Authorization": `Bearer ${this.apiKey}` as string,
         ...(shouldCacheSystemMessage || this.cacheBehavior?.cacheConversation
           ? { "anthropic-beta": "prompt-caching-2024-07-31" }
           : {}),

@@ -42,7 +42,7 @@ function FreeTrialProgressBar({ completed, total }: FreeTrialProgressBarProps) {
         </div>
 
         <ToolTip id="usage_progress_bar" place="top">
-          Configure a model above in order to epico-pilot
+          Configure a model above in order to continue
         </ToolTip>
       </>
     );

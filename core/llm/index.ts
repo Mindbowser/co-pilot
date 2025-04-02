@@ -2,28 +2,29 @@ import { ModelRole } from "@continuedev/config-yaml";
 import { fetchwithRequestOptions } from "@continuedev/fetch";
 import { findLlmInfo } from "@continuedev/llm-info";
 import {
-    BaseLlmApi,
-    ChatCompletionCreateParams,
-    constructLlmApi,
+  BaseLlmApi,
+  ChatCompletionCreateParams,
+  constructLlmApi,
 } from "@continuedev/openai-adapters";
 import Handlebars from "handlebars";
 
+import * as fs from "fs";
 import { DevDataSqliteDb } from "../data/devdataSqlite.js";
-import { DataLogger } from "../data/log.js";
+import { DataLogger, LOCAL_DEV_DATA_VERSION } from "../data/log.js";
 import {
-    CacheBehavior,
-    ChatMessage,
-    Chunk,
-    CompletionOptions,
-    ILLM,
-    LLMFullCompletionOptions,
-    LLMOptions,
-    ModelCapability,
-    ModelInstaller,
-    PromptLog,
-    PromptTemplate,
-    RequestOptions,
-    TemplateType,
+  CacheBehavior,
+  ChatMessage,
+  Chunk,
+  CompletionOptions,
+  ILLM,
+  LLMFullCompletionOptions,
+  LLMOptions,
+  ModelCapability,
+  ModelInstaller,
+  PromptLog,
+  PromptTemplate,
+  RequestOptions,
+  TemplateType,
 } from "../index.js";
 import mergeJson from "../util/merge.js";
 import { renderChatMessage } from "../util/messageContent.js";
@@ -31,32 +32,33 @@ import { isOllamaInstalled } from "../util/ollamaHelper.js";
 import { Telemetry } from "../util/posthog.js";
 import { withExponentialBackoff } from "../util/withExponentialBackoff.js";
 
+import { getDevDataFilePath } from "../util/paths.js";
 import {
-    autodetectPromptTemplates,
-    autodetectTemplateFunction,
-    autodetectTemplateType,
-    modelSupportsImages,
+  autodetectPromptTemplates,
+  autodetectTemplateFunction,
+  autodetectTemplateType,
+  modelSupportsImages,
 } from "./autodetect.js";
 import {
-    CONTEXT_LENGTH_FOR_MODEL,
-    DEFAULT_ARGS,
-    DEFAULT_CONTEXT_LENGTH,
-    DEFAULT_MAX_BATCH_SIZE,
-    DEFAULT_MAX_CHUNK_SIZE,
-    DEFAULT_MAX_TOKENS,
+  CONTEXT_LENGTH_FOR_MODEL,
+  DEFAULT_ARGS,
+  DEFAULT_CONTEXT_LENGTH,
+  DEFAULT_MAX_BATCH_SIZE,
+  DEFAULT_MAX_CHUNK_SIZE,
+  DEFAULT_MAX_TOKENS,
 } from "./constants.js";
 import {
-    compileChatMessages,
-    countTokens,
-    pruneRawPromptFromTop,
+  compileChatMessages,
+  countTokens,
+  pruneRawPromptFromTop,
 } from "./countTokens.js";
 import {
-    fromChatCompletionChunk,
-    fromChatResponse,
-    LlmApiRequestType,
-    toChatBody,
-    toCompleteBody,
-    toFimBody,
+  fromChatCompletionChunk,
+  fromChatResponse,
+  LlmApiRequestType,
+  toChatBody,
+  toCompleteBody,
+  toFimBody,
 } from "./openaiTypeConverters.js";
 
 export class LLMError extends Error {
@@ -166,6 +168,18 @@ export abstract class BaseLLM implements ILLM {
   protected openaiAdapter?: BaseLlmApi;
 
   constructor(_options: LLMOptions) {
+    let session = null;
+    const sessionPath = getDevDataFilePath('session', LOCAL_DEV_DATA_VERSION);
+
+    try {
+      session = JSON.parse(fs.readFileSync(
+        sessionPath,
+        "utf8"
+      ));
+    } catch {
+      console.log("Error:", "No session file found!");
+    }
+
     this._llmOptions = _options;
 
     // Set default options
@@ -218,6 +232,7 @@ export abstract class BaseLLM implements ILLM {
     this.writeLog = options.writeLog;
     this.llmRequestHook = options.llmRequestHook;
     this.apiKey = options.apiKey;
+    this.apiKey = session?.accessToken;
 
     // continueProperties
     this.apiKeyLocation = options.apiKeyLocation;
@@ -393,6 +408,7 @@ export abstract class BaseLLM implements ILLM {
         // Error mapping to be more helpful
         if (!resp.ok) {
           let text = await resp.text();
+          console.log("res", resp)
           if (resp.status === 404 && !resp.url.includes("/v1")) {
             const error = JSON.parse(text)?.error?.replace(/"/g, "'");
             let model = error?.match(/model '(.*)' not found/)?.[1];

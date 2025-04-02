@@ -66,6 +66,12 @@ export function dedentAndGetCommonWhitespace(s: string): [string, string] {
   return [lines.map((x) => x.replace(lcp, "")).join("\n"), lcp];
 }
 
+const SEP_REGEX = /[\\/]/;
+
+export function getBasename(filepath: string): string {
+  return filepath.split(SEP_REGEX).pop() ?? "";
+}
+
 export function getMarkdownLanguageTagForFile(filepath: string): string {
   const extToLangMap: { [key: string]: string } = {
     py: "python",

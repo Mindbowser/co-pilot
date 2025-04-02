@@ -1,0 +1,54 @@
+{
+  "sessionId": "c71d63e4-6792-4e3f-b2f0-e51708676b84",
+  "title": "Payload CMS Headless",
+  "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox",
+  "history": [
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "what is payload cms"
+          }
+        ],
+        "id": "d7915fbf-695e-4313-a821-02a3ead676b8"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "what is payload cms"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "message": {
+        "id": "3894f105-3a44-40f2-b04f-fca26078c651",
+        "role": "assistant",
+        "content": "Payload CMS is an open-source, headless content management system (CMS) built with TypeScript, Node.js, React, and MongoDB. Key features include:\n\n1. Developer-friendly\n- Self-hosted\n- Fully customizable\n- Type-safe schema definition\n- REST and GraphQL APIs\n- Authentication built-in\n\n2. Key capabilities\n- Custom content types\n- Role-based access control\n- Media management\n- Authentication/authorization\n- Flexible admin UI\n- No vendor lock-in\n\n3. Use cases\n- Web applications\n- Mobile apps\n- E-commerce platforms\n- Websites requiring complex content management\n\nIt's particularly popular among developers who want a flexible, modern CMS that doesn't restrict their technology choices. Unlike traditional monolithic CMSs, Payload allows complete customization of the backend and frontend.\n\nWould you like me to elaborate on any specific aspect of Payload CMS?"
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "Claude 3.5 Haiku",
+          "prompt": "<system>\n<important_rules>\n  Always include the language and file name in the info string when you write code blocks. If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'.\n</important_rules>\n\nGive concise responses.\n\n\n<user>\nwhat is payload cms\n\n",
+          "completion": "Payload CMS is an open-source, headless content management system (CMS) built with TypeScript, Node.js, React, and MongoDB. Key features include:\n\n1. Developer-friendly\n- Self-hosted\n- Fully customizable\n- Type-safe schema definition\n- REST and GraphQL APIs\n- Authentication built-in\n\n2. Key capabilities\n- Custom content types\n- Role-based access control\n- Media management\n- Authentication/authorization\n- Flexible admin UI\n- No vendor lock-in\n\n3. Use cases\n- Web applications\n- Mobile apps\n- E-commerce platforms\n- Websites requiring complex content management\n\nIt's particularly popular among developers who want a flexible, modern CMS that doesn't restrict their technology choices. Unlike traditional monolithic CMSs, Payload allows complete customization of the backend and frontend.\n\nWould you like me to elaborate on any specific aspect of Payload CMS?",
+          "completionOptions": {
+            "model": "claude-3-5-haiku-latest",
+            "maxTokens": 8192
+          }
+        }
+      ],
+      "isGatheringContext": false
+    }
+  ]
+}

@@ -1,9 +1,7 @@
+import { IDE, SlashCommand } from "../..";
 import * as fs from "fs/promises";
 import * as path from "path";
-
 import ignore from "ignore";
-
-import { IDE, SlashCommand } from "../..";
 import {
   defaultIgnoreDir,
   defaultIgnoreFile,
@@ -34,16 +32,24 @@ const LANGUAGE_DEP_MGMT_FILENAMES = [
   "dub.json", // D
 ];
 
-const MAX_EXPLORE_DEPTH = 2;
+const FOLDERS_TO_IGNORE = [
+  '.git',
+  'node_modules',
+  '.vscode',
+  '.idea',
+  '.github',
+]
 
-const OnboardSlashCommand: SlashCommand = {
-  name: "onboard",
-  description: "Familiarize yourself with the codebase",
-  run: async function* ({ llm, ide }) {
+const MAX_EXPLORE_DEPTH = 3;
+
+const ProjectFlowSlashCommand: SlashCommand = {
+  name: "project-flow",
+  description: "Project Flow chart.",
+  run: async function* ({ llm, ide, input }) {
     const [workspaceDir] = await ide.getWorkspaceDirs();
 
     const context = await gatherProjectContext(workspaceDir, ide);
-    const prompt = createOnboardingPrompt(context);
+    const prompt = createProjectFlowPrompt(context, input.replace(`/project-flow`, '').trim());
 
     for await (const chunk of llm.streamChat(
       [{ role: "user", content: prompt }],
@@ -73,10 +79,7 @@ async function getEntriesFilteredByIgnore(dir: string, ide: IDE) {
     ig = ig.add(igPatterns);
   }
 
-  const filteredEntries = entries.filter((entry) => {
-    const name = entry.isDirectory() ? `${entry.name}/` : entry.name;
-    return !ig.ignores(name);
-  });
+  const filteredEntries = entries.filter((entry) => !ig.ignores(entry.name));
 
   return filteredEntries;
 }
@@ -99,6 +102,7 @@ async function gatherProjectContext(
       const relativePath = path.relative(workspaceDir, fullPath);
 
       if (entry.isDirectory()) {
+        if (FOLDERS_TO_IGNORE.includes(relativePath)) return;
         context += `\nFolder: ${relativePath}\n`;
         await exploreDirectory(fullPath, currentDepth + 1);
       } else {
@@ -118,50 +122,25 @@ async function gatherProjectContext(
   return context;
 }
 
-function createOnboardingPrompt(context: string): string {
+function createProjectFlowPrompt(context: string, input: string): string {
   return `
-    As a helpful AI assistant, your task is to onboard a new developer to this project.
+    You are an expert flow diagram creator in text-based flowcharts using ASCII art. 
+    Create a detailed flowchart for the project in a step-by-step manner. 
     Use the following context about the project structure, READMEs, and dependency files to create a comprehensive overview:
 
-  Please provide an overview of the project with the following guidelines:
+    ${context}
+    ${!!input ? `
+    Here is some additional input you may want to use:
 
-  1. Important Folders
-
-   - Identify the critical folders in the project and explain their purpose.
-   - Highlight key packages or technologies used within these folders.
-   - Summarize relevant details from README files or configuration files like package.json.
-  
-  2. Project Architecture
-
-    Here is an example of a valid response:
-
-    ## Important folders
-
-   - Summarize the project's coding standards, including formatting, naming conventions, code structure, and documentation practices.
-   - Highlight approaches to error handling and testing standards.
-  
-  4. UI Frameworks
-
-   - Explain how UI frameworks are utilized in the project.
-   - Describe specific use cases and the rationale for using frameworks like MUI, Bootstrap, or Tailwind CSS.
-  
-  5.  Environment Configurations
-
-   - Detail how environment configurations are managed, including where they are stored and how they are accessed in the codebase.
-  
-  6. Additional Architectural Insights
-
-   - Provide up to five additional insights about the architecture, such as scalability strategies, CI/CD pipelines, or performance optimizations.
-  
-  7. Unit Testing and Coverage
-
-   - Mention the testing framework(s) used and the approach to ensure sufficient test coverage.
-   - Highlight strategies for maintaining code quality through testing.
-  
-  8. How to Run the Project
-
-   - Include step-by-step instructions for setting up the project, running it locally, and accessing key functionalities.
+    ${input}
+    
+    `: ''}
+    The flowchart should include:
+    - All key processes, decision points, and data flows. 
+    - Be sure to label each component clearly and provide a brief description of its function. 
+    - The diagram should be visually appealing and easy to understand.
+    - Please generate or create the flow diagram with logical connectors using ASCII characters such as arrows (-->, |, v) and shapes like [ ] for processes, ( ) for start/end, and < > for decisions. Ensure the flowchart is easy to read and understand, with well-aligned elements.
   `;
 }
 
-export default OnboardSlashCommand;
+export default ProjectFlowSlashCommand;

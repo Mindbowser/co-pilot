@@ -1,8 +1,38 @@
 [
   {
     "sessionId": "28751737-c5fa-4fe6-a14d-8df6fabc6d48",
-    "title": "Coding Assistance Exploration",
+    "title": "Payload CMS Nextjs Integration",
     "dateCreated": "1743054699311",
+    "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox"
+  },
+  {
+    "sessionId": "d174f4c8-4f7a-4b38-bfca-ff9d5d34f3a2",
+    "title": "VS Code Extension Troubleshooting",
+    "dateCreated": "1743493015320",
+    "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox"
+  },
+  {
+    "sessionId": "83c84b96-fdfd-4773-8075-85371ff0265f",
+    "title": "AI Assistance Ready",
+    "dateCreated": "1743526397777",
+    "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox"
+  },
+  {
+    "sessionId": "c71d63e4-6792-4e3f-b2f0-e51708676b84",
+    "title": "Payload CMS Headless",
+    "dateCreated": "1743618132935",
+    "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox"
+  },
+  {
+    "sessionId": "bc4fe63d-7721-48e9-9452-76cc7a481918",
+    "title": "Incomplete Query Assistance",
+    "dateCreated": "1743618160761",
+    "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox"
+  },
+  {
+    "sessionId": "b71b8726-7468-42c9-bf75-f8b163d6ef3d",
+    "title": "Ambiguous Developer Term",
+    "dateCreated": "1743625638145",
     "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox"
   }
 ]

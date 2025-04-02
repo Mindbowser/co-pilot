@@ -40,7 +40,7 @@ if (Test-Path ".nvmrc") {
         
         # Check if running in interactive mode
         if ([Environment]::UserInteractive -and [Environment]::GetCommandLineArgs().Count -eq 0) {
-            Write-Host "Press Enter to epico-pilot with installation anyway..." -NoNewline -ForegroundColor Yellow
+            Write-Host "Press Enter to continue with installation anyway..." -NoNewline -ForegroundColor Yellow
             $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
             Write-Host "`n" # Add newline after key press
         } else {

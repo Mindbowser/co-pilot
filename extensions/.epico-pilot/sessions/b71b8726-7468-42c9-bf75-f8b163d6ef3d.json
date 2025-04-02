@@ -1,0 +1,64 @@
+{
+  "sessionId": "b71b8726-7468-42c9-bf75-f8b163d6ef3d",
+  "title": "Ambiguous Developer Term",
+  "workspaceDirectory": "file:///home/rahul.roy%40ad.mindbowser.com/Projects/co-pilot/manual-testing-sandbox",
+  "history": [
+    {
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "developrr explain"
+          }
+        ],
+        "id": "a1fe0c3b-7e63-4a8b-ab40-d8244e9e6e30"
+      },
+      "contextItems": [],
+      "editorState": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "mention",
+                "attrs": {
+                  "id": "developrr",
+                  "label": "developrr",
+                  "renderInlineAs": null,
+                  "query": "developrr",
+                  "itemType": "remote-codebase"
+                }
+              },
+              {
+                "type": "text",
+                "text": " explain"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "message": {
+        "id": "05eca007-3a8d-4fa5-b800-3a3d82633a0d",
+        "role": "assistant",
+        "content": "I'll help explain the concept of a \"developrr\" (which I assume might be a typo or a specific term you're asking about). Could you provide more context about what specifically you want to know? \n\nAre you referring to:\n1. A developer (software engineer/programmer)\n2. A development tool or process\n3. A specific project or concept\n\nWithout more details, I can share some general insights about software development:\n\nA typical developer (or \"developrr\") might:\n- Write code in various programming languages\n- Solve complex problems\n- Create software applications\n- Debug and test code\n- Collaborate with team members\n- Use version control systems like Git\n- Work on different types of projects (web, mobile, desktop, etc.)\n\nIf you could clarify your specific question or provide more context, I'd be happy to give a more precise and helpful explanation."
+      },
+      "contextItems": [],
+      "promptLogs": [
+        {
+          "modelTitle": "Claude 3.5 Haiku",
+          "prompt": "<system>\n<important_rules>\n  Always include the language and file name in the info string when you write code blocks. If you are editing \"src/main.py\" for example, your code block should start with '```python src/main.py'.\n</important_rules>\n\n<user>\ndeveloprr explain\n\n",
+          "completion": "I'll help explain the concept of a \"developrr\" (which I assume might be a typo or a specific term you're asking about). Could you provide more context about what specifically you want to know? \n\nAre you referring to:\n1. A developer (software engineer/programmer)\n2. A development tool or process\n3. A specific project or concept\n\nWithout more details, I can share some general insights about software development:\n\nA typical developer (or \"developrr\") might:\n- Write code in various programming languages\n- Solve complex problems\n- Create software applications\n- Debug and test code\n- Collaborate with team members\n- Use version control systems like Git\n- Work on different types of projects (web, mobile, desktop, etc.)\n\nIf you could clarify your specific question or provide more context, I'd be happy to give a more precise and helpful explanation.",
+          "completionOptions": {
+            "model": "claude-3-5-haiku-latest",
+            "maxTokens": 8192
+          }
+        }
+      ],
+      "isGatheringContext": false
+    }
+  ]
+}

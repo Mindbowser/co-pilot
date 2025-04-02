@@ -176,7 +176,7 @@ export function Chat() {
           // So that something happens if in new chat
           ideMessenger.ide.showToast(
             "error",
-            "You've reached the free trial limit. Please configure a model to epico-pilot.",
+            "You've reached the free trial limit. Please configure a model to continue.",
           );
 
           // Card in chat will only show if no history
